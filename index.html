@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <style media="screen">
+    * {
+      box-sizing: border-box;
+    }
+    body{
+      background-image: url("images/background.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .logout_btn{
+      font-family: 'Poppins', sans-serif;
+      background: none;
+      color: white;
+      border: none;
+      font-weight: 700;
+      font-size: 2em;
+      margin-top:50%;
+    }
+    .dash_card{
+      background-color: #FFFFFF;
+      width: 90%;
+      margin-bottom: 8px;
+    }
+    .table_menu{
+      background-color: #FFFFFF;
+    }
+    .menu_font{
+      background: none;
+      border: none;
+      font-family: 'Poppins', sans-serif;
+      color:#0D47A1;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+    .main_s1{
+       background-color: #707070;
+       opacity: 1;
+    }
+    .txt_in{
+      font-family: 'Poppins', sans-serif;
+      color: #FFFFFF;
+      font-size: 18px;
+    }
+    .bold_txt_in{
+      font-weight: 700;
+    }
+  </style>
+
+  <body>
+    <div class="container">
+
+        <div class="image_rc"  >
+          <img src="images/logo.png" alt="logo" width="38%" height="28%">
+          <div class="logout" style="float: right; ">
+              <button type="button" name="button" class="logout_btn">LOGOUT</button>
+          </div>
+        </div>
+
+
+
+        <div class="row">
+          <div class="col s12 m4 l3 table_menu" style="margin-bottom: 10px;">
+            <table>
+              <tr>
+                <td><button class="menu_font">DASHBOARD</button></td>
+              </tr>
+              <tbody>
+                <tr>
+                  <td ><button class="menu_font">CREATE TEAM</button>  </td>
+                </tr>
+                <tr>
+                  <td ><button class="menu_font">INVITES</button></td>
+               </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="col s12 m9 l8 main_s1" style="float:right;">
+
+              <p class="txt_in"><span class="bold_txt_in">TEAM NAME :</span> Alpha</p>
+              <p class="txt_in"><span class="bold_txt_in">TEAM MEMBERS :</span> a, b, c</p>
+
+              <div class="dash_card row" style=" margin: 0 auto;  margin-bottom: 12px; opacity: 0.9;">
+                <div class="col s3 m3 l3" style="color:#0D47A1; font-weight: bold;">
+                    <p>POSITION</p>
+                </div>
+                <div class="col s1 m1 l1"  style="float:right;">
+                    <p style="color:#0D47A1; font-weight: bold;">1</p>
+                </div>
+              </div>
+
+
+              <div class="dash_card row" style=" margin: 0 auto; margin-bottom: 12px;">
+                <div class="col s3 m3 l3" style="color:#0D47A1; font-weight: bold;">
+                    <p>POINTS</p>
+                </div>
+                <div class="col s1 m1 l1"  style="float:right;">
+                    <p style="color:#0D47A1; font-weight: bold;">1</p>
+                </div>
+              </div>
+
+          </div>
+        </div>
+
+    </div>
+
+
+  </body>
+</html>
