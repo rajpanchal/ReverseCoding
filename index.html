@@ -30,6 +30,7 @@
       font-weight: 700;
       font-size: 2em;
       margin-top:50%;
+      margin-bottom: 80px;
     }
     .dash_card{
       background-color: #FFFFFF;
@@ -38,6 +39,7 @@
     }
     .table_menu{
       background-color: #FFFFFF;
+      margin-bottom: 20px;
     }
     .menu_font{
       background: none;
@@ -70,7 +72,25 @@
         border: none;
         font-size: 1.1em;
     }
-    button:focus{background-color: ;}
+    .logout_btn:focus{
+        background-color: #333333;
+    }
+    .btn_focus:focus{
+      background-color: #0D47A1;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .mobile_align{
+        width:100%;
+        height: 20%;
+        margin: none;
+      }
+      .logout_btn{
+        font-size: 1.5em;
+        margin-bottom: 10px;
+      }
+}
+
   </style>
 
   <body>
@@ -79,7 +99,7 @@
 
 <div class="section_logo">
         <div class="image_rc"  >
-          <img src="images/logo.png" alt="logo" width="38%" height="28%">
+          <img src="images/logo.png" alt="logo" width="38%" height="28%" class="mobile_align">
           <div class="logout" style="float: right; ">
               <button type="button" name="button" class="logout_btn">LOGOUT</button>
           </div>
@@ -91,14 +111,14 @@
           <div class="col s12 m4 l3 table_menu">
             <table>
               <tr class="dashboard_td">
-                <td class="dashboard"><button href="#" class="menu_font"><span class="dashboard_data">DASHBOARD</span></button></td>
+                <td class="dashboard"><button href="#" class="menu_font btn_focus"><span class="dashboard_data">DASHBOARD</span></button></td>
               </tr>
               <tbody>
                 <tr class="create_team_td">
-                  <td  class="create_team"><button href="#" class="menu_font"><span class="create_team_data">CREATE TEAM</span></button>  </td>
+                  <td  class="create_team"><button href="#" class="menu_font btn_focus"><span class="create_team_data">CREATE TEAM</span></button>  </td>
                 </tr>
                 <tr>
-                  <td><button href="#" class="menu_font">INVITES</button></td>
+                  <td><button href="#" class="menu_font btn_focus">INVITES</button></td>
                </tr>
               </tbody>
             </table>
@@ -154,8 +174,9 @@
     </div>
     <script type="text/javascript">
     $(document).ready(function(){
-
       $(".main_s1").css("display", "block");
+      $(".dashboard_td").css("background-color", "#0D47A1");
+      $(".dashboard_data").css("color","#FFFFFF");
 
       $(".dashboard").click(function(){
         //REMOVAL
