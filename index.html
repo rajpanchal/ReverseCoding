@@ -48,6 +48,7 @@
       color:#0D47A1;
       font-weight: bold;
       font-size: 1.1em;
+      transition: font-size .5s ease;
     }
     .main_s1{
        background-color: #707070;
@@ -73,7 +74,7 @@
 
     .main_s2{
       background-color: #707070;
-      height: 500px;
+      height: 40%;
     }
     .create_btn{
         font-family: 'Poppins', sans-serif;
@@ -87,6 +88,9 @@
     }
     .btn_focus:focus{
       background-color: #0D47A1;
+    }
+    td:hover{
+      font-size: 16px;
     }
 
     @media only screen and (max-width: 600px) {
@@ -130,21 +134,25 @@
 
 
         <div class="row">
-          <div class="col s12 m4 l3 table_menu">
+          <div class="col s12 m4 l3 table_menu hoverable">
             <table>
-              <tr class="dashboard_td">
-                <td class="dashboard"><button href="#" class="menu_font btn_focus"><span class="dashboard_data">DASHBOARD</span></button></td>
+              <tr class="dashboard_td ">
+                <td class="dashboard "><button href="#" class="menu_font btn_focus card_hover "><span class="dashboard_data hover_me">DASHBOARD</span></button></td>
               </tr>
               <tbody>
-                <tr class="create_team_td">
-                  <td  class="create_team"><button href="#" class="menu_font btn_focus"><span class="create_team_data">CREATE TEAM</span></button></td>
+                <tr class="create_team_td ">
+                  <td  class="create_team "><button href="#" class="menu_font btn_focus card_hover"><span class="create_team_data hover_me">CREATE TEAM</span></button></td>
                 </tr>
                 <tr class="invites_td">
-                  <td class="invites"><button href="#" class="menu_font btn_focus"><span class="invites_data">INVITES</span></button></td>
+                  <td class="invites "><button href="#" class="menu_font btn_focus card_hover"><span class="invites_data hover_me">INVITES</span></button></td>
                </tr>
               </tbody>
             </table>
           </div>
+
+
+
+
 
           <div class="col s12 m9 l8 main_s1 main_s11" style="float:right; display:none">
             <div class="container" style="width:90%;">
@@ -180,12 +188,12 @@
                   <input type="text" name="team_name" style="border: 2px #0D47A1 solid; height: 37px; margin-bottom: 20px">
                   </div>
                   <div class="row">
-                    <div class="col l3" >
+                    <div class="col l2" >
                     </div>
-                    <div class="col l6" style="background-color: #0D47A1">
-                      <button type="button" name="button" class="create_btn btn_focus" style="width:100%; padding: 8px 10px;">Create Team ></button>
+                    <div class="col l8" style="background-color: #0D47A1">
+                      <button type="button" name="button" class="create_btn btn_focus waves-effect waves-light" style="width:100%; padding: 8px 10px;">Create Team ></button>
                     </div>
-                    <div class="col l3">
+                    <div class="col l2">
                     </div>
                   </div>
                 </div>
@@ -281,7 +289,6 @@
        $(".main_s11").css("display", "block");
       $(".dashboard_td").css("background-color", "#0D47A1");
       $(".dashboard_data").css("color","#FFFFFF");
-      $()
 
       $(".dashboard").click(function(){
         //REMOVAL
@@ -294,6 +301,7 @@
           $(".dashboard_td").css("background-color", "#0D47A1");
           $(".dashboard_data").css("color","#FFFFFF");
 
+          $(".invites1").css("display","none");
           $(".main_s11").css("display", "block");
           $(".main_s2").css("display", "none");
 
@@ -309,6 +317,7 @@
         $(".create_team_td").css("background-color", "#0D47A1");
         $(".create_team_data").css("color","#FFFFFF");
 
+          $(".invites1").css("display","none");
           $(".main_s11").css("display", "none");
           $(".main_s2").css("display", "block");
 
