@@ -12,7 +12,7 @@
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <style media="screen">
     * {
       box-sizing: border-box;
@@ -59,6 +59,18 @@
     .bold_txt_in{
       font-weight: 700;
     }
+    .main_s2{
+      background-color: #707070;
+      height: 500px;
+    }
+    .create_btn{
+        font-family: 'Poppins', sans-serif;
+        background: none;
+        color: #FFFFFF;
+        border: none;
+        font-size: 1.1em;
+    }
+    button:focus{background-color: ;}
   </style>
 
   <body>
@@ -75,25 +87,24 @@
 </div>
 
 
-<div class="section_1">
         <div class="row">
-          <div class="col s12 m4 l3 table_menu" style="margin-bottom: 10px;">
+          <div class="col s12 m4 l3 table_menu">
             <table>
-              <tr>
-                <td><button href="#" class="menu_font">DASHBOARD</button></td>
+              <tr class="dashboard_td">
+                <td class="dashboard"><button href="#" class="menu_font"><span class="dashboard_data">DASHBOARD</span></button></td>
               </tr>
               <tbody>
-                <tr>
-                  <td ><button href="#" class="menu_font">CREATE TEAM</button>  </td>
+                <tr class="create_team_td">
+                  <td  class="create_team"><button href="#" class="menu_font"><span class="create_team_data">CREATE TEAM</span></button>  </td>
                 </tr>
                 <tr>
-                  <td ><button href="#" class="menu_font">INVITES</button></td>
+                  <td><button href="#" class="menu_font">INVITES</button></td>
                </tr>
               </tbody>
             </table>
           </div>
 
-          <div class="col s12 m9 l8 main_s1" style="float:right;">
+          <div class="col s12 m9 l8 main_s1" style="float:right; display:none">
               <p class="txt_in"><span class="bold_txt_in">TEAM NAME :</span> Alpha</p>
               <p class="txt_in"><span class="bold_txt_in">TEAM MEMBERS :</span> a, b, c</p>
               <div class="dash_card row" style=" margin: 0 auto;  margin-bottom: 12px;">
@@ -104,7 +115,7 @@
                     <p style="color:#0D47A1; font-weight: bold;">1</p>
                 </div>
               </div>
-              <div class="dash_card row" style=" margin: 0 auto; margin-bottom: 12px;">
+              <div class="dash_card row" style=" margin: 0 auto; margin-bottom: 25px;">
                 <div class="col s3 m3 l3" style="color:#0D47A1; font-weight: bold;">
                     <p>POINTS</p>
                 </div>
@@ -113,11 +124,64 @@
                 </div>
               </div>
           </div>
+
+
+          <div class="col s12 m9 l8 main_s2" style="float:right; display: none;">
+              <div class="row">
+                <div class="col s1 l3">
+                </div>
+                <div class="col s10 l6" style=" background-color: #FFFFFF; margin-top: 22%" >
+                  <div class="container">
+                  <p style="padding-bottom: none;" class="menu_font">Enter Team Name</p>
+                  <input type="text" name="team_name" style="border: 2px #0D47A1 solid; height: 37px; margin-bottom: 20px">
+                  </div>
+                  <div class="row">
+                    <div class="col l3" >
+                    </div>
+                    <div class="col l6" style="background-color: #0D47A1">
+                      <button type="button" name="button" class="create_btn" style="width:100%; padding: 8px 10px;">Create Team ></button>
+                    </div>
+                    <div class="col l3">
+                    </div>
+                  </div>
+                </div>
+                <div class="col l3 s1">
+                </div>
+              </div>
+          </div>
+
         </div>
-</div>
-
     </div>
+    <script type="text/javascript">
+    $(document).ready(function(){
 
+      $(".main_s1").css("display", "block");
 
+      $(".dashboard").click(function(){
+        //REMOVAL
+        $(".create_team_td").css("background-color", "#FFFFFF");
+        $(".create_team_data").css("color","#0D47A1");
+
+        //ADDING
+          $(".dashboard_td").css("background-color", "#0D47A1");
+          $(".dashboard_data").css("color","#FFFFFF");
+
+          $(".main_s1").css("display", "block");
+          $(".main_s2").css("display", "none");
+      });
+
+      $(".create_team").click(function(){
+        //REMOVAL
+          $(".dashboard_td").css("background-color", "#FFFFFF");
+          $(".dashboard_data").css("color","#0D47A1");
+        //ADDING
+        $(".create_team_td").css("background-color", "#0D47A1");
+        $(".create_team_data").css("color","#FFFFFF");
+
+          $(".main_s1").css("display", "none");
+          $(".main_s2").css("display", "block");
+      });
+    });
+    </script>
   </body>
 </html>
