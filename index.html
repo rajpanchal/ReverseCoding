@@ -30,7 +30,7 @@
       font-weight: 700;
       font-size: 2em;
       margin-top:50%;
-      margin-bottom: 80px;
+      margin-bottom: 12px;
     }
     .dash_card{
       background-color: #FFFFFF;
@@ -39,7 +39,7 @@
     }
     .table_menu{
       background-color: #FFFFFF;
-      margin-bottom: 20px;
+      margin-bottom: 12px;
     }
     .menu_font{
       background: none;
@@ -80,15 +80,17 @@
     }
 
     @media only screen and (max-width: 600px) {
-      .mobile_align{
-        width:100%;
-        height: 20%;
-        margin: none;
+      .rc_logo{
+        width: 100%;
       }
-      .logout_btn{
-        font-size: 1.5em;
-        margin-bottom: 10px;
-      }
+
+    .logout_btn{
+      font-size: 1.1em;
+    }
+
+    .table_menu{
+      margin-bottom: 30px;
+    }
 }
 
   </style>
@@ -99,7 +101,7 @@
 
 <div class="section_logo">
         <div class="image_rc"  >
-          <img src="images/logo.png" alt="logo" width="38%" height="28%" class="mobile_align">
+          <img src="images/logo.png" alt="logo" width="38%" height="28%" class="rc_logo">
           <div class="logout" style="float: right; ">
               <button type="button" name="button" class="logout_btn">LOGOUT</button>
           </div>
