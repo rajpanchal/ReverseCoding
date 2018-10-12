@@ -2,19 +2,31 @@ body{
 	background-color: #333333;
 	margin-left: 50px!important;
 	margin-right: 50px!important;
+
 }
+footer{
+	margin-right: 0px!important;
+	margin-left: 0px!important;
+}
+
 .signup{
 	padding-top: 50px!important;
 	text-align: right;
-	
+
+}
+input[type=text]:focus{
+	box-shadow: 0 1px 0 0 #ffffff!important;
+
 }
 
 .vit1{
-	height: 8vw;
+	height: auto;
+	width:220px;
 	margin-top: 14px!important;
 }
 .vit2{
-	height:12vw;
+	height:auto;
+	width: 220px;
 }
 .borderryt{
 	border-right: 1px solid #bcbcbc!important;
@@ -56,11 +68,58 @@ body{
 #logo2{
 	width:30vw;
 }
+.fm{
+	margin-bottom: 0px!important;
+
+}
+@media screen and (max-width: 992px){
+	.vit1{
+	height: auto;
+	width:200px;
+	margin-top: 14px!important;
+}
+.vit2{
+	height:auto;
+	width: 200px;
+}
+}
+@media screen and (max-width: 950px){
+	.vit1{
+	height: auto;
+	width:180px;
+	margin-top: 14px!important;
+}
+.vit2{
+	height:auto;
+	width: 180px;
+}
+}
+@media screen and (max-width: 863px){
+	.vit1{
+	height: auto;
+	width:150px;
+	margin-top: 14px!important;
+}
+.vit2{
+	height:auto;
+	width: 150px;
+}
+}
+@media screen and (max-width: 750px){
+.vit1{
+	height: auto;
+	width:118px;
+}
+.vit2{
+	height:auto;
+	width:118px;
+}
+}
 @media screen and (max-width: 600px) {
   .signup{
 	padding-top: 5px!important;
 	text-align: left;
-	
+
 }
 #logo1{
 	margin-top:20px;width:60vw;margin-bottom: 20px;
@@ -77,10 +136,10 @@ body{
 	margin-right: 8px!important;
 }
 .vit1{
-	height: 25vw;
+	height: auto;
+	width: 230px;
 }
 .vit2{
-	height:25vw;
-}
-
+	height:auto;
+	width: 230px;
 }

@@ -111,6 +111,7 @@ function rejectInvite(i){
 //REGEX
 const regNoRegex=new RegExp('^1[0-9]{1}[A-Z]{3}[0-9]{4}$');
 const phoneNoRegex=new RegExp('^[1-9]{1}[0-9]{9}$');
+const regg = /[a-zA-Z]+\.[a-zA-Z]+201[5678]@vitstudent.ac.in$/;
 
 $(document).ready(function(){
   //SWITCH TO LOGIN
@@ -130,7 +131,7 @@ $(document).ready(function(){
     var confpass = $("#confpassword_su").val();
 
 
-    if(name!="" && email_id!="" && regNoRegex.test(regno)==true && phoneNoRegex.test(phone_num) && password.length>7 && password==confpass){
+    if(name!="" && regg.test(email_id)==true && regNoRegex.test(regno)==true && phoneNoRegex.test(phone_num) && password.length>7 && password==confpass){
       var obj = { "name": name, "email": email_id, "regno": regno, "phone": phone_num, "password": password};
       var xhr=new XMLHttpRequest();
         xhr.open('POST','https://shielded-plains-85651.herokuapp.com/signup', false);
@@ -179,7 +180,10 @@ $(document).ready(function(){
         xhr.send(JSON.stringify(obj));
     }
     else{
-      console.log('ENTER ALL DETAILS')
+      document.getElementById("pass_append_su").innerHTML = "Password should me of minimum 8 characters";
+      document.getElementById("email_append_su").innerHTML = "Use only VIT email id";
+      console.log('Password should me of minimum 8 characters');
+      console.log("Use only VIT Email");
     }
   });
 $(".create_btn").click(function(){
