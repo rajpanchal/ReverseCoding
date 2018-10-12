@@ -18,111 +18,7 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <style media="screen">
-    * {
-      box-sizing: border-box;
-    }
-    body{
-      background-image: url("images/background.svg");
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-    .logout_btn{
-      font-family: 'Poppins', sans-serif;
-      background: none;
-      color: white;
-      border: none;
-      font-weight: 700;
-      font-size: 2em;
-      margin-top:50%;
-      margin-bottom: 12px;
-    }
-    .dash_card{
-      background-color: #FFFFFF;
-      width: 90%;
-      margin-bottom: 8px;
-    }
-    .table_menu{
-      background-color: #FFFFFF;
-      margin-bottom: 12px;
-    }
-    .menu_font{
-      background: none;
-      border: none;
-      font-family: 'Poppins', sans-serif;
-      color:#0D47A1;
-      font-weight: bold;
-      font-size: 1.1em;
-      transition: font-size .5s ease;
-    }
-    .main_s1{
-       background-color: #707070;
-       opacity: 1;
-    }
-    .txt_in{
-      font-family: 'Poppins', sans-serif;
-      color: #FFFFFF;
-      font-size: 18px;
-    }
-    .bold_txt_in{
-      font-weight: 700;
-    }
-    .send_icon{
-      padding-bottom: 50%;
-    }
-    .accept{
-      color: #0DBC00;
-    }
-    .decline{
-      color: #D20000;
-    }
-
-    .main_s2{
-      background-color: #707070;
-      height: 40%;
-    }
-    .create_btn{
-        font-family: 'Poppins', sans-serif;
-        background: none;
-        color: #FFFFFF;
-        border: none;
-        font-size: 1.1em;
-    }
-    .logout_btn:focus{
-        background-color: #333333;
-    }
-    .btn_focus:focus{
-      background-color: #0D47A1;
-    }
-    td:hover{
-      font-size: 16px;
-    }
-
-    @media only screen and (max-width: 600px) {
-      body{
-        background-color: #333333;
-      }
-
-      .rc_logo{
-        width: 100%;
-      }
-
-    .logout_btn{
-      font-size: 1.2em;
-      margin-top: 3px;
-      margin-bottom: 40px;
-    }
-
-    .table_menu{
-      margin-bottom: 30px;
-    }
-
-    .main_s2{
-      height: 335px;
-    }
-}
-
-  </style>
+  <link href="style.css" rel="stylesheet">
 
   <body>
 
@@ -141,7 +37,7 @@
 	<div class="row">
 		<div class="col l12 s12 m12">
 		<h4 class="white-text">ABOUT</h4>
-		<P class="white-text">It is dual round mind-puzzling competition where math is intertwined with coding. The event makes one to have a reverse approach while solving any problem. The participants will be provided executable files that they can run and fetch the input-output test cases and hence come up with a code that would lead to those test cases. In short, a four step procedure, execute, fetch, decode and code. The first round is an online round that starts on 18th of October at 11AM and ends at 11PM same day. The second round is scheduled to be on 20th October at 11 AM which will be conducted offline. Reverse Coding is all about math, logic and fun! To be a part of it, register and form your team.</P>
+		<P class="white-text" style="text-align:justify;">It is dual round mind-puzzling competition where math is intertwined with coding. The event makes one to have a reverse approach while solving any problem. The participants will be provided executable files that they can run and fetch the input-output test cases and hence come up with a code that would lead to those test cases. In short, a four step procedure, execute, fetch, decode and code. The first round is an online round that starts on 18th of October at 11AM and ends at 11PM same day. The second round is scheduled to be on 20th October at 11 AM which will be conducted offline. Reverse Coding is all about math, logic and fun! To be a part of it, register and form your team.</P>
 		</div>
 	</div>
 	<div class="row">
@@ -173,7 +69,9 @@
 					<span class="white-text"> Email Id</span><br>
 					<input type="text" name="email" id="emailid_su" class="bcolor">
 					<span class="white-text"> Registration No.</span><br>
-					<input type="text" name="regno" id="regno_su" class="bcolor">
+          <input type="text" name="regno_su" id="regno_su" class="bcolor">
+					<span class="white-text"> Phone Number</span><br>
+					<input type="text" name="regno" id="phone_no_su" class="bcolor">
 					<span class="white-text"> Password</span><br>
 					<input type="Password" name="pass1" id="password_su" class="bcolor">
 					<span class="white-text"> Confirm Password</span><br>
@@ -242,7 +140,7 @@
 <div class="raj_login" style="display:none;">
   <div class="section_logo row">
           <div class="image_rc"  >
-            <img src="images/logo.png" alt="logo" width="28%" height="20%" class="rc_logo" style="margin-left:5px;">
+              <a href="index.html"> <img src="images/logo.png" alt="logo" width="28%" height="20%" class="rc_logo" style="margin-left:5px;"></a>
           </div>
   </div>
 
@@ -250,13 +148,13 @@
     <div class="col l4 s1">
 
     </div>
-    <div class="col l4 s10" style="background:#FFFFFF">
+    <div class="col l4 s10" style="background:#FFFFFF; ">
 
       <div class="container">
       <p style="padding-bottom: none;" class="menu_font">Email ID</p>
-      <input type="text" name="email_id" style="border: 2px #0D47A1 solid; height: 37px; margin-bottom: 20px">
+      <input type="text" name="email_id" style="border: 2px #0D47A1 solid; height: 37px; margin-bottom: 20px" id="email_si">
       <p style="padding-bottom: none;" class="menu_font">Password</p>
-      <input type="text" name="password" style="border: 2px #0D47A1 solid; height: 37px; margin-bottom: 20px">
+      <input type="password" name="password" style="border: 2px #0D47A1 solid; height: 37px; margin-bottom: 20px" id="password_si">
       <!-- <p style="padding-bottom: none;" class="menu_font">Password</p>
       <input type="text" name="team_name" style="border: 2px #0D47A1 solid; height: 37px; margin-bottom: 20px">
       </div> -->
@@ -321,7 +219,7 @@
               <p class="txt_in"><span class="bold_txt_in">TEAM NAME :</span> Alpha</p>
               <p class="txt_in"><span class="bold_txt_in">TEAM MEMBERS :</span> a, b, c</p>
             </div>
-              <div class="dash_card row" style=" margin: 0 auto;  margin-bottom: 12px;">
+              <!-- <div class="dash_card row" style=" margin: 0 auto;  margin-bottom: 12px;">
                 <div class="col s3 m3 l3" style="color:#0D47A1; font-weight: bold;">
                     <p>POSITION</p>
                 </div>
@@ -336,7 +234,7 @@
                 <div class="col s1 m1 l1"  style="float:right;">
                     <p style="color:#0D47A1; font-weight: bold;">1</p>
                 </div>
-              </div>
+              </div> -->
           </div>
 
 
@@ -347,7 +245,7 @@
                 <div class="col s10 l6" style=" background-color: #FFFFFF; margin-top: 22%" >
                   <div class="container">
                   <p style="padding-bottom: none;" class="menu_font">Enter Team Name</p>
-                  <input type="text" name="team_name" style="border: 2px #0D47A1 solid; height: 37px; margin-bottom: 20px">
+                  <input type="text" class="team_name_new" name="team_name" style="border: 2px #0D47A1 solid; height: 37px; margin-bottom: 20px">
                   </div>
                   <div class="row">
                     <div class="col l2" >
@@ -416,7 +314,8 @@
 				    <div class="col s12 l4">
 				    	<p class="txt_in"><span class="bold_txt_in">INVITES RECEIVED</span></p>
 				    	<ul class="collection">
-					        <li class="collection-item" style="padding-bottom: none;">
+                  
+                  <li class="collection-item" style="padding-bottom: none;">
 					        	<div>Alvin</div>
 					        	<div class="row">
 					        		<div class="col s6 l6">
@@ -427,6 +326,7 @@
 					        		</div>
 					        	</div>
 					        </li>
+
 					        <li class="collection-item" style="padding-bottom: none;">
 					        	<div>Alvin</div>
 					        	<div class="row">
@@ -447,117 +347,7 @@
         </div>
     </div>
 </div>
-    <script type="text/javascript">
-    $(document).ready(function(){
-      $(".login_sam_btn").click(function(){
-        $(".sam_signup").css("display","none");
-        $(".raj_login").css("display","block");
-      });
 
-      $(".signup_btn_1").click(function(){
-
-        var name = $("#name_su").val();
-        var email_id = $("#emailid_su").val();
-        var regno = $("#regno_su").val();
-        var password = $("#password_su").val();
-        var confpass = $("#confpassword_su").val();
-
-        // console.log(name, email_id, regno, password, confpass);
-
-        var obj = { "name": name, "email_id": email_id, "regno": regno, "password": password, "confpass": confpass};
-            // $.post("", obj,
-            // function(data,status){
-            //     alert("Data: " + data + "\nStatus: " + status);
-            // });
-            $.ajax({
-        			type: 'POST',
-        			url: 'http://shielded-plains-85651.herokuapp.com/signup',
-        			data: obj,
-        			success: function(data){
-        				if(data.status == 1){
-        					console.log("Posted successfully!");
-                  $(".sam_signup").css("display","none");
-                  $(".raj_login").css("display","none");
-                  $(".3_sections_raj_satyam").css("display","block");
-        				}
-        				else{
-        					alert("Entry already exists! Y in the world u gave details all over again :(");
-        				}
-        			},
-        			error: function(){
-        				console.log("Unsuccessful!");
-        			}
-
-        		});
-
-
-      });
-
-      $(".logout_btn").click(function(){
-        $(".3_sections_raj_satyam").css("display","none");
-        $(".sam_signup").css("display","none");
-        $(".raj_login").css("display","block");
-      });
-
-      $(".main_login").click(function(){
-        $(".raj_login").css("display","none");
-        $(".3_sections_raj_satyam").css("display","block");
-      });
-
-
-      $(".main_s11").css("display", "block");
-      $(".dashboard_td").css("background-color", "#0D47A1");
-      $(".dashboard_data").css("color","#FFFFFF");
-
-      $(".dashboard").click(function(){
-        //REMOVAL
-        $(".create_team_td").css("background-color", "#FFFFFF");
-        $(".create_team_data").css("color","#0D47A1");
-        $(".invites_td").css("background-color", "#FFFFFF");
-        $(".invites_data").css("color","#0D47A1");
-
-        //ADDING
-          $(".dashboard_td").css("background-color", "#0D47A1");
-          $(".dashboard_data").css("color","#FFFFFF");
-
-          $(".invites1").css("display","none");
-          $(".main_s11").css("display", "block");
-          $(".main_s2").css("display", "none");
-
-      });
-
-      $(".create_team").click(function(){
-        //REMOVAL
-          $(".dashboard_td").css("background-color", "#FFFFFF");
-          $(".dashboard_data").css("color","#0D47A1");
-          $(".invites_td").css("background-color", "#FFFFFF");
-          $(".invites_data").css("color","#0D47A1");
-        //ADDING
-        $(".create_team_td").css("background-color", "#0D47A1");
-        $(".create_team_data").css("color","#FFFFFF");
-
-          $(".invites1").css("display","none");
-          $(".main_s11").css("display", "none");
-          $(".main_s2").css("display", "block");
-
-      });
-
-      $(".invites").click(function(){
-        //REMOVAL
-        $(".dashboard_td").css("background-color", "#FFFFFF");
-        $(".dashboard_data").css("color","#0D47A1");
-        $(".create_team_td").css("background-color", "#FFFFFF");
-        $(".create_team_data").css("color","#0D47A1");
-
-        //ADDING
-        $(".invites_td").css("background-color", "#0D47A1");
-        $(".invites_data").css("color","#FFFFFF");
-
-      $(".main_s11").css("display", "none");
-      $(".main_s2").css("display", "none");
-      $(".invites1").css("display","block");
-      })
-    });
-    </script>
+    <script src="ajax.js"></script>
   </body>
 </html>

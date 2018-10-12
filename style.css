@@ -1,0 +1,102 @@
+* {
+  box-sizing: border-box;
+}
+body{
+  background-image: url("images/background.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.logout_btn{
+  font-family: 'Poppins', sans-serif;
+  background: none;
+  color: white;
+  border: none;
+  font-weight: 700;
+  font-size: 2em;
+  margin-top:50%;
+  margin-bottom: 12px;
+}
+.dash_card{
+  background-color: #FFFFFF;
+  width: 90%;
+  margin-bottom: 8px;
+}
+.table_menu{
+  background-color: #FFFFFF;
+  margin-bottom: 12px;
+}
+.menu_font{
+  background: none;
+  border: none;
+  font-family: 'Poppins', sans-serif;
+  color:#0D47A1;
+  font-weight: bold;
+  font-size: 1.1em;
+  transition: font-size .5s ease;
+}
+.main_s1{
+   background-color: #707070;
+   opacity: 1;
+}
+.txt_in{
+  font-family: 'Poppins', sans-serif;
+  color: #FFFFFF;
+  font-size: 18px;
+}
+.bold_txt_in{
+  font-weight: 700;
+}
+.send_icon{
+  padding-bottom: 50%;
+}
+.accept{
+  color: #0DBC00;
+}
+.decline{
+  color: #D20000;
+}
+
+.main_s2{
+  background-color: #707070;
+  height: 40%;
+}
+.create_btn{
+    font-family: 'Poppins', sans-serif;
+    background: none;
+    color: #FFFFFF;
+    border: none;
+    font-size: 1.1em;
+}
+.logout_btn:focus{
+    background-color: #333333;
+}
+.btn_focus:focus{
+  background-color: #0D47A1;
+}
+td:hover{
+  font-size: 16px;
+}
+
+@media only screen and (max-width: 600px) {
+  body{
+    background-color: #333333;
+  }
+
+  .rc_logo{
+    width: 100%;
+  }
+
+.logout_btn{
+  font-size: 1.2em;
+  margin-top: 3px;
+  margin-bottom: 40px;
+}
+
+.table_menu{
+  margin-bottom: 30px;
+}
+
+.main_s2{
+  height: 335px;
+}
+}
