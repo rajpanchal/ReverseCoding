@@ -418,7 +418,7 @@ $(".create_btn").click(function(){
         }
       for (var i = 0; i <x.result.length; i++) {
            $(".appendable1").append(
-             '<li class="collection-item" style="padding-left: 2px"><div><span style="max-width: 10px;">' + x.result[i].name + '</span><a onClick="sendInvite('+i+');return false;" class="secondary-content"><img class="send_icon" src="images/baseline-send-24px (1).svg" alt="Smiley face" align="right"></a></div></li>');
+             '<li class="collection-item" style="padding-left: 4px; font-size: 14px;"><div><span style="max-width: 10px;">' + x.result[i].name + '</span><a onClick="sendInvite('+i+');return false;" class="secondary-content"><img class="send_icon" src="images/baseline-send-24px (1).svg" alt="Smiley face" align="right"></a></div></li>');
            };
       console.log("FILL AVAILABLE")
       }
@@ -452,7 +452,7 @@ $(".create_btn").click(function(){
             for(var i=0; i<x.sent.length; i++) {
 
                 $(".appendable2").append(
-                  '<li class="collection-item"><div>' + x.sent[i].name +'<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-remove_circle_outline-24px.svg" alt="Smiley face" align="middle"></a></div></li>'
+                  '<li class="collection-item" style="padding-left: 4px; font-size: 14px;"><div>' + x.sent[i].name +'<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-remove_circle_outline-24px.svg" alt="Smiley face" align="middle"></a></div></li>'
                 );
               };
             myNode=document.getElementsByClassName("appendable3")[0];
