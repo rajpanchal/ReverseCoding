@@ -180,7 +180,7 @@ $(document).ready(function(){
         xhr.send(JSON.stringify(obj));
     }
     else{
-      document.getElementById("pass_append_su").innerHTML = "Password should me of minimum 8 characters";
+      document.getElementById("pass_append_su").innerHTML = "Password should be of minimum 8 characters";
       document.getElementById("email_append_su").innerHTML = "Use only VIT email id";
       console.log('Password should me of minimum 8 characters');
       console.log("Use only VIT Email");
