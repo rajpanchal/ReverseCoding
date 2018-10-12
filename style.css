@@ -73,6 +73,12 @@ body{
 .btn_focus:focus{
   background-color: #0D47A1;
 }
+.not_good:focus{
+  background: #FFFFFF;
+}
+.not_good:hover{
+  background-color: lightblue;
+}
 td:hover{
   font-size: 16px;
 }

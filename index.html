@@ -48,7 +48,6 @@
 				Step 2: Create a team/ Join a team<br><br>
 				Step 3: Click here to invite a member to your team<br><br>
 				Step 4: Check notifications in your dashboard to join a team.<br><br>
-
 			</p>
 			<h4 class="white-text">RULES</h4>
 			<p class="white-text">
@@ -65,25 +64,25 @@
 
 					<div class="col l12 m12 s12 mtop">
 					<span class="white-text"> Name</span><br>
-					<input type="text" name="name" id="name_su" class="bcolor">
+					<input type="text" name="name" id="name_su" class="bcolor" style="padding-left: 6px;">
 					<span class="white-text"> Email Id</span><br>
-					<input type="text" name="email" id="emailid_su" class="bcolor">
+					<input type="text" name="email" id="emailid_su" class="bcolor" style="padding-left: 6px;">
 					<span class="white-text"> Registration No.</span><br>
-          <input type="text" name="regno_su" id="regno_su" class="bcolor">
+          <input type="text" name="regno_su" id="regno_su" class="bcolor" style="padding-left: 6px;">
 					<span class="white-text"> Phone Number</span><br>
-					<input type="text" name="regno" id="phone_no_su" class="bcolor">
+					<input type="text" name="regno" id="phone_no_su" class="bcolor" style="padding-left: 6px;">
 					<span class="white-text"> Password</span><br>
-					<input type="Password" name="pass1" id="password_su" class="bcolor">
+					<input type="Password" name="pass1" id="password_su" class="bcolor" style="padding-left: 6px;">
 					<span class="white-text"> Confirm Password</span><br>
-					<input type="Password" name="pass2" id="confpassword_su" class="bcolor">
+					<input type="Password" name="pass2" id="confpassword_su" class="bcolor" style="padding-left: 6px;">
 					</div>
-					<button type="button" name="button" style="width: 100%; height: 40px; color:#0D47A1; font-size:1.2em; font-weight: 700" class="waves-effect waves-light signup_btn_1">SUBMIT</button>
+					<button type="button" name="button" style="width: 100%; height: 40px; color:#0D47A1; font-size:1.2em; font-weight: 700" class="waves-effect waves-light signup_btn_1 not_good">SUBMIT</button>
 
 
 			</div>
 		</div>
 	</div>
-	<h4 class="white-text">OUR SPONSERS</h4>
+	<h4 class="white-text">OUR SPONSORS</h4>
 	<div class="row">
 		<div class="col l12 m12 s12">
 		<div class="card">
@@ -116,7 +115,7 @@
 	</div>
   <footer class="fclr">
 
-              <div class="row borderryt">
+              <div class="row borderryt" style="">
                 <div class="col l2 m3 s12 " >
                   <p class="textalignsmall">
                   	<span id="about" class="white-text" >About</span><br><br>
@@ -152,9 +151,9 @@
 
       <div class="container">
       <p style="padding-bottom: none;" class="menu_font">Email ID</p>
-      <input type="text" name="email_id" style="border: 2px #0D47A1 solid; height: 37px; margin-bottom: 20px" id="email_si">
+      <input type="text" name="email_id" style="border: 2px #0D47A1 solid; height: 37px; margin-bottom: 20px; padding-left: 5px" id="email_si">
       <p style="padding-bottom: none;" class="menu_font">Password</p>
-      <input type="password" name="password" style="border: 2px #0D47A1 solid; height: 37px; margin-bottom: 20px" id="password_si">
+      <input type="password" name="password" style="border: 2px #0D47A1 solid; height: 37px; margin-bottom: 20px; padding-left: 5px" id="password_si">
       <!-- <p style="padding-bottom: none;" class="menu_font">Password</p>
       <input type="text" name="team_name" style="border: 2px #0D47A1 solid; height: 37px; margin-bottom: 20px">
       </div> -->
@@ -194,7 +193,7 @@
 
 
         <div class="row">
-          <div class="col s12 m4 l3 table_menu hoverable">
+          <div class="col s12 m4 l3 table_menu hoverable" style="padding-top:10px; padding-bottom: 9px;">
             <table>
               <tr class="dashboard_td ">
                 <td class="dashboard "><button href="#" class="menu_font btn_focus card_hover "><span class="dashboard_data hover_me">DASHBOARD</span></button></td>
@@ -209,9 +208,6 @@
               </tbody>
             </table>
           </div>
-
-
-
 
 
           <div class="col s12 m9 l8 main_s1 main_s11" style="float:right; display:none">
@@ -251,7 +247,7 @@
                     <div class="col l2" >
                     </div>
                     <div class="col l8" style="background-color: #0D47A1">
-                      <button type="button" name="button" class="create_btn btn_focus waves-effect waves-light" style="width:100%; padding: 8px 10px;">Create Team ></button>
+                      <button type="button" id="submit_team" name="button" class="create_btn btn_focus waves-effect waves-light" style="width:100%; padding: 8px 10px;">Create Team ></button>
                     </div>
                     <div class="col l2">
                     </div>
@@ -266,8 +262,9 @@
 	        	<div class="row">
 				    <div class="col s12 l4">
 				    	<p class="txt_in"><span class="bold_txt_in">SEND INVITES</span></p>
-				    	<ul class="collection">
-					        <li class="collection-item">
+				    	<ul class="collection appendable1" style="height: 410px; background:#D6D6D6; overflow: scroll;">
+
+					        <!-- <li class="collection-item">
 					        	<div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-send-24px (1).svg" alt="Smiley face" align="middle"></a></div>
 					        </li>
 					        <li class="collection-item">
@@ -287,13 +284,13 @@
 					        </li>
 					        <li class="collection-item">
 					        	<div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-send-24px (1).svg" alt="Smiley face" align="middle"></a></div>
-					        </li>
+					        </li> -->
 					    </ul>
 				    </div>
 				    <div class="col s12 l4">
 				    	<p class="txt_in"><span class="bold_txt_in">INVITES SENT</span></p>
-				    	<ul class="collection">
-					        <li class="collection-item">
+				    	<ul class="collection appendable2" style="height: 410px; background:#D6D6D6; overflow: scroll;">
+					        <!-- <li class="collection-item">
 					        	<div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-remove_circle_outline-24px.svg" alt="Smiley face" align="middle"></a></div>
 					        </li>
 					        <li class="collection-item">
@@ -307,15 +304,15 @@
 					        </li>
 					        <li class="collection-item">
 					        	<div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-remove_circle_outline-24px.svg" alt="Smiley face" align="middle"></a></div>
-					        </li>
+					        </li> -->
 					    </ul>
 				    </div>
 
 				    <div class="col s12 l4">
 				    	<p class="txt_in"><span class="bold_txt_in">INVITES RECEIVED</span></p>
-				    	<ul class="collection">
-                  
-                  <li class="collection-item" style="padding-bottom: none;">
+				    	<ul class="collection appendable3" style="height: 410px; background:#D6D6D6; overflow: scroll;">
+
+                  <!-- <li class="collection-item" style="padding-bottom: none;">
 					        	<div>Alvin</div>
 					        	<div class="row">
 					        		<div class="col s6 l6">
@@ -337,7 +334,7 @@
 					        			<a href="#!"><span class="decline">Decline</span></a>
 					        		</div>
 					        	</div>
-					        </li>
+					        </li> -->
 					    </ul>
 				    </div>
 				</div>
@@ -347,6 +344,7 @@
         </div>
     </div>
 </div>
+
 
     <script src="ajax.js"></script>
   </body>
