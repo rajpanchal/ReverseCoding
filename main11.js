@@ -1,5 +1,113 @@
 var token = null;
+var avail =null;
+var pending=null;
 
+function sendInvite(i){
+  var sendtoemail=avail[i].email;
+  var xhr2=new XMLHttpRequest();
+  xhr2.open('POST','https://shielded-plains-85651.herokuapp.com/sendinvite',true);
+  xhr2.setRequestHeader('Content-type', 'application/json');
+  xhr2.setRequestHeader('Authorization', token);
+  xhr2.onreadystatechange = function(){
+  if(xhr2.status==400){
+    console.log('FILL EMAIL');
+  } else if(xhr2.status==500){
+    console.log("ERROR")
+  }
+  else if(xhr2.status==404){
+    console.log("CREATE TEAM")
+  }
+  else if(xhr2.status==500){
+    console.log("ERROR")
+  }
+  else if(xhr2.status==200){
+    console.log("SENT")
+
+      var x=JSON.parse(xhr2.responseText)
+      myNode=document.getElementsByClassName("appendable2")[0];
+      while (myNode.firstChild) {
+        myNode.removeChild(myNode.firstChild);
+        }
+      for(var i=0; i<x.invites.length; i++) {
+        $(".appendable2").append(
+          '<li class="collection-item"><div>' + x.invites[i].name +'<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-remove_circle_outline-24px.svg" alt="Smiley face" align="middle"></a></div></li>'
+        );
+      };
+    }
+  }
+  xhr2.send(JSON.stringify({
+    sendtoemail:sendtoemail
+  }));
+  
+}
+function acceptInvite(i){
+  var teamname=pending[i].teamname;
+  xhr2=new XMLHttpRequest();
+  xhr2.open("POST",'https://shielded-plains-85651.herokuapp.com/acceptinvite',true);
+  xhr2.setRequestHeader('Content-type', 'application/json');
+  xhr2.setRequestHeader('Authorization', token);
+  xhr2.onreadystatechange = function(){
+  if(xhr2.status==400){
+    console.log('FILL EMAIL');
+  } else if(xhr2.status==500){
+    console.log("ERROR")
+  }
+  else if(xhr2.status==404){
+    console.log("CREATE TEAM")
+  }
+  else if(xhr2.status==500){
+    console.log("ERROR")
+  }
+  else if(xhr2.status==200){
+
+      x=JSON.parse(xhr2.responseText)
+
+    if(x.code=="TEAMJOINED"){
+      console.log("TEAM JOINED ALREADY")
+    } else if(x.code=="OK"){
+      console.log("ACCEPTED");
+
+      //REDIRECT TO DASHBOARD AND CALL FOR TEAM AGAIN
+    }
+  }
+}
+  xhr2.send(JSON.stringify({
+    teamname:teamname
+  }));
+}
+
+function rejectInvite(i){
+  var teamname=pending[i].teamname;
+  xhr2=new XMLHttpRequest();
+  xhr2.open("POST",'https://shielded-plains-85651.herokuapp.com/rejectinvite',true);
+  xhr2.setRequestHeader('Content-type', 'application/json');
+  xhr2.setRequestHeader('Authorization', token);
+  xhr2.onreadystatechange = function(){
+  if(xhr2.status==400){
+    console.log('FILL TEAMNAME');
+  } else if(xhr2.status==500){
+    console.log("ERROR")
+  }
+  else if(xhr2.status==500){
+    console.log("ERROR")
+  }
+  else if(xhr2.status==200){
+    console.log("DENIED")
+    pending=pending.splice(i, 1)
+    myNode=document.getElementsByClassName("appendable3")[0];
+    while (myNode.firstChild) {
+      myNode.removeChild(myNode.firstChild);
+    }
+    for(var i=0; i<x.pending.length; i++) {
+      $(".appendable3").append(
+        '<li class="collection-item" style="padding-bottom: none;"><div>' + x.pending[i].name + '</div><div class="row"><div class="col s6 l6"><a href="#!"><span class="accept" onClick="acceptInvite('+i+');return false;">Accept</span></a></div><div class="col s6 l6"><a href="#!"><span onClick="rejectInvite('+i+');return false;" class="decline">Decline</span></a></div></div></li>');
+    };
+  }
+}
+  xhr2.send(JSON.stringify({
+    teamname:teamname
+  }));
+}
 //REGEX
 const regNoRegex=new RegExp('^1[0-9]{1}[A-Z]{3}[0-9]{4}$');
 const phoneNoRegex=new RegExp('^[1-9]{1}[0-9]{9}$');
@@ -296,11 +404,15 @@ $(document).ready(function(){
     } else if(xhr2.status==200){
       x=JSON.parse(xhr2.responseText)
       console.log(x.result)
+      avail=x.result;
       console.log(typeof x)
+      mynoNe=document.getElementsByClassName("appendable1")[0];
+      while (myNode.firstChild) {
+        myNode.removeChild(myNode.firstChild);
+        }
       for (var i = 0; i <x.result.length; i++) {
-          console.log(x.result[i].name);
            $(".appendable1").append(
-             '<li class="collection-item" style="padding-left: 2px"><div><span style="max-width: 10px;">' + x.result[i].name + '</span><a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-send-24px (1).svg" alt="Smiley face" align="right"></a></div></li>');
+             '<li class="collection-item" style="padding-left: 2px"><div><span style="max-width: 10px;">' + x.result[i].name + '</span><a onClick="sendInvite('+i+');return false;" class="secondary-content"><img class="send_icon" src="images/baseline-send-24px (1).svg" alt="Smiley face" align="right"></a></div></li>');
            };
       console.log("FILL AVAILABLE")
       }
@@ -326,108 +438,30 @@ $(document).ready(function(){
         console.log("FILL LIST")
         console.log(x.pending)
         console.log(x.sent)
-
+            pending=x.pending;
+            myNode=document.getElementsByClassName("appendable2")[0];
+            while (myNode.firstChild) {
+              myNode.removeChild(myNode.firstChild);
+            }
             for(var i=0; i<x.sent.length; i++) {
+                
                 $(".appendable2").append(
                   '<li class="collection-item"><div>' + x.sent[i].name +'<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-remove_circle_outline-24px.svg" alt="Smiley face" align="middle"></a></div></li>'
                 );
               };
+            myNode=document.getElementsByClassName("appendable3")[0];
+            while (myNode.firstChild) {
+              myNode.removeChild(myNode.firstChild);
+            }
           for(var i=0; i<x.pending.length; i++) {
             $(".appendable3").append(
-              '<li class="collection-item" style="padding-bottom: none;"><div>' + x.pending[i].name + '</div><div class="row"><div class="col s6 l6"><a href="#!"><span class="accept">Accept</span></a></div><div class="col s6 l6"><a href="#!"><span class="decline">Decline</span></a></div></div></li>');
+              '<li class="collection-item" style="padding-bottom: none;"><div>' + x.pending[i].creater.name + '</div><div class="row"><div class="col s6 l6"><a href="#!"><span class="accept" onClick="acceptInvite('+i+');return false;">Accept</span></a></div><div class="col s6 l6"><a href="#!"><span onClick="rejectInvite('+i+');return false;" class="decline">Decline</span></a></div></div></li>');
           };
         }
       }
     }
     xhr.send();
   });
-
-  function sendinvite(email){
-    xhr2=new XMLHttpRequest();
-    xhr2.open("POST",'https://shielded-plains-85651.herokuapp.com/sendinvite',true);
-    xhr2.setRequestHeader('Content-type', 'application/json');
-    xhr2.setRequestHeader('Authorization', token);
-    xhr2.onreadystatechange = function(){
-    if(xhr2.status==400){
-      console.log('FILL EMAIL');
-    } else if(xhr2.status==500){
-      console.log("ERROR")
-    }
-    else if(xhr2.status==404){
-      console.log("CREATE TEAM")
-    }
-    else if(xhr2.status==500){
-      console.log("ERROR")
-    }
-    else if(xhr2.status==200){
-      console.log("SENT")
-
-        x=JSON.parse(xhr2.responseText)
-        console.log(x.invites)
-    }
-  }
-    xhr2.send(JSON.stringify({
-      sendtoemail:email
-    }));
-  }
-
-  function acceptinvite(teamname){
-    xhr2=new XMLHttpRequest();
-    xhr2.open("POST",'https://shielded-plains-85651.herokuapp.com/sendinvite',true);
-    xhr2.setRequestHeader('Content-type', 'application/json');
-    xhr2.setRequestHeader('Authorization', token);
-    xhr2.onreadystatechange = function(){
-    if(xhr2.status==400){
-      console.log('FILL EMAIL');
-    } else if(xhr2.status==500){
-      console.log("ERROR")
-    }
-    else if(xhr2.status==404){
-      console.log("CREATE TEAM")
-    }
-    else if(xhr2.status==500){
-      console.log("ERROR")
-    }
-    else if(xhr2.status==200){
-
-        x=JSON.parse(xhr2.responseText)
-
-      if(x.code=="TEAMJOINED"){
-        console.log("TEAM JOINED ALREADY")
-      } else if(x.code=="OK"){
-        console.log("ACCEPTED");
-        //REDIRECT TO DASHBOARD AND CALL FOR TEAM AGAIN
-      }
-    }
-  }
-    xhr2.send(JSON.stringify({
-      teamname:teamname
-    }));
-  }
-
-  function rejectinvite(teamname){
-    xhr2=new XMLHttpRequest();
-    xhr2.open("POST",'https://shielded-plains-85651.herokuapp.com/sendinvite',true);
-    xhr2.setRequestHeader('Content-type', 'application/json');
-    xhr2.setRequestHeader('Authorization', token);
-    xhr2.onreadystatechange = function(){
-    if(xhr2.status==400){
-      console.log('FILL TEAMNAME');
-    } else if(xhr2.status==500){
-      console.log("ERROR")
-    }
-    else if(xhr2.status==500){
-      console.log("ERROR")
-    }
-    else if(xhr2.status==200){
-      console.log("DENIED")
-      //remove form list
-    }
-  }
-    xhr2.send(JSON.stringify({
-      teamname:teamname
-    }));
-  }
 });
 
 
