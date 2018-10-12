@@ -283,7 +283,7 @@ $(document).ready(function(){
       x=JSON.parse(xhr2.responseText)
       console.log(x.result)
       console.log(typeof x)
-      for (var i = 0; i <=x.result.length; i++) {
+      for (var i = 0; i <x.result.length; i++) {
           console.log(x.result[i].name);
            $(".appendable1").append(
              '<li class="collection-item"><div>' + x.result[i].name + '<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-send-24px (1).svg" alt="Smiley face" align="middle"></a></div></li>');
