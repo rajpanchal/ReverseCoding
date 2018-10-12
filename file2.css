@@ -1,0 +1,86 @@
+body{
+	background-color: #333333;
+	margin-left: 50px!important;
+	margin-right: 50px!important;
+}
+.signup{
+	padding-top: 50px!important;
+	text-align: right;
+	
+}
+
+.vit1{
+	height: 8vw;
+	margin-top: 14px!important;
+}
+.vit2{
+	height:12vw;
+}
+.borderryt{
+	border-right: 1px solid #bcbcbc!important;
+}
+.setm{
+	margin-right: 20px!important;
+}
+.signupmain{
+	background-color: #0d47a1!important;
+}
+.mtop{
+	margin-top: 10px!important;
+	margin-bottom: 10px!important;
+
+}
+.cclr{
+	background-color: #0d47a1!important;
+}
+.bcolor{
+	background-color: white!important;
+	width: 100%;
+}
+.submit2{
+	background-color: white!important;
+	width: 100%;
+	min-height: 50px;
+	color: #0d47a1!important;
+	font-weight: bold;
+}
+.tt{
+	color: #0d47a1!important;
+}
+.fclr{
+	background-color: #5c5c5c!important;
+}
+#logo1{
+	margin-top:20px;width:25vw;
+}
+#logo2{
+	width:30vw;
+}
+@media screen and (max-width: 600px) {
+  .signup{
+	padding-top: 5px!important;
+	text-align: left;
+	
+}
+#logo1{
+	margin-top:20px;width:60vw;margin-bottom: 20px;
+}
+#logo2{
+	width:60vw;
+}
+.textalignsmall{
+	text-align: center;
+}
+body{
+	background-color: #333333;
+	margin-left: 8px!important;
+	margin-right: 8px!important;
+}
+.vit1{
+	height: 25vw;
+}
+.vit2{
+	height:25vw;
+}
+
+}
