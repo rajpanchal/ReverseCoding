@@ -6,6 +6,19 @@ body{
   background-repeat: no-repeat;
   background-size: cover;
 }
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: grey;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
 .logout_btn{
   font-family: 'Poppins', sans-serif;
   background: none;
