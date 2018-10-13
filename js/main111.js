@@ -1,4 +1,4 @@
-var token = null;
+// var token = null;
 var avail =null;
 var pending=null;
 var teamCreated = null;
@@ -13,7 +13,7 @@ function showDashboard(){
     $(".dashboard_td").css("background-color", "#0D47A1");
     $(".dashboard_data").css("color","#FFFFFF");
 
-    $(".invites1").css("display","none");
+    $(".invites1").fadeOut('fast');
     $(".main_s11").css("display", "block");
     $(".main_s2").css("display", "none");
     console.log(token)
@@ -73,7 +73,7 @@ function sendInvite(i){
         $(".dashboard_data").css("color","#0D47A1");
         $(".create_team_td").css("background-color", "#FFFFFF")
         $(".create_team_data").css("color","#0D47A1");
-        $(".invites1").css("display","none");
+        $(".invites1").fadeOut('fast');
     });
 
   }
@@ -177,8 +177,8 @@ const regg2 = /[a-zA-Z]+\.+201[5678]@vitstudent.ac.in$/;
 $(document).ready(function(){
   //SWITCH TO LOGIN
   $(".login_sam_btn").click(function(){
-    $(".sam_signup").css("display","none");
-    $(".raj_login").css("display","block");
+    $(".sam_signup").fadeOut('fast');
+    $(".raj_login").fadeIn('slow');
   });
 
   //SIGNUP BUTTON
@@ -221,9 +221,9 @@ $(document).ready(function(){
         xhr.onreadystatechange = function() {//Call a function when the state changes.
             if(xhr.status == 200) {
                 token = xhr.getResponseHeader('Authorization');
-                $(".sam_signup").css("display","none");
-                $(".raj_login").css("display","none");
-                $(".3_sections_raj_satyam").css("display","block");
+                $(".sam_signup").fadeOut('fast');
+                $(".raj_login").fadeOut('fast');
+                $(".3_sections_raj_satyam").fadeIn(2000);
                 showDashboard();
 
             }
@@ -242,10 +242,11 @@ $(document).ready(function(){
     }
   });
   $(".logout_btn").click(function(){
-    $(".3_sections_raj_satyam").css("display","none");
-    $(".sam_signup").css("display","none");
-    $(".raj_login").css("display","block");
-    token=null;
+    $(".3_sections_raj_satyam").fadeOut('fast');
+    $(".raj_login").fadeOut('fast');
+    $(".sam_signup").fadeIn('slow');
+    window.token=null;
+    Cookies.set('token', '');
   });
 
     $(".create_btn").click(function(){
@@ -280,10 +281,12 @@ $(document).ready(function(){
           if(xhr.status == 200) {
             token = xhr.getResponseHeader('Authorization');
                 $("#loginbtn").val('Login >');
-                $(".raj_login").css("display","none");
-                $(".3_sections_raj_satyam").css("display","block");
+                $(".raj_login").fadeOut('fast');
+                $(".3_sections_raj_satyam").fadeIn('slow');
                 showDashboard();
+                Cookies.set('token', token, { expires: 7 });
               }
+              
                else if(xhr.status==500){
                 swal("Error","Try again.","error");
               } else if(xhr.status==404){
@@ -336,7 +339,7 @@ $(document).ready(function(){
       $(".create_team_td").css("background-color", "#0D47A1");
       $(".create_team_data").css("color","#FFFFFF");
 
-      $(".invites1").css("display","none");
+      $(".invites1").fadeOut('fast');
       $(".main_s11").css("display", "none");
       $(".main_s2").css("display", "block");
     });
@@ -366,7 +369,7 @@ $(document).ready(function(){
               showDashboard();
 
             } else if(x.code=="INATEAMORTEAMCREATED"){
-              $(".exception1").css("display","block");
+              $(".exception1").fadeIn('slow');
               $(".exception2").css("margin-bottom", "0");
               document.getElementById("append_create_team_ajax").innerHTML = "In a team or team created.";
               console.log("IN A TEAM OR TEAM CREATED")
@@ -415,7 +418,7 @@ $(document).ready(function(){
 
     $(".main_s11").css("display", "none");
     $(".main_s2").css("display", "none");
-    $(".invites1").css("display","block");
+    $(".invites1").fadeIn('slow');
     xhr2=new XMLHttpRequest();
     xhr2.open("POST",'https://shielded-plains-85651.herokuapp.com/getavail',true);
     xhr2.setRequestHeader('Content-type', 'application/json');
