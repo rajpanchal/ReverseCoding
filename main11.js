@@ -112,6 +112,7 @@ function rejectInvite(i){
 const regNoRegex=new RegExp('^1[0-9]{1}[A-Z]{3}[0-9]{4}$');
 const phoneNoRegex=new RegExp('^[1-9]{1}[0-9]{9}$');
 const regg = /[a-zA-Z]+\.[a-zA-Z]+201[5678]@vitstudent.ac.in$/;
+const regg2 = /[a-zA-Z]+\.+201[5678]@vitstudent.ac.in$/;
 
 $(document).ready(function(){
   //SWITCH TO LOGIN
@@ -131,7 +132,7 @@ $(document).ready(function(){
     var confpass = $("#confpassword_su").val();
 
 
-    if(name!="" && regg.test(email_id)==true && regNoRegex.test(regno)==true && phoneNoRegex.test(phone_num) && password.length>7 && password==confpass){
+    if(name!="" && (regg.test(email_id)==true || regg2.test(email_id)==true) && regNoRegex.test(regno)==true && phoneNoRegex.test(phone_num) && password.length>7 && password==confpass){
       var obj = { "name": name, "email": email_id, "regno": regno, "phone": phone_num, "password": password};
       var xhr=new XMLHttpRequest();
         xhr.open('POST','https://shielded-plains-85651.herokuapp.com/signup', false);
@@ -172,6 +173,7 @@ $(document).ready(function(){
             }
             else if(xhr.status==401){
               console.log('USER EXISTS')
+              document.getElementById("userExists").innerHTML = "User already exists";
             }
             else if(xhr.status==500){
               console.log("TRY AGAIN")
@@ -182,6 +184,8 @@ $(document).ready(function(){
     else{
       document.getElementById("pass_append_su").innerHTML = "Password should be of minimum 8 characters";
       document.getElementById("email_append_su").innerHTML = "Use only VIT email id";
+      document.getElementById("reg_app").innerHTML = "Enter valid Reg No";
+
       console.log('Password should me of minimum 8 characters');
       console.log("Use only VIT Email");
     }
@@ -206,7 +210,7 @@ $(".create_btn").click(function(){
     $("#email_si").val("");
     $("#password_si").val("");
     var obj = { "email": email_id, "password": password};
-    if(password!="" && email_id!=""){
+    if(password.length>7 && (regg.test(email_id)==true || regg2.test(email_id)==true)){
         var xhr=new XMLHttpRequest();
         xhr.open('POST','https://shielded-plains-85651.herokuapp.com/login', false);
         xhr.setRequestHeader('Content-type', 'application/json');
@@ -224,6 +228,9 @@ $(".create_btn").click(function(){
                 xhr2.onreadystatechange = function(){
                   if(xhr2.status==400){
                     console.log('Enter all details');
+
+
+
                   } else if(xhr2.status==404){
                     console.log("TRY AGAIN");
                   } else if(xhr2.status==500){
@@ -255,7 +262,9 @@ $(".create_btn").click(function(){
         xhr.send(JSON.stringify(obj));
     }
     else{
-      console.log("ENTER ALL DETAILS")
+      console.log("ENTER ALL DETAILS");
+      document.getElementById("email_append_si").innerHTML = "Enter only VIT Email Id";
+      document.getElementById("pass_append_si").innerHTML = "Password should be of minimum 8 characters";
     }
 
   });
@@ -349,20 +358,23 @@ $(".create_btn").click(function(){
             } else if(xhr2.status==200){
               x=JSON.parse(xhr2.responseText)
             if(x.code=="OK"){
-              console.log("TEAM CREATED")
+              console.log("TEAM CREATED");
+              document.getElementById("append_create_team_ajax").innerHTML = "Team Created";
             } else if(x.code=="INATEAMORTEAMCREATED"){
               $(".exception1").css("display","block");
               $(".exception2").css("margin-bottom", "0");
               document.getElementById("append_create_team_ajax").innerHTML = "In a team or team created.";
               console.log("IN A TEAM OR TEAM CREATED")
             } else if(x.code=="TEAMNAMEEXIST"){
-              console.log("TEAM NAME EXISTS")
+              console.log("TEAM NAME EXISTS");
+              document.getElementById("append_create_team_ajax").innerHTML = "Team Name already exists.";
             }
             }
             }
             xhr2.send(JSON.stringify({"teamname":team_name}));
         } else{
-          console.log("ENTER TEAM NAME")
+          console.log("ENTER TEAM NAME");
+          document.getElementById("append_create_team_ajax2").innerHTML = "Enter team name";
         }
       });
 

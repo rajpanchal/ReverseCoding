@@ -16,6 +16,7 @@ footer{
 }
 input[type=text]:focus{
 	box-shadow: 0 1px 0 0 #ffffff!important;
+	border-bottom: 1px solid #ffffff!important;
 
 }
 
@@ -34,12 +35,23 @@ input[type=text]:focus{
 .setm{
 	margin-right: 20px!important;
 }
+.sf{
+	position: absolute;
+	width: 100%;
+	left:0;
+	background-color: #5c5c5c!important;
+}
+
 .signupmain{
 	background-color: #0d47a1!important;
+
 }
 .mtop{
 	margin-top: 10px!important;
 	margin-bottom: 10px!important;
+
+	padding-left: 50px!important;
+	padding-right: 50px!important;
 
 }
 .cclr{
@@ -51,6 +63,8 @@ input[type=text]:focus{
 }
 .submit2{
 	background-color: white!important;
+	background: white;
+	border:0;
 	width: 100%;
 	min-height: 50px;
 	color: #0d47a1!important;
@@ -142,4 +156,6 @@ body{
 .vit2{
 	height:auto;
 	width: 230px;
+}
+
 }
