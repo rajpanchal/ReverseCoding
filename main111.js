@@ -428,7 +428,7 @@ $(document).ready(function(){
       console.log(x.result)
       avail=x.result;
       console.log(typeof x)
-      mynoNe=document.getElementsByClassName("appendable1")[0];
+      myNode=document.getElementsByClassName("appendable1")[0];
       while (myNode.firstChild) {
         myNode.removeChild(myNode.firstChild);
         }
