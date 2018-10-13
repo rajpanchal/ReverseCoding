@@ -3,6 +3,57 @@ var avail =null;
 var pending=null;
 var teamCreated = null;
 
+function showDashboard(){
+  $(".create_team_td").css("background-color", "#FFFFFF");
+  $(".create_team_data").css("color","#0D47A1");
+  $(".invites_td").css("background-color", "#FFFFFF");
+  $(".invites_data").css("color","#0D47A1");
+
+  //ADDING
+    $(".dashboard_td").css("background-color", "#0D47A1");
+    $(".dashboard_data").css("color","#FFFFFF");
+
+    $(".invites1").css("display","none");
+    $(".main_s11").css("display", "block");
+    $(".main_s2").css("display", "none");
+    console.log(token)
+    xhr2=new XMLHttpRequest();
+    xhr2.open("POST",'https://shielded-plains-85651.herokuapp.com/dashboard',false);
+    xhr2.setRequestHeader('Content-type', 'application/json');
+    xhr2.setRequestHeader('Authorization', token);
+    xhr2.onreadystatechange = function(){
+      console.log(xhr2.status);
+      if(xhr2.status==400){
+      console.log('Enter all details');
+    } else if(xhr2.status==404){
+      console.log("TRY AGAIN");
+    } else if(xhr2.status==500){
+      console.log('TRY AGAIN');
+    } else if(xhr2.status==200){
+          var x=JSON.parse(xhr2.responseText)
+          if(x.code=="TEAMCREATED"){
+            console.log(x)
+            document.getElementById("team_name_ajax").innerHTML = x.teamname;
+            document.getElementById("team_members_ajax").innerHTML = x.name;
+            // $(".team_name_ajax").val(x.teamname);
+            // $(".team_members_ajax").val(x.name);
+            console.log(x.teamname);
+            console.log(x.name);
+            console.log("TEAM CREATED ONLY YOU ARE MMBER");
+          } else if(x.code=="NOTEAMS"){
+            document.getElementById("team_name_ajax").innerHTML = "NOT IN ANY TEAM";
+            console.log("NO TEAM PRESENT");
+          } else if(x.code=="TEAMJOINED"){
+            document.getElementById("team_name_ajax").innerHTML = x.team;
+            document.getElementById("team_members_ajax").innerHTML = x.creator + ", " + x.member;
+            console.log("YOU ARE IN A TEAM OF 2");
+            console.log(x)
+          }
+    }
+    }
+    xhr2.send();
+}
+
 function sendInvite(i){
   var sendtoemail=avail[i].email;
   var xhr2=new XMLHttpRequest();
@@ -177,6 +228,11 @@ $(document).ready(function(){
                   } else if(xhr2.status==500){
                     console.log('TRY AGAIN');
                   } else if(xhr2.status==200){
+                    $("#name_su").val('');
+                    $("#emailid_su").val('');
+                    $("#regno_su").val('');
+                    $("#phone_no_su").val('');
+                                    
                     if(xhr2.responseText.code=="TEAMCREATED"){
                       console.log("TEAM CREATED ONLY YOU ARE MMBER")
                       console.log(xhr2.responseText.teamname, xhr2.responseText.name)
@@ -204,21 +260,23 @@ $(document).ready(function(){
         xhr.send(JSON.stringify(obj));
     }
   });
-$(".create_btn").click(function(){
   $(".logout_btn").click(function(){
     $(".3_sections_raj_satyam").css("display","none");
     $(".sam_signup").css("display","none");
     $(".raj_login").css("display","block");
     token=null;
   });
-})
 
-
+    $(".create_btn").click(function(){
+        
     $(".main_s2").css("display", "block");
     $(".dashboard_td").css("background-color", "#FFFFFF");
     $(".dashboard_data").css("color","#0D47A1");
     $(".create_team_td").css("background-color", "#0D47A1")
     $(".create_team_data").css("color","#FFFFFF");
+      
+  })
+
 
   $(".main_login").click(function(){
     var email_id = $("#email_si").val();
@@ -239,52 +297,16 @@ $(".create_btn").click(function(){
         xhr.setRequestHeader('Content-type', 'application/json');
         xhr.onreadystatechange = function(){
           if(xhr.status == 200) {
-            $(".raj_login").css("display","none");
-            $(".3_sections_raj_satyam").css("display","block");
-            $("#email_si").val("");
-            $("#password_si").val("");
-                token = xhr.getResponseHeader('Authorization');
+            token = xhr.getResponseHeader('Authorization');
                 $("#loginbtn").val('Login >');
                 $(".raj_login").css("display","none");
                 $(".3_sections_raj_satyam").css("display","block");
-                xhr2=new XMLHttpRequest();
-                xhr2.open("POST",'https://shielded-plains-85651.herokuapp.com/dashboard',false);
-                xhr2.setRequestHeader('Content-type', 'application/json');
-                xhr2.setRequestHeader('Authorization', token);
-                xhr2.onreadystatechange = function(){
-                  if(xhr2.status==400){
-                    console.log('Enter all details');
-
-
-
-                  } else if(xhr2.status==404){
-                    console.log("TRY AGAIN");
-                  } else if(xhr2.status==500){
-                    console.log('TRY AGAIN');
-                  } else if(xhr2.status==200){
-                    teamCreated = xhr2.responseText;
-                    console.log(JSON.parse(teamCreated).code);
-
-                    document.getElementById("app_here_ct").innerHTML = "Already in a Team";
-                    if(xhr2.responseText.code=="TEAMCREATED"){
-                      console.log(xhr2.responseText);
-                      document.getElementById("app_here_ct").innerHTML = "Team Created";
-                      console.log("TEAM CREATED ONLY YOU ARE MMBER");
-                    } else if(xhr2.responseText.code=="NOTEAMS"){
-                      console.log("NO TEAM PRESENT")
-                      // document.getElementById("app_here_ct").innerHTML = "No teams present";
-                    } else if(xhr2.responseText.code=="TEAMJOINED"){
-                      console.log("YOU ARE IN A TEAM OF 2");
-                      document.getElementById("app_here_ct").innerHTML = "Already in a team of 2";
-                      console.log(xhr2.responseText)
-                    }
-                  }
-                }
-                xhr2.send();
+                showDashboard();  
               }
                else if(xhr.status==500){
                 console.log("ERROR");
               } else if(xhr.status==404){
+                alert('Incorrect combo')
                 console.log("INCORRECT COMBO");
               } else{
                 console.log("TRY AGAIN")
@@ -316,57 +338,10 @@ $(".create_btn").click(function(){
 
   });
 
+  
 
   $(".dashboard").click(function(){
-    $(".create_team_td").css("background-color", "#FFFFFF");
-    $(".create_team_data").css("color","#0D47A1");
-    $(".invites_td").css("background-color", "#FFFFFF");
-    $(".invites_data").css("color","#0D47A1");
-
-    //ADDING
-      $(".dashboard_td").css("background-color", "#0D47A1");
-      $(".dashboard_data").css("color","#FFFFFF");
-
-      $(".invites1").css("display","none");
-      $(".main_s11").css("display", "block");
-      $(".main_s2").css("display", "none");
-      console.log(token)
-      xhr2=new XMLHttpRequest();
-      xhr2.open("POST",'https://shielded-plains-85651.herokuapp.com/dashboard',false);
-      xhr2.setRequestHeader('Content-type', 'application/json');
-      xhr2.setRequestHeader('Authorization', token);
-      xhr2.onreadystatechange = function(){
-        console.log(xhr2.status);
-        if(xhr2.status==400){
-        console.log('Enter all details');
-      } else if(xhr2.status==404){
-        console.log("TRY AGAIN");
-      } else if(xhr2.status==500){
-        console.log('TRY AGAIN');
-      } else if(xhr2.status==200){
-            var x=JSON.parse(xhr2.responseText)
-            if(x.code=="TEAMCREATED"){
-              console.log(x)
-              document.getElementById("team_name_ajax").innerHTML = x.teamname;
-              document.getElementById("team_members_ajax").innerHTML = x.name;
-              // $(".team_name_ajax").val(x.teamname);
-              // $(".team_members_ajax").val(x.name);
-              console.log(x.teamname);
-              console.log(x.name);
-              console.log("TEAM CREATED ONLY YOU ARE MMBER");
-            } else if(x.code=="NOTEAMS"){
-              document.getElementById("team_name_ajax").innerHTML = "NOT JOINED ANY TEAM";
-              document.getElementById("team_members_ajax").innerHTML = x.name;
-              console.log("NO TEAM PRESENT");
-            } else if(x.code=="TEAMJOINED"){
-              document.getElementById("team_name_ajax").innerHTML = x.team;
-              document.getElementById("team_members_ajax").innerHTML = x.creator + ", " + x.member;
-              console.log("YOU ARE IN A TEAM OF 2");
-              console.log(x)
-            }
-      }
-      }
-      xhr2.send();
+    showDashboard();   
   });
 
 
@@ -405,8 +380,10 @@ $(".create_btn").click(function(){
             } else if(xhr2.status==200){
               x=JSON.parse(xhr2.responseText)
             if(x.code=="OK"){
+              $(".team_name_new").val('');
               console.log("TEAM CREATED");
-              document.getElementById("append_create_team_ajax").innerHTML = "Team Created";
+              showDashboard();
+
             } else if(x.code=="INATEAMORTEAMCREATED"){
               $(".exception1").css("display","block");
               $(".exception2").css("margin-bottom", "0");
