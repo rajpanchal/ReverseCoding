@@ -143,17 +143,17 @@ function acceptInvite(i){
 
 function rejectInvite(i){
   var teamname=pending[i].teamname;
-  xhr2=new XMLHttpRequest();
-  xhr2.open("POST",'https://shielded-plains-85651.herokuapp.com/rejectinvite',true);
-  xhr2.setRequestHeader('Content-type', 'application/json');
-  xhr2.setRequestHeader('Authorization', token);
-  xhr2.onreadystatechange = function(){
-  if(xhr2.status==400){
+  xhr21=new XMLHttpRequest();
+  xhr21.open("POST",'https://shielded-plains-85651.herokuapp.com/rejectinvite',true);
+  xhr21.setRequestHeader('Content-type', 'application/json');
+  xhr21.setRequestHeader('Authorization', token);
+  xhr21.onreadystatechange = function(){
+  if(xhr21.status==400){
     console.log('FILL TEAMNAME');
-  } else if(xhr2.status==500){
+  } else if(xhr21.status==500){
     swal("Error","Try again.","error");
   }
-  else if(xhr2.status==200){
+  else if(xhr21.status==200){
     console.log("DENIED")
     pending=pending.splice(i, 1)
     myNode=document.getElementsByClassName("appendable3")[0];
@@ -166,7 +166,7 @@ function rejectInvite(i){
     };
   }
 }
-  xhr2.send(JSON.stringify({
+  xhr21.send(JSON.stringify({
     teamname:teamname
   }));
 }
@@ -218,28 +218,28 @@ $(document).ready(function(){
 
     if(name!="" && (regg.test(email_id)==true || regg2.test(email_id)==true) && regNoRegex.test(regno)==true && phoneNoRegex.test(phone_num) && password.length>7 && password==confpass){
       var obj = { "name": name, "email": email_id, "regno": regno, "phone": phone_num, "password": password};
-      var xhr=new XMLHttpRequest();
-        xhr.open('POST','https://shielded-plains-85651.herokuapp.com/signup', false);
-        xhr.setRequestHeader('Content-type', 'application/json');
-        xhr.onreadystatechange = function() {//Call a function when the state changes.
-            if(xhr.status == 200) {
-                token = xhr.getResponseHeader('Authorization');
+      var xhr8=new XMLHttpRequest();
+        xhr8.open('POST','https://shielded-plains-85651.herokuapp.com/signup', false);
+        xhr8.setRequestHeader('Content-type', 'application/json');
+        xhr8.onreadystatechange = function() {//Call a function when the state changes.
+            if(xhr8.status == 200) {
+                token = xhr8.getResponseHeader('Authorization');
                 Cookies.set('token', token, { expires: 7 });
                 window.location.reload()
 
             }
-            else if(xhr.status==404){
+            else if(xhr8.status==404){
               console.log('ENTER ALLDETAILS')
             }
-            else if(xhr.status==401){
+            else if(xhr8.status==401){
               console.log('USER EXISTS')
               document.getElementById("userExists").innerHTML = "User already exists";
             }
-            else if(xhr.status==500){
+            else if(xhr8.status==500){
               swal("Error","Try again.","error");
             }
         }
-        xhr.send(JSON.stringify(obj));
+        xhr8.send(JSON.stringify(obj));
     }
   });
   $(".logout_btn").click(function(){
@@ -275,19 +275,19 @@ $(document).ready(function(){
     var obj = { "email": email_id, "password": password};
     if(password.length>7 && (regg.test(email_id)==true || regg2.test(email_id)==true)){
         $("#loginbtn").val('Logging in..');
-        var xhr=new XMLHttpRequest();
-        xhr.open('POST','https://shielded-plains-85651.herokuapp.com/login', false);
-        xhr.setRequestHeader('Content-type', 'application/json');
-        xhr.onreadystatechange = function(){
-          if(xhr.status == 200) {
-            token = xhr.getResponseHeader('Authorization');
+        var xhr9=new XMLHttpRequest();
+        xhr9.open('POST','https://shielded-plains-85651.herokuapp.com/login', false);
+        xhr9.setRequestHeader('Content-type', 'application/json');
+        xhr9.onreadystatechange = function(){
+          if(xhr9.status == 200) {
+            token = xhr9.getResponseHeader('Authorization');
                 Cookies.set('token', token, { expires: 7 });
                 window.location.reload()
               }
               
-               else if(xhr.status==500){
+               else if(xhr9.status==500){
                 swal("Error","Try again.","error");
-              } else if(xhr.status==404){
+              } else if(xhr9.status==404){
                 swal("Error","Invalid credentials.","error");
                 console.log("INCORRECT COMBO");
               } else{
@@ -295,7 +295,7 @@ $(document).ready(function(){
               }
             }
 
-        xhr.send(JSON.stringify(obj));
+        xhr9.send(JSON.stringify(obj));
     }
     // else{
     //   console.log("ENTER ALL DETAILS");
@@ -347,21 +347,21 @@ $(document).ready(function(){
       var team_name = $(".team_name_new").val();
       console.log(team_name);
       if(team_name !=""){
-        xhr2=new XMLHttpRequest();
-            xhr2.open("POST",'https://shielded-plains-85651.herokuapp.com/addteam',false);
-            xhr2.setRequestHeader('Content-type', 'application/json');
-            xhr2.setRequestHeader('Authorization', token);
-            xhr2.onreadystatechange = function(){
-              console.log(xhr2.responseText);
-              console.log(xhr2.status)
-            if(xhr2.status==400){
+        xhr22=new XMLHttpRequest();
+            xhr22.open("POST",'https://shielded-plains-85651.herokuapp.com/addteam',false);
+            xhr22.setRequestHeader('Content-type', 'application/json');
+            xhr22.setRequestHeader('Authorization', token);
+            xhr22.onreadystatechange = function(){
+              console.log(xhr22.responseText);
+              console.log(xhr22.status)
+            if(xhr22.status==400){
               swal("Error","Try again.","error");
-            } else if(xhr2.status==404){
+            } else if(xhr22.status==404){
               swal("Error","Try again.","error");
-            } else if(xhr2.status==500){
+            } else if(xhr22.status==500){
               swal("Error","Try again.","error");
-            } else if(xhr2.status==200){
-              x=JSON.parse(xhr2.responseText)
+            } else if(xhr22.status==200){
+              x=JSON.parse(xhr22.responseText)
             if(x.code=="OK"){
               $(".team_name_new").val('');
               console.log("TEAM CREATED");
@@ -379,7 +379,7 @@ $(document).ready(function(){
             }
             }
             }
-            xhr2.send(JSON.stringify({"teamname":team_name}));
+            xhr22.send(JSON.stringify({"teamname":team_name}));
         } else{
           console.log("ENTER TEAM NAME");
           document.getElementById("append_create_team_ajax2").innerHTML = "Enter team name";
@@ -388,22 +388,22 @@ $(document).ready(function(){
 
 
   $(".delete_team").click(function(){
-    xhr2=new XMLHttpRequest();
-    xhr2.open("POST",'https://shielded-plains-85651.herokuapp.com/addteam',false);
-    xhr2.setRequestHeader('Content-type', 'application/json');
-    xhr2.setRequestHeader('Authorization', token);
-    xhr2.onreadystatechange = function(){
-    if(xhr2.status==400){
+    xhr23=new XMLHttpRequest();
+    xhr23.open("POST",'https://shielded-plains-85651.herokuapp.com/addteam',false);
+    xhr23.setRequestHeader('Content-type', 'application/json');
+    xhr23.setRequestHeader('Authorization', token);
+    xhr23.onreadystatechange = function(){
+    if(xhr23.status==400){
       console.log('Enter all details');
-    } else if(xhr2.status==401){
+    } else if(xhr23.status==401){
       console.log("TEAM FILLED");
-    } else if(xhr2.status==500){
+    } else if(xhr23.status==500){
       console.log('TRY AGAIN');
-    } else if(xhr2.status==200){
+    } else if(xhr23.status==200){
       console.log("DELETED")
     }
     }
-    xhr2.send();
+    xhr23.send();
   });
 
   $(".invites").click(function(){
@@ -421,16 +421,16 @@ $(document).ready(function(){
     });
     
     
-    xhr2=new XMLHttpRequest();
-    xhr2.open("POST",'https://shielded-plains-85651.herokuapp.com/getavail',true);
-    xhr2.setRequestHeader('Content-type', 'application/json');
-    xhr2.setRequestHeader('Authorization', token);
-    xhr2.onreadystatechange = function(){
-    if(xhr2.status==500){
+    xhr24=new XMLHttpRequest();
+    xhr24.open("POST",'https://shielded-plains-85651.herokuapp.com/getavail',true);
+    xhr24.setRequestHeader('Content-type', 'application/json');
+    xhr24.setRequestHeader('Authorization', token);
+    xhr24.onreadystatechange = function(){
+    if(xhr24.status==500){
       swal("Error","Try again.","error");     return 0;
-    } else if(xhr2.status==200){
-      if(xhr2.responseText==='') return
-      x=JSON.parse(xhr2.responseText)
+    } else if(xhr24.status==200){
+      if(xhr24.responseText==='') return
+      x=JSON.parse(xhr24.responseText)
       console.log(x.result)
       avail=x.result;
       console.log(typeof x)
@@ -445,20 +445,20 @@ $(document).ready(function(){
       console.log("FILL AVAILABLE")
       }
     }
-    xhr2.send();
-    xhr=new XMLHttpRequest();
-    xhr.open("POST",'https://shielded-plains-85651.herokuapp.com/pending',true);
-    xhr.setRequestHeader('Content-type', 'application/json');
-    xhr.setRequestHeader('Authorization', token);
-    xhr.onreadystatechange = function(){
-    if(xhr.status==500){
+    xhr24.send();
+    xhr7=new XMLHttpRequest();
+    xhr7.open("POST",'https://shielded-plains-85651.herokuapp.com/pending',true);
+    xhr7.setRequestHeader('Content-type', 'application/json');
+    xhr7.setRequestHeader('Authorization', token);
+    xhr7.onreadystatechange = function(){
+    if(xhr7.status==500){
       swal("Error","Try again.","error");
-    }else if(xhr.status==500){
+    }else if(xhr7.status==500){
       swal("Error","Try again.","error");
     }
-    else if(xhr.status==200){
-      if(xhr.responseText=='') return
-      x=JSON.parse(xhr.responseText)
+    else if(xhr7.status==200){
+      if(xhr7.responseText=='') return
+      x=JSON.parse(xhr7.responseText)
       console.log(x);
       if(x.code=="TEAMJOINED"){
         swal({
@@ -497,7 +497,7 @@ $(document).ready(function(){
         }
       }
     }
-    xhr.send();
+    xhr7.send();
   });
 });
 
