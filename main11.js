@@ -45,7 +45,7 @@ function showDashboard(){
             console.log("NO TEAM PRESENT");
           } else if(x.code=="TEAMJOINED"){
             document.getElementById("team_name_ajax").innerHTML = x.team;
-            document.getElementById("team_members_ajax").innerHTML = x.creator + ", " + x.member;
+            document.getElementById("team_members_ajax").innerHTML = x.creator.name + ", " + x.member.name;
             console.log("YOU ARE IN A TEAM OF 2");
             console.log(x)
           }
