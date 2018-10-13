@@ -9,10 +9,8 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
   <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <script type="text/javascript" src="js/jquery-3.3.1.min.js" >
-    	$(document).ready(function(){
-    	$('.collapsible').collapsible();
-  		});
+  <script>
+
     </script>
     <script type="text/javascript">
     	function ab(){
@@ -42,10 +40,12 @@
     	}
     </script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
   <link href="style.css" rel="stylesheet">
 		<script type="tex/javascript" src="main.js"></script>
   <body>
@@ -58,52 +58,52 @@
 		</div>
 		<div class="col l6 m6 s0"></div>
 		<div class="col l3 m3 s12 signup" >
-			<span class="white-text setm" ><a href="index.html" style="color:#FFFFFF;">SIGN UP</a></span>
-			<span class="white-text"><a href="#" style="color:#FFFFFF;" class="login_sam_btn">LOGIN</a></span>
+			<span class="white-text setm" ><a href="index.html" style="color:#FFFFFF; font-family: 'Poppins', sans-serif !important;">SIGN UP</a></span>
+			<span class="white-text"><a href="#" style="color:#FFFFFF; font-family: 'Poppins', sans-serif !important;" class="login_sam_btn">LOGIN</a></span>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col l12 s12 m12">
-		<h4 class="white-text">ABOUT</h4>
+		<h4 class="white-text" class="sp_font" style="font-family: 'Poppins', sans-serif !important;">ABOUT</h4>
 		<P class="white-text" style="text-align:justify;">It is dual round mind-puzzling competition where math is intertwined with coding. The event makes one to have a reverse approach while solving any problem. The participants will be provided executable files that they can run and fetch the input-output test cases and hence come up with a code that would lead to those test cases. In short, a four step procedure, execute, fetch, decode and code. The first round is an online round that starts on 18th of October at 11AM and ends at 11PM same day. The second round is scheduled to be on 20th October at 11 AM which will be conducted offline. Reverse Coding is all about math, logic and fun! To be a part of it, register and form your team.</P>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col l6 m6 s12">
-			<h4 class="white-text" id="inst11">INSTRUCTIONS</h4>
+			<h4 class="white-text" id="inst11" style="font-family: 'Poppins', sans-serif !important;">INSTRUCTIONS</h4>
 			<p class="white-text">
 				Step 1: Register<br><br>
 				Step 2: Create a team/ Join a team<br><br>
 				Step 3: Click here to invite a member to your team<br><br>
 				Step 4: Check notifications in your dashboard to join a team.<br><br>
 			</p>
-			<h4 class="white-text" id="rule11">RULES</h4>
+			<h4 class="white-text" id="rule11" style="font-family: 'Poppins', sans-serif !important;">RULES</h4>
 			<p class="white-text">
 				A team can have maximum 2 participants<br><br>
 				A participant cannot leave a team once joined.
 			</p>
 		</div>
 		<div class="col l6 m6 s12">
-			<h4 class="white-text" id="sign11">SIGN UP</h4>
+			<h4 class="white-text" id="sign11"  style="font-family: 'Poppins', sans-serif !important;">SIGN UP</h4>
 			<div class="row signupmain">
 
 					<div class="col l12 m12 s12 mtop">
 					<span class="white-text"> Name</span><br>
-					<input type="text" name="name" id="name_su" class="bcolor" style="padding-left: 6px;">
+					<input type="text" name="name" id="name_su" class="bcolor" style="padding-left: 6px;" required>
 					<span class="white-text"> Email Id</span><br>
-					<input type="email" name="email" id="emailid_su" class="bcolor" style="padding-left: 6px;">
+					<input type="email" name="email" id="emailid_su" class="bcolor" style="padding-left: 6px;" required>
           <div style="color: #f18c8c; padding-bottom: 5px;" id="email_append_su"></div>
 					<span class="white-text"> Registration No.</span><br>
 
-          <input type="text" name="regno_su" id="regno_su" class="bcolor" style="padding-left: 6px;">
+          <input type="text" name="regno_su" id="regno_su" class="bcolor" style="padding-left: 6px;" required>
           <div style="color: #f18c8c; padding-bottom: 5px;" id="reg_app"></div>
           <span class="white-text"> Phone Number</span><br>
-					<input type="text" name="regno" id="phone_no_su" class="bcolor" style="padding-left: 6px;">
+					<input type="text" name="regno" id="phone_no_su" class="bcolor" style="padding-left: 6px;" required>
 					<span class="white-text"> Password</span><br>
-					<input type="Password" name="pass1" id="password_su" class="bcolor" style="padding-left: 6px;">
+					<input type="Password" name="pass1" id="password_su" class="bcolor" style="padding-left: 6px;" required>
           <div style="color: #f18c8c; padding-bottom: 5px;" id="pass_append_su"></div>
 					<span class="white-text"> Confirm Password</span><br>
-					<input type="Password" name="pass2" id="confpassword_su" class="bcolor" style="padding-left: 6px;">
+					<input type="Password" name="pass2" id="confpassword_su" class="bcolor" style="padding-left: 6px;" required>
           <div style="color: #f18c8c; padding-bottom: 5px;" id="userExists"></div>
           </div>
 					<button type="button" name="button" style="width: 100%; height: 40px; color:#0D47A1; font-size:1.2em; font-weight: 700" class="waves-effect waves-light signup_btn_1 not_good">SUBMIT</button>
@@ -111,7 +111,7 @@
 			</div>
 		</div>
 	</div>
-	<h4 class="white-text">OUR SPONSORS</h4>
+	<h4 class="white-text" style="font-family: 'Poppins', sans-serif !important;">OUR SPONSORS</h4>
 	<div class="row">
 		<div class="col l12 m12 s12">
 		<div class="card">
@@ -124,21 +124,21 @@
 	</div>
 	<div class="row">
 		<div class="col l12 m12 s12">
-			<h3 class="white-text" id="fwq11">FAQs</h3>
-<ul class="collapsible">
-    <li>
-      <div class="collapsible-header tt"><i class="material-icons">filter_drama</i>First</div>
-      <div class="collapsible-body cclr white-text"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-    <li>
-      <div class="collapsible-header tt"><i class="material-icons">place</i>Second</div>
-      <div class="collapsible-body cclr white-text"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-    <li>
-      <div class="collapsible-header tt"><i class="material-icons">whatshot</i>Third</div>
-      <div class="collapsible-body cclr white-text"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-  </ul>
+			<h3 class="white-text" id="fwq11" style="font-family: 'Poppins', sans-serif !important;">FAQs</h3>
+      <ul class="collapsible">
+        <li>
+          <div class="collapsible-header tt"><i class="material-icons">filter_drama</i>First</div>
+          <div class="collapsible-body cclr white-text"><span>Lorem ipsum dolor sit amet.</span></div>
+        </li>
+        <li>
+          <div class="collapsible-header tt"><i class="material-icons">place</i>Second</div>
+          <div class="collapsible-body cclr white-text"><span>Lorem ipsum dolor sit amet.</span></div>
+        </li>
+        <li>
+          <div class="collapsible-header tt"><i class="material-icons">whatshot</i>Third</div>
+          <div class="collapsible-body cclr white-text"><span>Lorem ipsum dolor sit amet.</span></div>
+        </li>
+      </ul>
 
 		</div>
 	</div>
@@ -181,7 +181,7 @@
 
       <div class="container">
       <p style="padding-bottom: none;" class="menu_font">Email ID</p>
-      <input type="text" name="email_id" style="border: 2px #0D47A1 solid; height: 37px; margin-bottom: 20px; padding-left: 5px" id="email_si">
+      <input type="email" name="email_id" style="border: 2px #0D47A1 solid; height: 37px; margin-bottom: 20px; padding-left: 5px" id="email_si">
       <div style="color: #f18c8c; padding-bottom: 5px;" id="email_append_si"></div>
       <p style="padding-bottom: none;" class="menu_font">Password</p>
       <input type="password" name="password" style="border: 2px #0D47A1 solid; height: 37px; margin-bottom: 20px; padding-left: 5px" id="password_si">
@@ -196,7 +196,7 @@
         <div class="col l2 s1" >
         </div>
         <div class="col l8" style="background-color: #0D47A1">
-          <button type="button" name="button" class="create_btn btn_focus waves-effect waves-light main_login" style="width:100%; padding: 8px 10px;">Login ></button>
+          <button id="loginbtn" type="button" name="button" class="create_btn btn_focus waves-effect waves-light main_login" style="width:100%; padding: 8px 10px;">Login ></button>
         </div>
         <div class="col l2">
         </div>
@@ -282,6 +282,18 @@
                     <div class="col l8" style="background-color: #0D47A1">
                       <button type="button" id="submit_team" name="button" class="create_btn btn_focus waves-effect waves-light" style="width:100%; padding: 8px 10px;">Create Team ></button>
                     </div>
+                    <div class="row">
+                      <div class="col l3">
+
+                      </div>
+                      <div class="col l6">
+                          <p id="app_here_ct"></p>
+                      </div>
+                      <div class="col l3">
+
+                      </div>
+                    </div>
+
                     <div class="col l2">
                     </div>
                   </div>
@@ -393,5 +405,10 @@
 
 
     <script src="main11.js"></script>
+    <script>
+    $(document).ready(function(){
+    $('.collapsible').collapsible();
+    });
+    </script>
   </body>
 </html>

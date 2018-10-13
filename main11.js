@@ -1,6 +1,7 @@
 var token = null;
 var avail =null;
 var pending=null;
+var teamCreated = null;
 
 function sendInvite(i){
   var sendtoemail=avail[i].email;
@@ -131,6 +132,27 @@ $(document).ready(function(){
     var password = $("#password_su").val();
     var confpass = $("#confpassword_su").val();
 
+    if(name=="" || email_id=="" || regno=="" || phone_num=="" || password=="" || confpass=="")
+    {
+      alert("Please, fill all the details");
+      return false;
+    }
+    if(!regg.test(email_id) &&  !regg2.test(email_id)) {
+      alert("Invalid Email");
+      return false;
+    }
+    if((password !== confpass) || password.length <8){
+      alert("Password did not match");
+      return false;
+    }
+    if(!phoneNoRegex.test(phone_num)){
+      alert("Phone number invalid");
+      return false;
+    }
+    if(!regNoRegex.test(regno)){
+      alert("Registration Number Invalid");
+      return false;
+    }
 
     if(name!="" && (regg.test(email_id)==true || regg2.test(email_id)==true) && regNoRegex.test(regno)==true && phoneNoRegex.test(phone_num) && password.length>7 && password==confpass){
       var obj = { "name": name, "email": email_id, "regno": regno, "phone": phone_num, "password": password};
@@ -181,14 +203,6 @@ $(document).ready(function(){
         }
         xhr.send(JSON.stringify(obj));
     }
-    else{
-      document.getElementById("pass_append_su").innerHTML = "Password should be of minimum 8 characters";
-      document.getElementById("email_append_su").innerHTML = "Use only VIT email id";
-      document.getElementById("reg_app").innerHTML = "Enter valid Reg No";
-
-      console.log('Password should me of minimum 8 characters');
-      console.log("Use only VIT Email");
-    }
   });
 $(".create_btn").click(function(){
   $(".logout_btn").click(function(){
@@ -200,17 +214,26 @@ $(".create_btn").click(function(){
 })
 
 
-    $(".main_s11").css("display", "block");
-    $(".dashboard_td").css("background-color", "#0D47A1");
-    $(".dashboard_data").css("color","#FFFFFF");
+    $(".main_s2").css("display", "block");
+    $(".dashboard_td").css("background-color", "#FFFFFF");
+    $(".dashboard_data").css("color","#0D47A1");
+    $(".create_team_td").css("background-color", "#0D47A1")
+    $(".create_team_data").css("color","#FFFFFF");
 
   $(".main_login").click(function(){
     var email_id = $("#email_si").val();
     var password = $("#password_si").val();
-    $("#email_si").val("");
-    $("#password_si").val("");
+    if(password<8) {
+      alert("Password should be more than 7 characters");
+      return false;
+    }
+    if(!regg.test(email_id) &&  !regg2.test(email_id)){
+      alert("Please Enter valid email ID");
+      return false;
+    }
     var obj = { "email": email_id, "password": password};
     if(password.length>7 && (regg.test(email_id)==true || regg2.test(email_id)==true)){
+        $("#loginbtn").val('Logging in..');
         var xhr=new XMLHttpRequest();
         xhr.open('POST','https://shielded-plains-85651.herokuapp.com/login', false);
         xhr.setRequestHeader('Content-type', 'application/json');
@@ -218,7 +241,10 @@ $(".create_btn").click(function(){
           if(xhr.status == 200) {
             $(".raj_login").css("display","none");
             $(".3_sections_raj_satyam").css("display","block");
+            $("#email_si").val("");
+            $("#password_si").val("");
                 token = xhr.getResponseHeader('Authorization');
+                $("#loginbtn").val('Login >');
                 $(".raj_login").css("display","none");
                 $(".3_sections_raj_satyam").css("display","block");
                 xhr2=new XMLHttpRequest();
@@ -236,14 +262,20 @@ $(".create_btn").click(function(){
                   } else if(xhr2.status==500){
                     console.log('TRY AGAIN');
                   } else if(xhr2.status==200){
-                    console.log(xhr2.responseText);
+                    teamCreated = xhr2.responseText;
+                    console.log(JSON.parse(teamCreated).code);
+
+                    document.getElementById("app_here_ct").innerHTML = "Already in a Team";
                     if(xhr2.responseText.code=="TEAMCREATED"){
-                      console.log(xhr2.responseText)
-                      console.log("TEAM CREATED ONLY YOU ARE MMBER")
+                      console.log(xhr2.responseText);
+                      document.getElementById("app_here_ct").innerHTML = "Team Created";
+                      console.log("TEAM CREATED ONLY YOU ARE MMBER");
                     } else if(xhr2.responseText.code=="NOTEAMS"){
                       console.log("NO TEAM PRESENT")
+                      // document.getElementById("app_here_ct").innerHTML = "No teams present";
                     } else if(xhr2.responseText.code=="TEAMJOINED"){
                       console.log("YOU ARE IN A TEAM OF 2");
+                      document.getElementById("app_here_ct").innerHTML = "Already in a team of 2";
                       console.log(xhr2.responseText)
                     }
                   }
@@ -261,11 +293,26 @@ $(".create_btn").click(function(){
 
         xhr.send(JSON.stringify(obj));
     }
-    else{
-      console.log("ENTER ALL DETAILS");
-      document.getElementById("email_append_si").innerHTML = "Enter only VIT Email Id";
-      document.getElementById("pass_append_si").innerHTML = "Password should be of minimum 8 characters";
-    }
+    // else{
+    //   console.log("ENTER ALL DETAILS");
+    //
+    //   // document.getElementById("email_append_si").innerHTML = "Enter only VIT Email Id";
+    //   // document.getElementById("pass_append_si").innerHTML = "Password should be of minimum 8 characters";
+    //
+    //     if((regg.test(email_id)==true || regg2.test(email_id)==true)==false && password<8){
+    //         document.getElementById("email_append_si").innerHTML = "Enter only VIT Email Id";
+    //         document.getElementById("pass_append_si").innerHTML = "Password should be of minimum 8 characters";
+    //     }
+    //     else if((regg.test(email_id)==true || regg2.test(email_id)==true)==true && password<8)
+    //     {
+    //       document.getElementById("pass_append_si").innerHTML = "Password should be of minimum 8 characters";
+    //     }
+    //     else if((regg.test(email_id)==true || regg2.test(email_id)==true)==false && password>7)
+    //     {
+    //       document.getElementById("email_append_si").innerHTML = "Enter only VIT Email Id";
+    //     }
+    //   }
+    // }
 
   });
 

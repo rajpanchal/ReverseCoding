@@ -73,6 +73,12 @@ body{
   background-color: #707070;
   height: 40%;
 }
+
+
+
+
+
+
 .create_btn{
     font-family: 'Poppins', sans-serif;
     background: none;
@@ -84,7 +90,7 @@ body{
     background-color: #333333;
 }
 .btn_focus:focus{
-  background-color: #0D47A1;
+  background-color: transparent;
 }
 .not_good:focus{
   background: #FFFFFF;
