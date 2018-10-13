@@ -421,7 +421,7 @@ $(".create_btn").click(function(){
             xhr2.send(JSON.stringify({"teamname":team_name}));
         } else{
           console.log("ENTER TEAM NAME");
-          document.getElementById("append_create_team_ajax2").innerHTML = "Enter team name";
+          // document.getElementById("append_create_team_ajax2").innerHTML =;
         }
       });
 
