@@ -8,6 +8,8 @@ $(window).on('load', function () {
             headers:{'Authorization':token}
         }).done(function(e){
             console.log(e)
+            $("#loader").fadeOut('fast');
+            $("#content").fadeIn('fast');
             $(".sam_signup").fadeOut('fast');
             $(".raj_login").fadeOut('fast');
             $(".3_sections_raj_satyam").fadeIn(1000);
@@ -26,9 +28,11 @@ $(window).on('load', function () {
         })
     }
     else{
-        $(".3_sections_raj_satyam").css("display","none");
-        $(".raj_login").css("display","none");
-        $(".sam_signup").css("display","block");
+        $("#loader").fadeOut('fast');
+        $(".3_sections_raj_satyam").fadeOut('fast');
+        $(".raj_login").fadeOut('fast');
+        $("#content").fadeIn('fast');
+        $(".sam_signup").fadeIn('slow')
     }
 
     
