@@ -11,9 +11,12 @@ function showDashboard(){
     $(".dashboard_td").css("background-color", "#0D47A1");
     $(".dashboard_data").css("color","#FFFFFF");
 
-    $(".invites1").fadeOut('fast');
-    $(".main_s11").css("display", "block");
-    $(".main_s2").css("display", "none");
+  
+    $(".invites1").fadeOut('fast', function(){
+      $(".main_s2").fadeOut('fast', function(){
+        $(".main_s11").fadeIn('slow');
+      });
+    });
     console.log(token)
     xhr2=new XMLHttpRequest();
     xhr2.open("POST",'https://shielded-plains-85651.herokuapp.com/dashboard',false);
@@ -65,12 +68,14 @@ function sendInvite(i){
   }
   else if(xhr2.status==404){
     swal({title:"Error",text:"Create a team first.",type:"error"}).then(function(){
-      $(".main_s2").css("display", "block");
+      
         $(".dashboard_td").css("background-color", "#FFFFFF");
         $(".dashboard_data").css("color","#0D47A1");
         $(".create_team_td").css("background-color", "#FFFFFF")
         $(".create_team_data").css("color","#0D47A1");
-        $(".invites1").fadeOut('fast');
+        $(".invites1").fadeOut('fast', function(){
+          $(".main_s2").fadeIn('slow');
+        });
     });
 
   }
@@ -246,7 +251,7 @@ $(document).ready(function(){
 
     $(".create_btn").click(function(){
 
-    $(".main_s2").css("display", "block");
+    $(".main_s2").fadeIn('slow');
     $(".dashboard_td").css("background-color", "#FFFFFF");
     $(".dashboard_data").css("color","#0D47A1");
     $(".create_team_td").css("background-color", "#0D47A1")
@@ -329,9 +334,12 @@ $(document).ready(function(){
       $(".create_team_td").css("background-color", "#0D47A1");
       $(".create_team_data").css("color","#FFFFFF");
 
-      $(".invites1").fadeOut('fast');
-      $(".main_s11").css("display", "none");
-      $(".main_s2").css("display", "block");
+      $(".invites1").fadeOut('fast', function(){
+        $(".main_s11").fadeOut('fast', function(){
+          $(".main_s2").fadeIn('slow');
+        });
+      });
+      
     });
 
     $("#submit_team").click(function(){
@@ -404,9 +412,13 @@ $(document).ready(function(){
     $(".invites_td").css("background-color", "#0D47A1");
     $(".invites_data").css("color","#FFFFFF");
 
-    $(".main_s11").css("display", "none");
-    $(".main_s2").css("display", "none");
-    $(".invites1").fadeIn('slow');
+    $(".main_s11").fadeOut('fast', function(){
+      $(".main_s2").fadeOut('fast', function(){
+        $(".invites1").fadeIn('slow');
+      });
+    });
+    
+    
     xhr2=new XMLHttpRequest();
     xhr2.open("POST",'https://shielded-plains-85651.herokuapp.com/getavail',true);
     xhr2.setRequestHeader('Content-type', 'application/json');
