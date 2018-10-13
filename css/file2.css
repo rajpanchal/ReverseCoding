@@ -1,7 +1,7 @@
 body{
 	background-color: #333333;
-	margin-left: 50px!important;
-	margin-right: 50px!important;
+	/* margin-left: 50px!important;
+	margin-right: 50px!important; */
 
 }
 footer{
@@ -30,7 +30,10 @@ input[type=text]:focus{
 	width: 220px;
 }
 .borderryt{
-	border-right: 1px solid #bcbcbc!important;
+	border-right: 1px solid #BCBCBC!important;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	font-size: 14px;
 }
 .setm{
 	margin-right: 20px!important;
@@ -157,5 +160,28 @@ body{
 	height:auto;
 	width: 230px;
 }
+.autohight{
+	height: auto!important;
+}
+.brd{
+	border: 0!important;
+}
+.bck{
+	padding: 0!important;
+}
+}
 
+@media only screen and (min-width: 993px){
+.container {
+	width: 100%!important;     padding: 0 5%;
+}
+}	
+
+html, body{
+	height: 100%;
+}
+
+.collection-item{
+	height: auto;
+    padding: 7px 7px!important;
 }

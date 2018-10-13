@@ -4,10 +4,8 @@ var pending=null;
 var teamCreated = null;
 
 function showDashboard(){
-  $(".create_team_td").css("background-color", "#FFFFFF");
-  $(".create_team_data").css("color","#0D47A1");
-  $(".invites_td").css("background-color", "#FFFFFF");
-  $(".invites_data").css("color","#0D47A1");
+  btnreset()
+  
 
   //ADDING
     $(".dashboard_td").css("background-color", "#0D47A1");
@@ -25,10 +23,9 @@ function showDashboard(){
       console.log(xhr2.status);
       if(xhr2.status==400){
       console.log('Enter all details');
-    } else if(xhr2.status==404){
-      swal("Error","Try again.","error");
-    } else if(xhr2.status==500){
-      swal("Error","Try again.","error");
+    } else if(xhr2.status==404 || xhr2.status==500 || xhr2.status==401){
+      Cookies.set('token','')
+      window.location.reload()
     } else if(xhr2.status==200){
           var x=JSON.parse(xhr2.responseText)
           if(x.code=="TEAMCREATED"){
@@ -221,10 +218,8 @@ $(document).ready(function(){
         xhr.onreadystatechange = function() {//Call a function when the state changes.
             if(xhr.status == 200) {
                 token = xhr.getResponseHeader('Authorization');
-                $(".sam_signup").fadeOut('fast');
-                $(".raj_login").fadeOut('fast');
-                $(".3_sections_raj_satyam").fadeIn(2000);
-                showDashboard();
+                Cookies.set('token', token, { expires: 7 });
+                window.location.reload()
 
             }
             else if(xhr.status==404){
@@ -280,11 +275,8 @@ $(document).ready(function(){
         xhr.onreadystatechange = function(){
           if(xhr.status == 200) {
             token = xhr.getResponseHeader('Authorization');
-                $("#loginbtn").val('Login >');
-                $(".raj_login").fadeOut('fast');
-                $(".3_sections_raj_satyam").fadeIn('slow');
-                showDashboard();
                 Cookies.set('token', token, { expires: 7 });
+                window.location.reload()
               }
               
                else if(xhr.status==500){
@@ -330,11 +322,9 @@ $(document).ready(function(){
 
 
   $(".create_team").click(function(){
+    if(created||joined===true) return
     //REMOVAL
-      $(".dashboard_td").css("background-color", "#FFFFFF");
-      $(".dashboard_data").css("color","#0D47A1");
-      $(".invites_td").css("background-color", "#FFFFFF");
-      $(".invites_data").css("color","#0D47A1");
+      btnreset()
     //ADDING
       $(".create_team_td").css("background-color", "#0D47A1");
       $(".create_team_data").css("color","#FFFFFF");
@@ -407,10 +397,8 @@ $(document).ready(function(){
   });
 
   $(".invites").click(function(){
-    $(".dashboard_td").css("background-color", "#FFFFFF");
-    $(".dashboard_data").css("color","#0D47A1");
-    $(".create_team_td").css("background-color", "#FFFFFF");
-    $(".create_team_data").css("color","#0D47A1");
+    if(joined==true) return
+    btnreset()
 
     //ADDING
     $(".invites_td").css("background-color", "#0D47A1");
@@ -427,6 +415,7 @@ $(document).ready(function(){
     if(xhr2.status==500){
       swal("Error","Try again.","error");     return 0;
     } else if(xhr2.status==200){
+      if(xhr2.responseText==='') return
       x=JSON.parse(xhr2.responseText)
       console.log(x.result)
       avail=x.result;
@@ -437,7 +426,7 @@ $(document).ready(function(){
         }
       for (var i = 0; i <x.result.length; i++) {
            $(".appendable1").append(
-             '<li class="collection-item" style="padding-left: 4px; font-size: 14px;"><div><span style="max-width: 10px;">' + x.result[i].name + '</span><a onClick="sendInvite('+i+');return false;" class="secondary-content"><img class="send_icon" src="images/baseline-send-24px (1).svg" alt="Smiley face" align="right"></a></div></li>');
+             '<li class="collection-item" style="padding-left: 4px; font-size: 14px; color:#0D47A1"><div><span style="max-width: 10px;">' + x.result[i].name + '</span><a onClick="sendInvite('+i+');return false;" class="secondary-content"><i class="material-icons" style="cursor:pointer;font-size: 22px; color:#0D47A1">send</i></a></div></li>');
            };
       console.log("FILL AVAILABLE")
       }
@@ -454,6 +443,7 @@ $(document).ready(function(){
       swal("Error","Try again.","error");
     }
     else if(xhr.status==200){
+      if(xhr.responseText=='') return
       x=JSON.parse(xhr.responseText)
       console.log(x);
       if(x.code=="TEAMJOINED"){
@@ -471,22 +461,24 @@ $(document).ready(function(){
         console.log(x.sent)
             pending=x.pending;
             myNode=document.getElementsByClassName("appendable2")[0];
+            if(x.sent.length>0)
             while (myNode.firstChild) {
               myNode.removeChild(myNode.firstChild);
             }
             for(var i=0; i<x.sent.length; i++) {
 
                 $(".appendable2").append(
-                  '<li class="collection-item" style="padding-left: 4px; font-size: 14px;"><div>' + x.sent[i].name +'<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-remove_circle_outline-24px.svg" alt="Smiley face" align="middle"></a></div></li>'
+                  '<li class="collection-item" style="padding-left: 4px; font-size: 14px;"><div>' + x.sent[i].name +'<a href="#!" class="secondary-content"><i class="material-icons" style="cursor:pointer;font-size: 22px; color:#0D47A1">remove_circle_outline</i></a></div></li>'
                 );
               };
             myNode=document.getElementsByClassName("appendable3")[0];
+            if(x.pending.length>0)
             while (myNode.firstChild) {
               myNode.removeChild(myNode.firstChild);
             }
           for(var i=0; i<x.pending.length; i++) {
             $(".appendable3").append(
-              '<li class="collection-item" style="padding-bottom: none;"><div>' + x.pending[i].creater.name + '</div><div class="row"><div class="col s6 l6"><a href="#!"><span class="accept" onClick="acceptInvite('+i+');return false;">Accept</span></a></div><div class="col s6 l6"><a href="#!"><span onClick="rejectInvite('+i+');return false;" class="decline">Decline</span></a></div></div></li>');
+              '<li class="collection-item" style="padding-bottom: none;"><div>' + x.pending[i].creater.name + '</div><div class="row" style="margin: 0;"><div class="col s6 l6"><a href="#!"><span class="accept" onClick="acceptInvite('+i+');return false;">Accept&nbsp;&nbsp;<i style="vertical-align: bottom; font-size: 25px;"class="material-icons">check</i></span></a></div><div class="col s6 l6"><a href="#!"><span onClick="rejectInvite('+i+');return false;" class="decline">Decline</span></a></div></div></li>');
           };
         }
       }

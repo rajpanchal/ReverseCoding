@@ -43,15 +43,13 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
-    <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
   <link href="css/style.css" rel="stylesheet">
 		<script type="tex/javascript" src="js/main.js"></script>
   <body>
 
-
+<div class="container">
 <div class="sam_signup" style="display:none">
   <div class="row"  id="about11">
 		<div class="col l3 m3 s12" >
@@ -146,8 +144,8 @@
 
   <footer class="fclr ">
 
-              <div class="row borderryt fm sf">
-                <div class="col l2 m3 s12 " >
+              <div class="row  fm sf">
+                <div class="col borderryt l2 offset-l1 m3 s12 " >
                   <p class="textalignsmall">
                   	<span id="about" class="white-text" onclick="ab()">About</span><br><br>
                   	<span id="Inst" class="white-text" onclick="inn()">Instructions</span><br><br>
@@ -156,8 +154,8 @@
                   	<span id="faqs" class="white-text" onclick="fqwq()">FAQs</span>
                   </p>
                 </div>
-                <div class="col l4 m3" ></div>
-                <div class="col l3 m3 s12" ><center><a href="https://vit.acm.org/"><img src="images/C2C Theme and Logo-14 (5).png" class="vit1" ></a></center></div>
+                <div class="col l3 m3" ></div>
+                <div class="col l3 m3 s10" ><center><a href="https://vit.acm.org/"><img src="images/C2C Theme and Logo-14 (5).png" class="vit1" ></a></center></div>
                 <div class="col l3 m3 s12" ><center><a href="http://www.vit.ac.in/"><img src="images/vit white.png" class="vit2"></a></center></div>
 
               </div>
@@ -170,7 +168,7 @@
 <div class="raj_login" style="display:none;">
   <div class="section_logo row">
           <div class="image_rc"  >
-              <a href="index.html"> <img src="images/logo.png" alt="logo" width="28%" height="20%" class="rc_logo" style="margin-left:5px;"></a>
+              <a href="index.html"> <img src="images/logo.png" alt="logo" width="250px" height="aut0" class="rc_logo" style="margin-left:5px;"></a>
           </div>
   </div>
 
@@ -213,13 +211,13 @@
 
 
 <div class="3_sections_raj_satyam" style="display: none;">
-    <div class="container">
+    <div class="">
 
 
-<div class="section_logo">
+<div class="section_logo" style="padding-bottom: 40px;">
         <div class="image_rc"  >
-          <img src="images/logo.png" alt="logo" width="38%" height="28%" class="rc_logo">
-          <div class="logout" style="float: right; ">
+          <img src="images/logo.png" alt="logo" width="250px" height="auto" class="rc_logo">
+          <div class="logout" style="float: right; font-size: 10px;">
               <button type="button" name="button" class="logout_btn"><a href="index.html" style="color:#FFFFFF">LOGOUT</a></button>
           </div>
         </div>
@@ -227,181 +225,190 @@
 
 
         <div class="row">
-          <div class="col s12 m4 l3 table_menu hoverable" style="padding-top:10px; padding-bottom: 9px;">
+          <div class="col s12 m4 l3 table_menu" style="padding:0px;">
             <table>
-              <tr class="dashboard_td ">
-                <td class="dashboard "><button href="#" class="menu_font btn_focus card_hover "><span class="dashboard_data hover_me">DASHBOARD</span></button></td>
+              <tr class="dashboard_td" style="border-radius:0px">
+                <td class="dashboard "><button href="#" class="menu_font btn_focus "><span class="dashboard_data">DASHBOARD</span></button></td>
               </tr>
               <tbody>
                 <tr class="create_team_td ">
-                  <td  class="create_team "><button href="#" class="menu_font btn_focus card_hover"><span class="create_team_data hover_me">CREATE TEAM</span></button></td>
+                  <td  class="create_team "><button href="#" class="menu_font btn_focus"><span class="create_team_data">CREATE TEAM</span></button></td>
                 </tr>
-                <tr class="invites_td">
-                  <td class="invites "><button href="#" class="menu_font btn_focus card_hover"><span class="invites_data hover_me">INVITES</span></button></td>
+                <tr class="invites_td" style="border: 0">
+                  <td class="invites "><button href="#" class="menu_font btn_focus"><span class="invites_data">INVITES</span></button></td>
                </tr>
               </tbody>
             </table>
           </div>
 
+          <div class="col s12 m8 row l9 bck" style="height:200px;    padding: 0px 0px 0 40px;">
+            <div class="col s12 autohight" style="background: rgb(214,214,214,0.2);height: 75vh; overflow: auto; padding: 0px 30px;">
+            
+              <div class="main_s11" style="">
+                <div class="container" style="width:90%;">
+                  <p class="txt_in"><span class="bold_txt_in">TEAM NAME :</span> <span id="team_name_ajax"></span> </p>
+                  <p class="txt_in"><span class="bold_txt_in">TEAM MEMBERS :</span> <span id="team_members_ajax"></span>  </p>
+                </div>
+                  <!-- <div class="dash_card row" style=" margin: 0 auto;  margin-bottom: 12px;">
+                    <div class="col s3 m3 l3" style="color:#0D47A1; font-weight: bold;">
+                        <p>POSITION</p>
+                    </div>
+                    <div class="col s1 m1 l1"  style="float:right;">
+                        <p style="color:#0D47A1; font-weight: bold;">1</p>
+                    </div>
+                  </div>
+                  <div class="dash_card row" style=" margin: 0 auto; margin-bottom: 25px;">
+                    <div class="col s3 m3 l3" style="color:#0D47A1; font-weight: bold;">
+                        <p>POINTS</p>
+                    </div>
+                    <div class="col s1 m1 l1"  style="float:right;">
+                        <p style="color:#0D47A1; font-weight: bold;">1</p>
+                    </div>
+                  </div> -->
+              </div>
 
-          <div class="col s12 m9 l8 main_s1 main_s11" style="float:right; display:none">
-            <div class="container" style="width:90%;">
-              <p class="txt_in"><span class="bold_txt_in">TEAM NAME :</span> <span id="team_name_ajax"></span> </p>
-              <p class="txt_in"><span class="bold_txt_in">TEAM MEMBERS :</span> <span id="team_members_ajax"></span>  </p>
+
+              <div class="main_s2" style="display: none;">
+                  <div class="row">
+                    <div class="col s1 l3">
+                    </div>
+                    <div class="col s10 l6" style=" background-color: #FFFFFF; margin-top: 10%; min-height: 212px;" >
+                      <div id="inteam" class="inteam menu_font" style="display:none;text-align:center;margin-top: 25%;">You are already in a team</div>
+                      <div id="noteam" class="noteam">
+                      <div class="container">
+                        <p style="padding-bottom: none;" class="menu_font">Enter Team Name</p>
+                        <input type="text" class="team_name_new" name="team_name" style="border: 2px #0D47A1 solid; height: 37px; margin-bottom: 20px">
+                      </div>
+                      <div class="row exception2" >
+                        <div class="col l2" >
+                        </div>
+                        <div class="col l8" style="background-color: #0D47A1">
+                          <button type="button" id="submit_team" name="button" class="create_btn btn_focus waves-effect waves-light" style="width:100%; padding: 8px 10px;">Create Team ></button>
+                        </div>
+                        <div class="row">
+                          <div class="col l3">
+                          </div>
+                          <div class="col l6">
+                              <p id="app_here_ct"></p>
+                          </div>
+                          <div class="col l3">
+
+                          </div>
+                        </div>
+
+                        <div class="col l2">
+                        </div>
+                      </div>
+                      <div class="row exception1" style="margin-bottom: 0; display:none;">
+                        <div class="col l2">
+
+                        </div>
+                        <div class="col l8 s12">
+                          <p id="append_create_team_ajax">Hey</p>
+                          <p id="append_create_team_ajax2"></p>
+                        </div>
+                        <div class="col l2">
+
+                        </div>
+                    </div>
+                    <div class="col l3 s1">
+                    </div>
+                    </div>
+
+                    </div>
+                  </div>
+              </div>
+
+              <div class="invites1" style="display: none;">
+                <div class="row">
+                <div class="col s12 l4 brd" style="border-right: 1px solid rgb(214,214,214,0.2);">
+                  <p class="txt_in"><span class="bold_txt_in">SEND INVITES</span></p>
+                  <ul class="autohight collection appendable1" style="height: 410px; background:#D6D6D6; overflow: auto; overflow-x: hidden; border-radius: 0px" class="scrollbar_anime">
+
+                      <!-- <li class="collection-item">
+                        <div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-send-24px (1).svg" alt="Smiley face" align="middle"></a></div>
+                      </li>
+                      <li class="collection-item">
+                        <div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-send-24px (1).svg" alt="Smiley face" align="middle"></a></div>
+                      </li>
+                      <li class="collection-item">
+                        <div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-send-24px (1).svg" alt="Smiley face" align="middle"></a></div>
+                      </li>
+                      <li class="collection-item">
+                        <div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-send-24px (1).svg" alt="Smiley face" align="middle"></i></a></div>
+                      </li>
+                      <li class="collection-item">
+                        <div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-send-24px (1).svg" alt="Smiley face" align="middle"></a></div>
+                      </li>
+                      <li class="collection-item">
+                        <div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-send-24px (1).svg" alt="Smiley face" align="middle"></a></div>
+                      </li>
+                      <li class="collection-item">
+                        <div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-send-24px (1).svg" alt="Smiley face" align="middle"></a></div>
+                      </li> -->
+                  </ul>
+                </div>
+                <div class="col s12 l4" style="border-radius: 5px">
+                  <p class="txt_in"><span class="bold_txt_in">INVITES SENT</span></p>
+                  <ul class="autohight collection appendable2" style="height: 410px; background:#D6D6D6; overflow: auto; overflow-x: hidden; border-radius: 0px" class="scrollbar_anime">
+                    <div style="font-size:17px; color: #0D47A1; text-align:center;padding: 20px 0;">You have sent no invitation.  </div>
+                    <!-- <li class="collection-item">
+                        <div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-remove_circle_outline-24px.svg" alt="Smiley face" align="middle"></a></div>
+                      </li>
+                      <li class="collection-item">
+                        <div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-remove_circle_outline-24px.svg" alt="Smiley face" align="middle"></a></div>
+                      </li>
+                      <li class="collection-item">
+                        <div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-remove_circle_outline-24px.svg" alt="Smiley face" align="middle"></a></div>
+                      </li>
+                      <li class="collection-item">
+                        <div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-remove_circle_outline-24px.svg" alt="Smiley face" align="middle"></a></div>
+                      </li>
+                      <li class="collection-item">
+                        <div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-remove_circle_outline-24px.svg" alt="Smiley face" align="middle"></a></div>
+                      </li> -->
+                  </ul>
+                </div>
+
+                <div class="col s12 l4 brd" style="border-left: 1px solid rgb(214,214,214,0.2);">
+                  <p class="txt_in"><span class="bold_txt_in">INVITES RECEIVED</span></p>
+                  <ul class="autohight collection appendable3" style="height: 410px; background:#D6D6D6; overflow: auto; overflow-x: hidden; border-radius: 0px" class="scrollbar_anime">
+                    <div style="font-size:17px; color: #0D47A1; text-align:center;padding: 20px 0;">You got no invitation.</div>
+                    
+                      <!-- <li class="collection-item" style="padding-bottom: none;">
+                        <div>Alvin</div>
+                        <div class="row">
+                          <div class="col s6 l6">
+                            <a href="#!"><span class="accept">Accept</span></a>
+                          </div>
+                          <div class="col s6 l6">
+                            <a href="#!"><span class="decline">Decline</span></a>
+                          </div>
+                        </div>
+                      </li>
+
+                      <li class="collection-item" style="padding-bottom: none;">
+                        <div>Alvin</div>
+                        <div class="row">
+                          <div class="col s6 l6">
+                            <a href="#!"><span class="accept">Accept</span></a>
+                          </div>
+                          <div class="col s6 l6">
+                            <a href="#!"><span class="decline">Decline</span></a>
+                          </div>
+                        </div>
+                      </li> -->
+                  </ul>
+                </div>
             </div>
-              <!-- <div class="dash_card row" style=" margin: 0 auto;  margin-bottom: 12px;">
-                <div class="col s3 m3 l3" style="color:#0D47A1; font-weight: bold;">
-                    <p>POSITION</p>
-                </div>
-                <div class="col s1 m1 l1"  style="float:right;">
-                    <p style="color:#0D47A1; font-weight: bold;">1</p>
-                </div>
-              </div>
-              <div class="dash_card row" style=" margin: 0 auto; margin-bottom: 25px;">
-                <div class="col s3 m3 l3" style="color:#0D47A1; font-weight: bold;">
-                    <p>POINTS</p>
-                </div>
-                <div class="col s1 m1 l1"  style="float:right;">
-                    <p style="color:#0D47A1; font-weight: bold;">1</p>
-                </div>
-              </div> -->
+
+            </div>
           </div>
-
-
-          <div class="col s12 m9 l8 main_s2" style="float:right; display: none;">
-              <div class="row">
-                <div class="col s1 l3">
-                </div>
-                <div class="col s10 l6" style=" background-color: #FFFFFF; margin-top: 22%" >
-                  <div class="container">
-                  <p style="padding-bottom: none;" class="menu_font">Enter Team Name</p>
-                  <input type="text" class="team_name_new" name="team_name" style="border: 2px #0D47A1 solid; height: 37px; margin-bottom: 20px">
-                  </div>
-                  <div class="row exception2">
-                    <div class="col l2" >
-                    </div>
-                    <div class="col l8" style="background-color: #0D47A1">
-                      <button type="button" id="submit_team" name="button" class="create_btn btn_focus waves-effect waves-light" style="width:100%; padding: 8px 10px;">Create Team ></button>
-                    </div>
-                    <div class="row">
-                      <div class="col l3">
-
-                      </div>
-                      <div class="col l6">
-                          <p id="app_here_ct"></p>
-                      </div>
-                      <div class="col l3">
-
-                      </div>
-                    </div>
-
-                    <div class="col l2">
-                    </div>
-                  </div>
-                  <div class="row exception1" style="margin-bottom: 0; display:none;">
-                    <div class="col l2">
-
-                    </div>
-                    <div class="col l8 s12">
-                      <p id="append_create_team_ajax">Hey</p>
-                      <p id="append_create_team_ajax2"></p>
-                    </div>
-                    <div class="col l2">
-
-                    </div>
-                </div>
-                <div class="col l3 s1">
-                </div>
-
-                </div>
-              </div>
-          </div>
-
-          <div class="col s12 l8 main_s1 invites1" style="float:right; display: none;">
-	        	<div class="row">
-				    <div class="col s12 l4" >
-				    	<p class="txt_in"><span class="bold_txt_in">SEND INVITES</span></p>
-				    	<ul class="collection appendable1" style="height: 410px; background:#D6D6D6; overflow: scroll; overflow-x: hidden; border-radius: 10px" class="scrollbar_anime">
-
-					        <!-- <li class="collection-item">
-					        	<div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-send-24px (1).svg" alt="Smiley face" align="middle"></a></div>
-					        </li>
-					        <li class="collection-item">
-					        	<div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-send-24px (1).svg" alt="Smiley face" align="middle"></a></div>
-					        </li>
-					        <li class="collection-item">
-					        	<div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-send-24px (1).svg" alt="Smiley face" align="middle"></a></div>
-					        </li>
-					        <li class="collection-item">
-					        	<div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-send-24px (1).svg" alt="Smiley face" align="middle"></i></a></div>
-					        </li>
-					        <li class="collection-item">
-					        	<div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-send-24px (1).svg" alt="Smiley face" align="middle"></a></div>
-					        </li>
-					        <li class="collection-item">
-					        	<div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-send-24px (1).svg" alt="Smiley face" align="middle"></a></div>
-					        </li>
-					        <li class="collection-item">
-					        	<div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-send-24px (1).svg" alt="Smiley face" align="middle"></a></div>
-					        </li> -->
-					    </ul>
-				    </div>
-				    <div class="col s12 l4" style="border-radius: 5px">
-				    	<p class="txt_in"><span class="bold_txt_in">INVITES SENT</span></p>
-				    	<ul class="collection appendable2" style="height: 410px; background:#D6D6D6; overflow: scroll; overflow-x: hidden; border-radius: 10px" class="scrollbar_anime">
-					        <!-- <li class="collection-item">
-					        	<div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-remove_circle_outline-24px.svg" alt="Smiley face" align="middle"></a></div>
-					        </li>
-					        <li class="collection-item">
-					        	<div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-remove_circle_outline-24px.svg" alt="Smiley face" align="middle"></a></div>
-					        </li>
-					        <li class="collection-item">
-					        	<div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-remove_circle_outline-24px.svg" alt="Smiley face" align="middle"></a></div>
-					        </li>
-					        <li class="collection-item">
-					        	<div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-remove_circle_outline-24px.svg" alt="Smiley face" align="middle"></a></div>
-					        </li>
-					        <li class="collection-item">
-					        	<div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-remove_circle_outline-24px.svg" alt="Smiley face" align="middle"></a></div>
-					        </li> -->
-					    </ul>
-				    </div>
-
-				    <div class="col s12 l4" style="border-radius: 5px">
-				    	<p class="txt_in"><span class="bold_txt_in">INVITES RECEIVED</span></p>
-				    	<ul class="collection appendable3" style="height: 410px; background:#D6D6D6; overflow: scroll; overflow-x: hidden; border-radius: 10px" class="scrollbar_anime">
-
-                  <!-- <li class="collection-item" style="padding-bottom: none;">
-					        	<div>Alvin</div>
-					        	<div class="row">
-					        		<div class="col s6 l6">
-					        			<a href="#!"><span class="accept">Accept</span></a>
-					        		</div>
-					        		<div class="col s6 l6">
-					        			<a href="#!"><span class="decline">Decline</span></a>
-					        		</div>
-					        	</div>
-					        </li>
-
-					        <li class="collection-item" style="padding-bottom: none;">
-					        	<div>Alvin</div>
-					        	<div class="row">
-					        		<div class="col s6 l6">
-					        			<a href="#!"><span class="accept">Accept</span></a>
-					        		</div>
-					        		<div class="col s6 l6">
-					        			<a href="#!"><span class="decline">Decline</span></a>
-					        		</div>
-					        	</div>
-					        </li> -->
-					    </ul>
-				    </div>
-				</div>
-
-		    </div>
+        </div>
 
         </div>
     </div>
+</div>
 </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.0/js.cookie.js"></script>

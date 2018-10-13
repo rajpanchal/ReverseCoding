@@ -48,7 +48,7 @@ body{
   transition: font-size .5s ease;
 }
 .main_s1{
-   background-color: #707070;
+   /* background-color: #707070; */
    opacity: 1;
 }
 .txt_in{
@@ -70,7 +70,7 @@ body{
 }
 
 .main_s2{
-  background-color: #707070;
+  /* background-color: #707070; */
   height: 40%;
 }
 
