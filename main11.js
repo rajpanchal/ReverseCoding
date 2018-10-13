@@ -26,9 +26,9 @@ function showDashboard(){
       if(xhr2.status==400){
       console.log('Enter all details');
     } else if(xhr2.status==404){
-      console.log("TRY AGAIN");
+      swal("Error","Try again.","error");
     } else if(xhr2.status==500){
-      console.log('TRY AGAIN');
+      swal("Error","Try again.","error");
     } else if(xhr2.status==200){
           var x=JSON.parse(xhr2.responseText)
           if(x.code=="TEAMCREATED"){
@@ -64,16 +64,24 @@ function sendInvite(i){
   if(xhr2.status==400){
     console.log('FILL EMAIL');
   } else if(xhr2.status==500){
-    console.log("ERROR")
+    swal("Error","Try again.","error");
   }
   else if(xhr2.status==404){
-    console.log("CREATE TEAM")
+    swal({title:"Error",text:"Create a team first.",type:"error"}).then(function(){
+      $(".main_s2").css("display", "block");
+        $(".dashboard_td").css("background-color", "#FFFFFF");
+        $(".dashboard_data").css("color","#0D47A1");
+        $(".create_team_td").css("background-color", "#0D47A1")
+        $(".create_team_data").css("color","#FFFFFF");
+    
+    });
+
   }
   else if(xhr2.status==500){
-    console.log("ERROR")
+    swal("Error","Try again.","error");
   }
   else if(xhr2.status==200){
-    console.log("SENT")
+    swal("Success","Sent invite.","success");
 
       var x=JSON.parse(xhr2.responseText)
       myNode=document.getElementsByClassName("appendable2")[0];
@@ -102,10 +110,10 @@ function acceptInvite(i){
   if(xhr2.status==400){
     console.log('FILL EMAIL');
   } else if(xhr2.status==500){
-    console.log("ERROR")
+    swal("Error","Try again.","error");
   }
   else if(xhr2.status==404){
-    console.log("CREATE TEAM")
+    swal("Error","Try again.","error");
   }
   else if(xhr2.status==500){
     console.log("ERROR")
@@ -115,10 +123,12 @@ function acceptInvite(i){
       x=JSON.parse(xhr2.responseText)
 
     if(x.code=="TEAMJOINED"){
-      console.log("TEAM JOINED ALREADY")
+      swal("Error","You have already joined a team.","error");
+    } else if(x.code=="TEAMFILLEDORDELETED"){
+      swal("Error","Team filled or deleted.","error");
     } else if(x.code=="OK"){
       console.log("ACCEPTED");
-
+      showDashboard();
       //REDIRECT TO DASHBOARD AND CALL FOR TEAM AGAIN
     }
   }
@@ -138,10 +148,7 @@ function rejectInvite(i){
   if(xhr2.status==400){
     console.log('FILL TEAMNAME');
   } else if(xhr2.status==500){
-    console.log("ERROR")
-  }
-  else if(xhr2.status==500){
-    console.log("ERROR")
+    swal("Error","Try again.","error");
   }
   else if(xhr2.status==200){
     console.log("DENIED")
@@ -185,23 +192,23 @@ $(document).ready(function(){
 
     if(name=="" || email_id=="" || regno=="" || phone_num=="" || password=="" || confpass=="")
     {
-      alert("Please, fill all the details");
+      swal("Incomplete","Please fill all details.","error");
       return false;
     }
     if(!regg.test(email_id) &&  !regg2.test(email_id)) {
-      alert("Invalid Email");
+      swal("Error","Invalid email.","error");
       return false;
     }
     if((password !== confpass) || password.length <8){
-      alert("Password did not match");
+      swal("Error","Passwords donott match.","error");
       return false;
     }
     if(!phoneNoRegex.test(phone_num)){
-      alert("Phone number invalid");
+      swal("Error","Invalid phone number.","error");
       return false;
     }
     if(!regNoRegex.test(regno)){
-      alert("Registration Number Invalid");
+      swal("Error","Invalid registration number.","error");
       return false;
     }
 
@@ -216,35 +223,8 @@ $(document).ready(function(){
                 $(".sam_signup").css("display","none");
                 $(".raj_login").css("display","none");
                 $(".3_sections_raj_satyam").css("display","block");
-                xhr2=new XMLHttpRequest();
-                xhr2.open("POST",'https://shielded-plains-85651.herokuapp.com/dashboard',false);
-                xhr2.setRequestHeader('Content-type', 'application/json');
-                xhr2.setRequestHeader('Authorization', token);
-                xhr2.onreadystatechange = function(){
-                    if(xhr2.status==400){
-                    console.log('Enter all details');
-                  } else if(xhr2.status==404){
-                    console.log("TRY AGAIN");
-                  } else if(xhr2.status==500){
-                    console.log('TRY AGAIN');
-                  } else if(xhr2.status==200){
-                    $("#name_su").val('');
-                    $("#emailid_su").val('');
-                    $("#regno_su").val('');
-                    $("#phone_no_su").val('');
-                                    
-                    if(xhr2.responseText.code=="TEAMCREATED"){
-                      console.log("TEAM CREATED ONLY YOU ARE MMBER")
-                      console.log(xhr2.responseText.teamname, xhr2.responseText.name)
-                    } else if(xhr2.responseText.code=="NOTEAMS"){
-                      console.log("NO TEAM PRESENT")
-                    } else if(xhr2.status=="TEAMJOINED"){
-                      console.log("YOU ARE IN A TEAM OF 2");
-                      console.log(xhr2.responseText.team, xhr2.responseText.creator, xhr2.responseText.member)
-                    }
-                  }
-                }
-                xhr2.send();
+                showDashboard();
+                
             }
             else if(xhr.status==404){
               console.log('ENTER ALLDETAILS')
@@ -254,7 +234,7 @@ $(document).ready(function(){
               document.getElementById("userExists").innerHTML = "User already exists";
             }
             else if(xhr.status==500){
-              console.log("TRY AGAIN")
+              swal("Error","Try again.","error");
             }
         }
         xhr.send(JSON.stringify(obj));
@@ -282,11 +262,11 @@ $(document).ready(function(){
     var email_id = $("#email_si").val();
     var password = $("#password_si").val();
     if(password<8) {
-      alert("Password should be more than 7 characters");
+      swal("Error","Check your password.","error");
       return false;
     }
     if(!regg.test(email_id) &&  !regg2.test(email_id)){
-      alert("Please Enter valid email ID");
+      swal("Error","Check your email.","error");
       return false;
     }
     var obj = { "email": email_id, "password": password};
@@ -304,12 +284,12 @@ $(document).ready(function(){
                 showDashboard();  
               }
                else if(xhr.status==500){
-                console.log("ERROR");
+                swal("Error","Try again.","error");
               } else if(xhr.status==404){
-                alert('Incorrect combo')
+                swal("Error","Invalid credentials.","error");
                 console.log("INCORRECT COMBO");
               } else{
-                console.log("TRY AGAIN")
+                swal("Error","Try again.","error");
               }
             }
 
@@ -372,11 +352,11 @@ $(document).ready(function(){
               console.log(xhr2.responseText);
               console.log(xhr2.status)
             if(xhr2.status==400){
-              console.log('Enter all details');
+              swal("Error","Try again.","error");
             } else if(xhr2.status==404){
-              console.log("TRY AGAIN");
+              swal("Error","Try again.","error");
             } else if(xhr2.status==500){
-              console.log('TRY AGAIN');
+              swal("Error","Try again.","error");
             } else if(xhr2.status==200){
               x=JSON.parse(xhr2.responseText)
             if(x.code=="OK"){
@@ -441,8 +421,7 @@ $(document).ready(function(){
     xhr2.setRequestHeader('Authorization', token);
     xhr2.onreadystatechange = function(){
     if(xhr2.status==500){
-      console.log('TRY AGAIN');
-      return 0;
+      swal("Error","Try again.","error");     return 0;
     } else if(xhr2.status==200){
       x=JSON.parse(xhr2.responseText)
       console.log(x.result)
@@ -466,15 +445,21 @@ $(document).ready(function(){
     xhr.setRequestHeader('Authorization', token);
     xhr.onreadystatechange = function(){
     if(xhr.status==500){
-      console.log('TRY AGAIN');
+      swal("Error","Try again.","error");
     }else if(xhr.status==500){
-      console.log('TRY AGAIN');
+      swal("Error","Try again.","error");
     }
     else if(xhr.status==200){
       x=JSON.parse(xhr.responseText)
       console.log(x);
       if(x.code=="TEAMJOINED"){
-        console.log("TEAM JOINED CNT CHANGE")
+        swal({
+            title:"Error",
+            text:"Team joined. Cannot change now.",
+            type:"error"}).then(function(){
+              showDashboard()
+            });
+        
       }
       else{
         console.log("FILL LIST")
