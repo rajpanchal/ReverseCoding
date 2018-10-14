@@ -45,6 +45,7 @@ function showDashboard(){
             console.log(x)
             document.getElementById("team_name_ajax").innerHTML = x.team;
             $('.num').show()
+            $('.numno').hide()
             $('#crtEmail').html(x.creater.email)
             $('#crtName').html(x.creater.name)
             $('#memEmail').html(x.member.email)

@@ -12,12 +12,12 @@ body{
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: grey;
+    background: #0D47A1;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: #0D47A1;
 }
 .logout_btn{
   font-family: 'Poppins', sans-serif;
