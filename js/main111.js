@@ -205,8 +205,12 @@ $(document).ready(function(){
       swal("Error","Invalid email.","error");
       return false;
     }
-    if((password !== confpass) || password.length <8){
-      swal("Error","Passwords donott match.","error");
+    if(password.length <8){
+      swal("Error","Password must have atleast 8 characters","error");
+      return false;
+    }
+    if((password !== confpass)){
+      swal("Error","Passwords do not match.","error");
       return false;
     }
     if(!phoneNoRegex.test(phone_num)){
@@ -267,11 +271,11 @@ $(document).ready(function(){
     var email_id = $("#email_si").val();
     var password = $("#password_si").val();
     if(password<8) {
-      swal("Error","Check your password.","error");
+      swal("Error","Password must have atleast 8 characters.","error");
       return false;
     }
     if(!regg.test(email_id) &&  !regg2.test(email_id)){
-      swal("Error","Check your email.","error");
+      swal("Error","Enter a valid VIT mail ID","error");
       return false;
     }
     var obj = { "email": email_id, "password": password};
@@ -286,7 +290,6 @@ $(document).ready(function(){
                 Cookies.set('token', token, { expires: 7 });
                 window.location.reload()
               }
-              
                else if(xhr9.status==500){
                 swal("Error","Try again.","error");
               } else if(xhr9.status==404){

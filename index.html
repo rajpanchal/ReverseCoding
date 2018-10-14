@@ -194,10 +194,10 @@
 
       <div class="container">
       <p style="padding-bottom: none;" class="menu_font">Email ID</p>
-      <input type="email" name="email_id" style="border: 2px #0D47A1 solid; height: 37px; margin-bottom: 20px; padding-left: 5px" id="email_si">
-      <div style="color: #f18c8c; padding-bottom: 5px;" id="email_append_si"></div>
-      <p style="padding-bottom: none;" class="menu_font">Password</p>
-      <input type="password" name="password" style="border: 2px #0D47A1 solid; height: 37px; margin-bottom: 20px; padding-left: 5px" id="password_si">
+      <input type="email" placeholder="Enter your VIT mail ID" name="email_id" style="border: 2px #0D47A1 solid; height: 37px; margin-bottom: 20px; padding-left: 5px" id="email_si">
+      <!-- <div style="color: #f18c8c; padding-bottom: 5px;" id="email_append_si"></div> -->
+      <p style="margin-top: 0;" class="menu_font">Password</p>
+      <input type="password" placeholder="Enter your password" name="password" style="border: 2px #0D47A1 solid; height: 37px; margin-bottom: 20px; padding-left: 5px" id="password_si">
       <div style="color: #f18c8c; padding-bottom: 5px;" id="pass_append_si"></div>
 
       <!-- <p style="padding-bottom: none;" class="menu_font">Password</p>
@@ -260,7 +260,7 @@
               <div class="main_s11">
                 <div class="container" style="width:90%;">
                   <p class="txt_in"><span class="bold_txt_in">TEAM NAME :</span> <span id="team_name_ajax" style="margin-left: 20px;"></span> </p>
-                  <div class="txt_in numno" style="padding: 80px 110px; font-style: italic;">Send or Accept invitation to form a team.</div>
+                  <div class="txt_in numno" style="padding: 80px 10%; font-style: italic; text-align: center;">Send or Accept invitation to form a team.</div>
                   <div class="txt_in num" style="display:none"><span class="bold_txt_in">TEAM MEMBERS :</span>
                     <div style="display:block; margin-top: 20px;" class="row">
                       <div class="s1 col">1)</div> <div class="col s11 l5" id="crtName"></div>
@@ -347,9 +347,10 @@
                 <div class="col s12 l4 brd" style="border-right: 1px solid rgb(214,214,214,0.2);">
                   <p class="txt_in"><span class="bold_txt_in">SEND INVITES</span></p>
                     <div class="collapsible-header row" style="border-bottom: 2px solid #0D47A1;height:8vh;padding: 5px 3px; margin:0px ;font-size: 14px; color:#0D47A1">
-                      <input type="text" style=" border: 0; height: 5vh; text-align: center;" placeholder="Search for a member" onchange="search(this)">                         
+                      <input class="srch" type="text" style=" border: 0; height: 5vh; text-align: center;" placeholder="Search for a member" onchange="search(this)">                         
                     </div>
                     <ul class="autohight collapsible appendable1" style="margin-top: 0;height: 54vh;     margin: 0;background:#D6D6D6; overflow: auto; overflow-x: hidden; border-radius: 0px" class="scrollbar_anime">
+                        <div style="font-size:17px; color: #0D47A1; text-align:center;padding: 20px 0;">Loading...</div>
                     </ul>
                 </div>
                 <div class="col s12 l4" style="border-radius: 5px">
