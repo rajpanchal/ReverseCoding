@@ -231,7 +231,7 @@
         <div class="image_rc"  >
           <img src="images/logo.png" alt="logo" width="250px" height="auto" class="rc_logo">
           <div class="logout" style="float: right; font-size: 10px;">
-              <button type="button" name="button" class="logout_btn"><a href="index.html" style="color:#FFFFFF">LOGOUT</a></button>
+              <button type="button" name="button" class="logout_btn" style=" cursor: pointer;"><a href="index.html" style="color:#FFFFFF;">LOGOUT</a></button>
           </div>
         </div>
 </div>
@@ -241,14 +241,14 @@
           <div class="col s12 m4 l3 table_menu" style="padding:0px;">
             
             <div>
-              <div class="dashboard_td" style="border-radius:0px;padding: 15px 10px; ">
-                <div class="dashboard "><button href="#" class="menu_font btn_focus "><span class="dashboard_data">DASHBOARD</span></button></div>
+              <div class="dashboard_td" style="border-radius:0px;padding: 15px 10px;cursor: pointer;">
+                <div class="dashboard "><button href="#" class="menu_font btn_focus " style="cursor: pointer;"><span class="dashboard_data">DASHBOARD</span></button></div>
               </div>
-                <div class="create_team_td" style="padding: 15px 10px;border-bottom: 1px solid rgba(214, 214, 214);border-top: 1px solid rgba(214, 214, 214, 0.2);;">
-                  <div  class="create_team "><button href="#" class="menu_font btn_focus"><span class="create_team_data">CREATE TEAM</span></button></div>
+                <div class="create_team_td" style="padding: 15px 10px;border-bottom: 1px solid rgba(214, 214, 214);border-top: 1px solid rgba(214, 214, 214);cursor: pointer;">
+                  <div  class="create_team "><button href="#" class="menu_font btn_focus" style="cursor: pointer;"><span class="create_team_data">CREATE TEAM</span></button></div>
                 </div>
-                <div class="invites_td" style="border: 0;padding: 15px 10px;">
-                  <div class="invites "><button href="#" class="menu_font btn_focus"><span class="invites_data">INVITES</span></button></div>
+                <div class="invites_td" style="border: 0;padding: 15px 10px;cursor: pointer;">
+                  <div class="invites "><button href="#" class="menu_font btn_focus" style="cursor: pointer;"><span class="invites_data">INVITES</span></button></div>
                 </div>
             </div>
           </div>
@@ -258,8 +258,17 @@
             
               <div class="main_s11">
                 <div class="container" style="width:90%;">
-                  <p class="txt_in"><span class="bold_txt_in">TEAM NAME :</span> <span id="team_name_ajax"></span> </p>
-                  <p class="txt_in"><span class="bold_txt_in">TEAM MEMBERS :</span> <span id="team_members_ajax"></span>  </p>
+                  <p class="txt_in"><span class="bold_txt_in">TEAM NAME :</span> <span id="team_name_ajax" style="margin-left: 20px;"></span> </p>
+                  <div class="txt_in"><span class="bold_txt_in">TEAM MEMBERS :</span>
+                    <div style="display:block; margin-top: 20px;" class="row">
+                      <div class="col s12 l5 offset-l1" id="crtName"></div>
+                      <div class="col s12 l6" id="crtEmail" style="text-align: right;"></div>
+                    </div>
+                    <div style="display:block; margin-top: 20px;" class="row">
+                      <div class="col s12 l5 offset-l1" id="memName"></div>
+                      <div class="col s12 l6" id="memEmail" style="text-align: right;"></div>
+                    </div>
+                  </div>
                 </div>
                   <!-- <div class="dash_card row" style=" margin: 0 auto;  margin-bottom: 12px;">
                     <div class="col s3 m3 l3" style="color:#0D47A1; font-weight: bold;">
@@ -335,29 +344,10 @@
                 <div class="row">
                 <div class="col s12 l4 brd" style="border-right: 1px solid rgb(214,214,214,0.2);">
                   <p class="txt_in"><span class="bold_txt_in">SEND INVITES</span></p>
-                  <ul class="autohight collection appendable1" style="height: 62vh; background:#D6D6D6; overflow: auto; overflow-x: hidden; border-radius: 0px" class="scrollbar_anime">
-
-                      <!-- <li class="collection-item">
-                        <div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-send-24px (1).svg" alt="Smiley face" align="middle"></a></div>
-                      </li>
-                      <li class="collection-item">
-                        <div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-send-24px (1).svg" alt="Smiley face" align="middle"></a></div>
-                      </li>
-                      <li class="collection-item">
-                        <div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-send-24px (1).svg" alt="Smiley face" align="middle"></a></div>
-                      </li>
-                      <li class="collection-item">
-                        <div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-send-24px (1).svg" alt="Smiley face" align="middle"></i></a></div>
-                      </li>
-                      <li class="collection-item">
-                        <div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-send-24px (1).svg" alt="Smiley face" align="middle"></a></div>
-                      </li>
-                      <li class="collection-item">
-                        <div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-send-24px (1).svg" alt="Smiley face" align="middle"></a></div>
-                      </li>
-                      <li class="collection-item">
-                        <div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-send-24px (1).svg" alt="Smiley face" align="middle"></a></div>
-                      </li> -->
+                    <div class="collapsible-header row" style="padding: 5px 3px; margin:0px ;font-size: 14px; color:#0D47A1">
+                      <input type="text" style="height: 30px;" placeholder="Search for a member" onchange="search(this)">                         
+                    </div>
+                  <ul class="autohight collapsible appendable1" style="margin-top: 0;height: 62vh; background:#D6D6D6; overflow: auto; overflow-x: hidden; border-radius: 0px" class="scrollbar_anime">
                   </ul>
                 </div>
                 <div class="col s12 l4" style="border-radius: 5px">

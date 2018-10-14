@@ -31,7 +31,8 @@ function showDashboard(){
           if(x.code=="TEAMCREATED"){
             console.log(x)
             document.getElementById("team_name_ajax").innerHTML = x.teamname;
-            document.getElementById("team_members_ajax").innerHTML = x.name;
+            $('#crtName').html('You are the only member')
+            // document.getElementById("team_members_ajax").innerHTML = x.name;
             // $(".team_name_ajax").val(x.teamname);
             // $(".team_members_ajax").val(x.name);
             console.log(x.teamname);
@@ -41,8 +42,12 @@ function showDashboard(){
             document.getElementById("team_name_ajax").innerHTML = "NOT IN ANY TEAM";
             console.log("NO TEAM PRESENT");
           } else if(x.code=="TEAMJOINED"){
+            console.log(x)
             document.getElementById("team_name_ajax").innerHTML = x.team;
-            document.getElementById("team_members_ajax").innerHTML = x.creator.name + ", " + x.member.name;
+            $('#crtEmail').html(x.creater.email)
+            $('#crtName').html(x.creater.name)
+            $('#memEmail').html(x.member.email)
+            $('#memName').html(x.member.name)
             console.log("YOU ARE IN A TEAM OF 2");
             console.log(x)
           }
@@ -438,10 +443,8 @@ $(document).ready(function(){
       while (myNode.firstChild) {
         myNode.removeChild(myNode.firstChild);
         }
-      for (var i = 0; i <x.result.length; i++) {
-           $(".appendable1").append(
-             '<li class="collection-item" style="padding-left: 4px; font-size: 14px; color:#0D47A1"><div><span style="max-width: 10px;">' + x.result[i].name + '</span><a onClick="sendInvite('+i+');return false;" class="secondary-content"><i class="material-icons" style="cursor:pointer;font-size: 22px; color:#0D47A1">send</i></a></div></li>');
-           };
+      fillavbl(x.result)
+      
       console.log("FILL AVAILABLE")
       }
     }
