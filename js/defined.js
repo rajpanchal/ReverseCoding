@@ -8,23 +8,15 @@ $(window).on('load', function () {
             headers:{'Authorization':token}
         }).done(function(e){
             console.log(e)
+            
+            if(e.code==="TEAMJOINED") window.joined=true
+            if(e.code==="TEAMCREATED") window.created=true
             $("#loader").fadeOut('fast');
             $("#content").fadeIn('fast');
             $(".sam_signup").fadeOut('fast');
             $(".raj_login").fadeOut('fast');
             $(".3_sections_raj_satyam").fadeIn(1000);
             showDashboard();
-            if(e.code==="TEAMJOINED"){
-                $('.create_team_data').css({color:'#bdbdbd '})
-                $('.invites_data').css({color:'#bdbdbd '})
-                window.joined=true
-                console.log(1)
-            }
-            if(e.code==="TEAMCREATED"){
-                $('.create_team_data').css({color:'#bdbdbd '})
-                window.created=true
-            }
-            
         })
     }
     else{
@@ -47,6 +39,10 @@ function btnreset(){
 
     $(".invites_td").css("background-color", "#FFFFFF");
     $(".invites_data").css("color",(joined)?"#bdbdbd":"#0D47A1");
+    
+    $('.create_team_td').css('cursor',(created||joined)?'not-allowed':'pointer')
+    $('.invites_td').css('cursor',(joined)?'not-allowed':'pointer')
+    console.log(created||joined)
 }
 
 function fillavbl(a){
@@ -55,12 +51,12 @@ function fillavbl(a){
         $(".appendable1").append(
             `<li>
             <div class="collapsible-header row" style="padding: 5px 3px; margin:0px ;font-size: 14px; color:#0D47A1">
-                <span class="col s10" style="text:align:left;"> ${a[i].name}</span>
-                <a class="col s2" style='text-align:right' onClick="sendInvite(${i});return false;" class="secondary-content">
+                <span class="col s10 l9" style="text-align:left;"> ${a[i].name}</span>
+                <a class="col s2 l3 tooltipped" data-position="bottom" data-tooltip="Send Invitation" style='text-align:right' onClick="sendInvite(${i});return false;" class="secondary-content">
                     <i class="material-icons" style="cursor:pointer;font-size: 22px; color:#0D47A1">send</i>
                 </a>
             </div>
-            <div class="collapsible-body" style='padding:4%!important; padding-top:4%;padding-bottom:4%;text-align:center;'>
+            <div class="collapsible-body" style='padding:0;text-align:center;'>
                 <div class="row" style="margin:0; padding:0;">
                     <div class="col s12">${a[i].email}</div>
                 </div>
@@ -68,6 +64,7 @@ function fillavbl(a){
           </li>`);
         };
         $('.collapsible').collapsible();
+        $('.tooltipped').tooltip();
 }
 
 function search(e){

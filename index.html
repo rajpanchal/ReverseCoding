@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
   <!-- Compiled and minified CSS -->
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css" />
   <script>
 
     </script>
@@ -43,7 +43,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
 
   <link href="css/style.css" rel="stylesheet">
 		<script type="tex/javascript" src="js/main.js"></script>
@@ -156,6 +156,7 @@
 	</div>
 
   <footer class="fclr ">
+    
 
               <div class="row  fm sf">
                 <div class="col borderryt l2 offset-l1 m3 s12 " >
@@ -242,31 +243,31 @@
             
             <div>
               <div class="dashboard_td" style="border-radius:0px;padding: 15px 10px;cursor: pointer;">
-                <div class="dashboard "><button href="#" class="menu_font btn_focus " style="cursor: pointer;"><span class="dashboard_data">DASHBOARD</span></button></div>
+                <div class="dashboard "><div href="#" class="menu_font btn_focus "><span class="dashboard_data">DASHBOARD</span></div></div>
               </div>
                 <div class="create_team_td" style="padding: 15px 10px;border-bottom: 1px solid rgba(214, 214, 214);border-top: 1px solid rgba(214, 214, 214);cursor: pointer;">
-                  <div  class="create_team "><button href="#" class="menu_font btn_focus" style="cursor: pointer;"><span class="create_team_data">CREATE TEAM</span></button></div>
+                  <div  class="create_team "><div href="#" class="menu_font btn_focus" ><span class="create_team_data">CREATE TEAM</span></div></div>
                 </div>
                 <div class="invites_td" style="border: 0;padding: 15px 10px;cursor: pointer;">
-                  <div class="invites "><button href="#" class="menu_font btn_focus" style="cursor: pointer;"><span class="invites_data">INVITES</span></button></div>
+                  <div class="invites "><div href="#" class="menu_font btn_focus"><span class="invites_data">INVITES</span></div></div>
                 </div>
             </div>
           </div>
 
           <div class="col s12 m8 row l9 bck" style="height:200px;    padding: 0px 0px 0 40px;">
-            <div class="col s12 autohight" style="background: rgb(214,214,214,0.2);height: 75vh; overflow: auto; padding: 0px 30px;">
+            <div class="col s12 autohight" style="position:relative; background: rgb(214,214,214,0.2);height: 75vh; overflow: auto; padding: 0px 30px;">
             
               <div class="main_s11">
                 <div class="container" style="width:90%;">
                   <p class="txt_in"><span class="bold_txt_in">TEAM NAME :</span> <span id="team_name_ajax" style="margin-left: 20px;"></span> </p>
-                  <div class="txt_in"><span class="bold_txt_in">TEAM MEMBERS :</span>
+                  <div class="txt_in num" style="display:none"><span class="bold_txt_in">TEAM MEMBERS :</span>
                     <div style="display:block; margin-top: 20px;" class="row">
-                      <div class="col s12 l5 offset-l1" id="crtName"></div>
-                      <div class="col s12 l6" id="crtEmail" style="text-align: right;"></div>
+                      <div class="s1 col">1)</div> <div class="col s11 l5" id="crtName"></div>
+                      <div class="col s12 l6" id="crtEmail" style="text-align: right;font-style: italic;"></div>
                     </div>
                     <div style="display:block; margin-top: 20px;" class="row">
-                      <div class="col s12 l5 offset-l1" id="memName"></div>
-                      <div class="col s12 l6" id="memEmail" style="text-align: right;"></div>
+                      <div class="s1 col">2)</div> <div class="col s11 l5" id="memName"></div>
+                      <div class="col s12 l6" id="memEmail" style="text-align: right;font-style: italic;"></div>
                     </div>
                   </div>
                 </div>
@@ -293,20 +294,20 @@
                   <div class="row">
                     <div class="col s1 l3">
                     </div>
-                    <div class="col s10 l6" style=" background-color: #FFFFFF; margin-top: 10%; min-height: 212px;" >
+                    <div class="col s10 l6 selectteam" style=" background-color: #FFFFFF; margin-top: 0; padding: 5%" >
                       <div id="inteam" class="inteam menu_font" style="display:none;text-align:center;margin-top: 25%;">You are already in a team</div>
                       <div id="noteam" class="noteam">
                       <div class="container">
                         <p style="padding-bottom: none;" class="menu_font">Enter Team Name</p>
                         <input type="text" class="team_name_new" name="team_name" style="border: 2px #0D47A1 solid; height: 37px; margin-bottom: 20px">
                       </div>
-                      <div class="row exception2" >
+                      <div class="row exception2" style="margin:0" >
                         <div class="col l2" >
                         </div>
                         <div class="col l8" style="background-color: #0D47A1">
                           <button type="button" id="submit_team" name="button" class="create_btn btn_focus waves-effect waves-light" style="width:100%; padding: 8px 10px;">Create Team ></button>
                         </div>
-                        <div class="row">
+                        <div class="row" style="margin:0">
                           <div class="col l3">
                           </div>
                           <div class="col l6">
@@ -344,15 +345,15 @@
                 <div class="row">
                 <div class="col s12 l4 brd" style="border-right: 1px solid rgb(214,214,214,0.2);">
                   <p class="txt_in"><span class="bold_txt_in">SEND INVITES</span></p>
-                    <div class="collapsible-header row" style="padding: 5px 3px; margin:0px ;font-size: 14px; color:#0D47A1">
-                      <input type="text" style="height: 30px;" placeholder="Search for a member" onchange="search(this)">                         
+                    <div class="collapsible-header row" style="height:8vh;padding: 5px 3px; margin:0px ;font-size: 14px; color:#0D47A1">
+                      <input type="text" style="height: 5vh; text-align: center;" placeholder="Search for a member" onchange="search(this)">                         
                     </div>
-                  <ul class="autohight collapsible appendable1" style="margin-top: 0;height: 62vh; background:#D6D6D6; overflow: auto; overflow-x: hidden; border-radius: 0px" class="scrollbar_anime">
-                  </ul>
+                    <ul class="autohight collapsible appendable1" style="margin-top: 0;height: 54vh;     margin: 0;background:#D6D6D6; overflow: auto; overflow-x: hidden; border-radius: 0px" class="scrollbar_anime">
+                    </ul>
                 </div>
                 <div class="col s12 l4" style="border-radius: 5px">
                   <p class="txt_in"><span class="bold_txt_in">INVITES SENT</span></p>
-                  <ul class="autohight collection appendable2" style="height: 62vh; background:#D6D6D6; overflow: auto; overflow-x: hidden; border-radius: 0px" class="scrollbar_anime">
+                  <ul class="autohight collection appendable2" style="height: 62vh;     margin: 0; background:#D6D6D6; overflow: auto; overflow-x: hidden; border-radius: 0px" class="scrollbar_anime">
                     <div style="font-size:17px; color: #0D47A1; text-align:center;padding: 20px 0;">You have sent no invitation.  </div>
                     <!-- <li class="collection-item">
                         <div>Alvin<a href="#!" class="secondary-content"><img class="send_icon" src="images/baseline-remove_circle_outline-24px.svg" alt="Smiley face" align="middle"></a></div>
@@ -374,7 +375,7 @@
 
                 <div class="col s12 l4 brd" style="border-left: 1px solid rgb(214,214,214,0.2);">
                   <p class="txt_in"><span class="bold_txt_in">INVITES RECEIVED</span></p>
-                  <ul class="autohight collection appendable3" style="height: 62vh; background:#D6D6D6; overflow: auto; overflow-x: hidden; border-radius: 0px" class="scrollbar_anime">
+                  <ul class="autohight collection appendable3" style="height: 62vh;    margin: 0; background:#D6D6D6; overflow: auto; overflow-x: hidden; border-radius: 0px" class="scrollbar_anime">
                     <div style="font-size:17px; color: #0D47A1; text-align:center;padding: 20px 0;">You got no invitation.</div>
                     
                       <!-- <li class="collection-item" style="padding-bottom: none;">

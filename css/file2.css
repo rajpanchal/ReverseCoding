@@ -188,6 +188,15 @@ html, body{
 	height: auto;
     padding: 7px 7px!important;
 }
-.collapsible-body{
+/* .collapsible-body{
 	padding: 4%!important;
+} */
+@media only screen and (min-width: 993px){
+	.selectteam{
+		position: absolute!important;
+		top: 50%!important;
+		left: 50%!important;
+		margin-top: -115px!important;
+		margin-left: -175px!important;
+	}
 }
