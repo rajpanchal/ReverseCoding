@@ -8,7 +8,9 @@ $(window).on('load', function () {
             headers:{'Authorization':token}
         }).done(function(e){
             console.log(e)
-            
+            $('.signup_').hide()
+            $('.login_sam_btn').hide()
+            $('.logout_btn').show()
             if(e.code==="TEAMJOINED") window.joined=true
             if(e.code==="TEAMCREATED") window.created=true
             $("#loader").fadeOut('fast');
@@ -20,6 +22,9 @@ $(window).on('load', function () {
         })
     }
     else{
+        $('.signup_').show()
+        $('.login_sam_btn').show()
+        $('.logout_btn').hide()
         $("#loader").fadeOut('fast');
         $(".3_sections_raj_satyam").fadeOut('fast');
         $(".raj_login").fadeOut('fast');
@@ -78,4 +83,25 @@ function search(e){
         if(reg.test(elem.name) || reg.test(elem.email)) data.push(elem)
     });
     fillavbl(data)
+}
+
+function hideSignin(){
+    $(".txtin").addClass('fadeOutUp')
+    $(".fadeInUp").addClass('fadeOutDown')
+    $(".fadeInRightBig").addClass('fadeOutRightBig')
+    $(".fadeInLeftBig").addClass('fadeOutLeftBig')
+    $(".sam_signup").fadeOut('fast');
+}
+
+function showSignin(){
+    $('.raj_login').addClass('zoomOut')
+    $('.raj_login ').fadeOut(500,function(){
+        $(".fadeOutUp").removeClass('fadeOutUp')
+        $(".fadeOutDown").removeClass('fadeOutDown')
+        $(".fadeOutRightBig").removeClass('fadeOutRightBig')
+        $(".fadeOutLeftBig").removeClass('fadeOutLeftBig')
+        $('.sam_signup').show()
+        $('.raj_login').removeClass('zoomOut')
+    })
+    
 }

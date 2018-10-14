@@ -19,51 +19,46 @@
       <meta name="twitter:site" content="@acmvit">
       <meta name="twitter:title" content="ACM VIT Student's chapter">
       <meta name="twitter:description" content="We are ACM International's official student chapter in VIT-Vellore promoting new and upcoming computing concepts within the student community.">
-  </head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/file2.css">
-  <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css" />
-  <script>
-
-    </script>
-    <script type="text/javascript">
-    	function ab(){
-    		$('html, body').animate({
-                    scrollTop: $("#about11").offset().top
-                }, 1000);
-    	}
-    	function rl(){
-    		$('html, body').animate({
-                    scrollTop: $("#rule11").offset().top
-                }, 1000);
-    	}
-    	function sg(){
-    		$('html, body').animate({
-                    scrollTop: $("#sign11").offset().top
-                }, 1000);
-    	}
-    	function fqwq(){
-    		$('html, body').animate({
-                    scrollTop: $("#fwq11").offset().top
-                }, 1000);
-    	}
-    	function inn(){
-    		$('html, body').animate({
-                    scrollTop: $("#inst11").offset().top
-                }, 1000);
-    	}
-    </script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
-
-  <link href="css/style.css" rel="stylesheet">
-		<script type="tex/javascript" src="js/main.js"></script>
-  <body>
-    <div id="loader">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="css/file2.css">
+      <link rel="stylesheet" href="css/style.css">
+      <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css" />
+      <script type="text/javascript">
+        function ab(){
+          $('html, body').animate({
+                      scrollTop: $("#about11").offset().top
+                  }, 1000);
+        }
+        function rl(){
+          $('html, body').animate({
+                      scrollTop: $("#rule11").offset().top
+                  }, 1000);
+        }
+        function sg(){
+          $('html, body').animate({
+                      scrollTop: $("#sign11").offset().top
+                  }, 1000);
+        }
+        function fqwq(){
+          $('html, body').animate({
+                      scrollTop: $("#fwq11").offset().top
+                  }, 1000);
+        }
+        function inn(){
+          $('html, body').animate({
+                      scrollTop: $("#inst11").offset().top
+                  }, 1000);
+        }
+      </script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
+    </head>
+    <body>
+      <div id="loader">
         <div class="preloader-wrapper big active" style="height: 200px; width: 200px;height: 200px; width: 200px; position: absolute; top: 50%; left: 50%; margin-top: -100px; margin-left: -100px;">
             <div class="spinner-layer spinner-blue-only">
               <div class="circle-clipper left">
@@ -78,25 +73,27 @@
     </div>
 
 <div id="content" class="container" style="display:none">
-<div class="sam_signup" style="display:none">
   <div class="row"  id="about11">
-		<div class="col l3 m3 s12" >
+		<div class="col l3 m3 s12 animated fadeInDown" >
 			<img src="images/logo.png" align="left" height="100px" id="logo">
 		</div>
 		<div class="col l6 m6 s0"></div>
-		<div class="col l3 m3 s12 signup" >
-			<span class="white-text setm" ><a href="index.html" style="color:#FFFFFF; font-family: 'Poppins', sans-serif !important;">SIGN UP</a></span>
+		<div class="col l3 m3 s12 signup  animated fadeInDown" >
+			<span class="white-text setm" ><a href="#" onclick="showSignin()" style="color:#FFFFFF; font-family: 'Poppins', sans-serif !important;" class="signup_">SIGN UP</a></span>
 			<span class="white-text"><a href="#" style="color:#FFFFFF; font-family: 'Poppins', sans-serif !important;" class="login_sam_btn">LOGIN</a></span>
-		</div>
+			<span class="white-text logout_btn"><a href="#" style="color:#FFFFFF; font-family: 'Poppins', sans-serif !important;" class="logout_btn">LOGOUT</a></span>
+      
+    </div>
 	</div>
-	<div class="row">
+<div class="sam_signup" style="display:none">
+    <div class="row">
 		<div class="col l12 s12 m12">
-		<h4 class="white-text" class="sp_font" style="font-family: 'Poppins', sans-serif !important;">ABOUT</h4>
-		<P class="white-text" style="text-align:justify;">It is dual round mind-puzzling competition where math is intertwined with coding. The event makes one to have a reverse approach while solving any problem. The participants will be provided executable files that they can run and fetch the input-output test cases and hence come up with a code that would lead to those test cases. In short, a four step procedure, execute, fetch, decode and code. The first round is an online round that starts on 18th of October at 11AM and ends at 11PM same day. The second round is scheduled to be on 20th October at 11 AM which will be conducted offline. Reverse Coding is all about math, logic and fun! To be a part of it, register and form your team.</P>
+		<h4 class="white-text animated txtin fadeInDown" class="sp_font" style="font-family: 'Poppins', sans-serif !important;">ABOUT</h4>
+		<P class="white-text animated  fadeInUp" style="text-align:justify;">It is dual round mind-puzzling competition where math is intertwined with coding. The event makes one to have a reverse approach while solving any problem. The participants will be provided executable files that they can run and fetch the input-output test cases and hence come up with a code that would lead to those test cases. In short, a four step procedure, execute, fetch, decode and code. The first round is an online round that starts on 18th of October at 11AM and ends at 11PM same day. The second round is scheduled to be on 20th October at 11 AM which will be conducted offline. Reverse Coding is all about math, logic and fun! To be a part of it, register and form your team.</P>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col l6 m6 s12">
+		<div class="col l6 m6 s12 animated fadeInLeftBig">
 			<h4 class="white-text" id="inst11" style="font-family: 'Poppins', sans-serif !important;">INSTRUCTIONS</h4>
 			<p class="white-text">
 				Step 1: Register<br><br>
@@ -110,7 +107,7 @@
 				A participant cannot leave a team once joined.
 			</p>
 		</div>
-		<div class="col l6 m6 s12">
+		<div class="col l6 m6 s12 animated fadeInRightBig">
 			<h4 class="white-text" id="sign11"  style="font-family: 'Poppins', sans-serif !important;">SIGN UP</h4>
 			<div class="row signupmain">
 
@@ -138,8 +135,8 @@
 			</div>
 		</div>
 	</div>
-	<h4 class="white-text" style="font-family: 'Poppins', sans-serif !important;">OUR SPONSORS</h4>
-	<div class="row">
+	<h4 class="white-text animated fadeInLeft" style="font-family: 'Poppins', sans-serif !important;">OUR SPONSORS</h4>
+	<div class="row animated fadeInRight">
 		<div class="col l12 m12 s12">
 		<div class="card">
 			<div class="card-panel white">
@@ -151,8 +148,8 @@
 	</div>
 	<div class="row">
 		<div class="col l12 m12 s12">
-			<h3 class="white-text" id="fwq11" style="font-family: 'Poppins', sans-serif !important;">FAQs</h3>
-      <ul class="collapsible">
+			<h3 class="white-text animated fadeInLeft" id="fwq11" style="font-family: 'Poppins', sans-serif !important;">FAQs</h3>
+      <ul class="collapsible animated fadeInRight">
         <li>
           <div class="collapsible-header tt"><i class="material-icons">filter_drama</i>First</div>
           <div class="collapsible-body cclr white-text"><span>Lorem ipsum dolor sit amet.</span></div>
@@ -194,12 +191,12 @@
 </div>
 
 
-<div class="raj_login" style="display:none;">
-  <div class="section_logo row">
+<div class="raj_login animated zoomIn" style="display:none;">
+  <!-- <div class="section_logo row">
           <div class="image_rc"  >
               <a href="index.html"> <img src="images/logo.png" alt="logo" width="250px" height="aut0" class="rc_logo" style="margin-left:5px;"></a>
           </div>
-  </div>
+  </div> -->
 
   <div class="row">
     <div class="col l4 s1">
@@ -243,18 +240,18 @@
     <div class="">
 
 
-<div class="section_logo" style="padding-bottom: 40px;">
+<!-- <div class="section_logo" style="padding-bottom: 40px;">
         <div class="image_rc"  >
           <img src="images/logo.png" alt="logo" width="250px" height="auto" class="rc_logo">
-          <div class="logout" style="float: right; font-size: 10px;">
+          <div class="logout">
               <button type="button" name="button" class="logout_btn" style=" cursor: pointer;"><a href="index.html" style="color:#FFFFFF;">LOGOUT</a></button>
           </div>
         </div>
-</div>
+</div> -->
 
 
         <div class="row">
-          <div class="col s12 m4 l3 table_menu" style="padding:0px;">
+          <div class="col s12 m4 l3 table_menu animated fadeInLeft" style="padding:0px;">
             
             <div>
               <div class="dashboard_td" style="border-radius:0px;padding: 15px 10px;cursor: pointer;">
@@ -270,7 +267,7 @@
           </div>
 
           <div class="col s12 m8 row l9 bck" style="height:200px;    padding: 0px 0px 0 40px;">
-            <div class="col s12 autohight" style="position:relative; background: rgb(214,214,214,0.2);height: 75vh; overflow: auto; padding: 0px 30px;">
+            <div class="col s12 autohight animated fadeInRight" style="position:relative; background: rgb(214,214,214,0.2);height: 75vh; overflow: auto; padding: 0px 30px;">
             
               <div class="main_s11">
                 <div class="container" style="width:90%;">

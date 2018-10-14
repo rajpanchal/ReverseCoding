@@ -5,6 +5,7 @@ body{
   background-image: url("../images/background.svg");
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
 }
 ::-webkit-scrollbar {
     width: 6px;
@@ -19,7 +20,7 @@ body{
 ::-webkit-scrollbar-thumb:hover {
     background: #0D47A1;
 }
-.logout_btn{
+/* .logout_btn{
   font-family: 'Poppins', sans-serif;
   background: none;
   color: white;
@@ -28,7 +29,7 @@ body{
   font-size: 2em;
   margin-top:50%;
   margin-bottom: 12px;
-}
+} */
 .dash_card{
   background-color: #FFFFFF;
   width: 90%;
@@ -86,9 +87,9 @@ body{
     border: none;
     font-size: 1.1em;
 }
-.logout_btn:focus{
+/* .logout_btn:focus{
     background-color: #333333;
-}
+} */
 .btn_focus:focus{
   background-color: transparent;
 }
@@ -111,11 +112,11 @@ td:hover{
     width: 100%;
   }
 
-.logout_btn{
+/* .logout_btn{
   font-size: 1.2em;
   margin-top: 3px;
   margin-bottom: 40px;
-}
+} */
 
 .table_menu{
   margin-bottom: 30px;

@@ -182,7 +182,7 @@ const regg2 = /[a-zA-Z]+\.+201[5678]@vitstudent.ac.in$/;
 $(document).ready(function(){
   //SWITCH TO LOGIN
   $(".login_sam_btn").click(function(){
-    $(".sam_signup").fadeOut('fast');
+    hideSignin()
     $(".raj_login").fadeIn('slow');
   });
 
@@ -249,11 +249,15 @@ $(document).ready(function(){
     }
   });
   $(".logout_btn").click(function(){
+    $('.signup_').show()
+    $('.login_sam_btn').show()
+    $('.logout_btn').hide()
     $(".3_sections_raj_satyam").fadeOut('fast');
     $(".raj_login").fadeOut('fast');
     $(".sam_signup").fadeIn('slow');
     window.token=null;
     Cookies.set('token', '');
+
   });
 
     $(".create_btn").click(function(){
