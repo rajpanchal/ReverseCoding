@@ -208,3 +208,7 @@ html, body{
 	border: 0!important;
 	box-shadow: 0!important;
 }
+.swal-button{
+	background-color: #0d47a1!important;
+	border-radius: 1px;
+}

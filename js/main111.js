@@ -223,16 +223,17 @@ $(document).ready(function(){
     }
 
     if(name!="" && (regg.test(email_id)==true || regg2.test(email_id)==true) && regNoRegex.test(regno)==true && phoneNoRegex.test(phone_num) && password.length>7 && password==confpass){
+      $('#userExists').html('Registering...');
       var obj = { "name": name, "email": email_id, "regno": regno, "phone": phone_num, "password": password};
       var xhr8=new XMLHttpRequest();
         xhr8.open('POST','https://shielded-plains-85651.herokuapp.com/signup', false);
         xhr8.setRequestHeader('Content-type', 'application/json');
         xhr8.onreadystatechange = function() {//Call a function when the state changes.
+            $('#userExists').html('');
             if(xhr8.status == 200) {
                 token = xhr8.getResponseHeader('Authorization');
                 Cookies.set('token', token, { expires: 7 });
                 window.location.reload()
-
             }
             else if(xhr8.status==404){
               console.log('ENTER ALLDETAILS')
@@ -284,11 +285,12 @@ $(document).ready(function(){
     }
     var obj = { "email": email_id, "password": password};
     if(password.length>7 && (regg.test(email_id)==true || regg2.test(email_id)==true)){
-        $("#loginbtn").val('Logging in..');
+        $(".status").html('Logging in..')
         var xhr9=new XMLHttpRequest();
         xhr9.open('POST','https://shielded-plains-85651.herokuapp.com/login', false);
         xhr9.setRequestHeader('Content-type', 'application/json');
         xhr9.onreadystatechange = function(){
+          $(".status").html('')
           if(xhr9.status == 200) {
             token = xhr9.getResponseHeader('Authorization');
                 Cookies.set('token', token, { expires: 7 });
