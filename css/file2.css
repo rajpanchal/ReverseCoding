@@ -6,6 +6,7 @@ body{
 	background-color: #333333;
 	/* margin-left: 50px!important;
 	margin-right: 50px!important; */
+	overflow-x: hidden;
 }
 footer{
 	margin-right: 0px!important;
