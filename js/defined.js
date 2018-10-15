@@ -61,7 +61,7 @@ function fillavbl(a){
                     <i class="material-icons" style="cursor:pointer;font-size: 22px; color:#0D47A1">send</i>
                 </a>
             </div>
-            <div class="collapsible-body" style='padding:0;text-align:center;'>
+            <div class="collapsible-body req" style='padding:0;text-align:center;'>
                 <div class="row" style="margin:0; padding:0;">
                     <div class="col s12">${a[i].email}</div>
                 </div>
