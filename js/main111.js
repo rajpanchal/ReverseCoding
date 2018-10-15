@@ -202,7 +202,7 @@ $(document).ready(function(){
       return false;
     }
     if(!regg.test(email_id) &&  !regg2.test(email_id)) {
-      swal("Error","Invalid email.","error");
+      swal("Error","Enter a valid VIT mail ID","error");
       return false;
     }
     if(password.length <8){
@@ -284,7 +284,6 @@ $(document).ready(function(){
       swal("Error","Enter a valid VIT mail ID","error");
       return false;
     }
-    alert()
     var obj = { "email": email_id, "password": password};
     if(password.length>7 && (regg.test(email_id)==true || regg2.test(email_id)==true)){
         var xhr9=new XMLHttpRequest();
