@@ -176,7 +176,7 @@ function rejectInvite(i){
 //REGEX
 const regNoRegex=new RegExp('^1[0-9]{1}[A-Z]{3}[0-9]{4}$');
 const phoneNoRegex=new RegExp('^[1-9]{1}[0-9]{9}$');
-const regg = /[a-zA-Z]+\.[a-zA-Z]+201[5678]@vitstudent.ac.in$/;
+const regg = /[a-zA-Z]+\.[a-zA-Z]+201[5678][a-zA-Z]?@vitstudent.ac.in$/;
 const regg2 = /[a-zA-Z]+\.+201[5678]@vitstudent.ac.in$/;
 
 $(document).ready(function(){
@@ -273,24 +273,25 @@ $(document).ready(function(){
 
 
   $(".main_login").click(function(){
+    console.log($('#loginbtn').html('Logging in...'))
     var email_id = $("#email_si").val();
     var password = $("#password_si").val();
     if(password<8) {
       swal("Error","Password must have atleast 8 characters.","error");
       return false;
     }
-    if(!regg.test(email_id) &&  !regg2.test(email_id)){
+    else if(!regg.test(email_id) &&  !regg2.test(email_id)){
       swal("Error","Enter a valid VIT mail ID","error");
       return false;
     }
+    alert()
     var obj = { "email": email_id, "password": password};
     if(password.length>7 && (regg.test(email_id)==true || regg2.test(email_id)==true)){
-        $(".status").html('Logging in..')
         var xhr9=new XMLHttpRequest();
         xhr9.open('POST','https://shielded-plains-85651.herokuapp.com/login', false);
         xhr9.setRequestHeader('Content-type', 'application/json');
         xhr9.onreadystatechange = function(){
-          $(".status").html('')
+        $('#loginbtn').html('Login >')
           if(xhr9.status == 200) {
             token = xhr9.getResponseHeader('Authorization');
                 Cookies.set('token', token, { expires: 7 });
