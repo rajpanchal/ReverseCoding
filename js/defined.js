@@ -57,7 +57,7 @@ function fillavbl(a){
             `<li>
             <div class="collapsible-header row" style="padding: 5px 3px; margin:0px ;font-size: 14px; color:#0D47A1">
                 <span class="col s10 l9" style="text-align:left;"> ${a[i].name}</span>
-                <a class="col s2 l3 tooltipped" data-position="bottom" data-tooltip="Send Invitation" style='text-align:right' onClick="sendInvite(${i});return false;" class="secondary-content">
+                <a class="col s2 l3 tooltipped" data-position="bottom" data-tooltip="Send Invitation" style='text-align:right' onClick="sendInvite('${a[i].email}');return false;" class="secondary-content">
                     <i class="material-icons" style="cursor:pointer;font-size: 22px; color:#0D47A1">send</i>
                 </a>
             </div>
