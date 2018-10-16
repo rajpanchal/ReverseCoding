@@ -1,5 +1,10 @@
 window.joined=false; window.created=false; window.rnd1=false
+var leaderBoard=[];
 $(window).on('load', function () {
+    // var socket=io.connect('URL');
+    // socket.on('event',function(data){
+    //     leaderBoard=data;
+    // })
     window.token=Cookies.get('token')
     if(window.token) {
         $.ajax({
@@ -149,7 +154,10 @@ function showrn1(){
         btnreset()
         $(".rnd1_td").css("background-color", "#0D47A1");
         $(".rnd1_data").css("color","#FFFFFF");
-    })
+    });
+    //    FETCH
+    showQues([{quesname:'Ive become so numb'},{quesname:'I can feel you there',link:'/a.doc'},{quesname:'Ive become so tough'}]);
+    
 }
 
 function showld(){
@@ -159,7 +167,9 @@ function showld(){
         btnreset()
         $(".ld_td").css("background-color", "#0D47A1");
         $(".ld_data").css("color","#FFFFFF");
-    })
+    });
+    showTeams(leaderBoard);
+    showTeams([{team:"Arsenal",score:4},{team:"Barcelona",score:5},{team:"Man U",score:6}]);
 }
 
 function ld1run(){
