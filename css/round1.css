@@ -1,3 +1,24 @@
 .rnd1body{
     margin: 0;
+    background-color: #0D47A1;
+}
+.rndb{
+    border: 3px solid #0D47A1!important;
+    border-radius: 0px!important;
+    color: #0D47A1!important;
+    font-weight: 700;
+}
+.rndb:not(.btn){
+    line-height: 50px!important;
+}
+.rndb:not(.btn-large){
+    line-height: 30px!important;
+}
+.pd0{
+    padding: 0!important;
+    margin: 0;
+}
+.rnd1quesno, .rnd1ques{
+    color: #0D47A1!important;
+    font-weight: 700;
 }
