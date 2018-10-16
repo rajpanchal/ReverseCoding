@@ -9,11 +9,9 @@ function showDashboard(){
     $(".dashboard_td").css("background-color", "#0D47A1");
     $(".dashboard_data").css("color","#FFFFFF");
   
-    $(".invites1").fadeOut('fast', function(){
-      $(".main_s2").fadeOut('fast', function(){
-        $(".main_s11").fadeIn('slow');
-      });
-    });
+    hideall(function(){
+      $(".main_s11").fadeIn('slow');
+    })
     console.log(token)
     xhr2d=new XMLHttpRequest();
     xhr2d.open("POST",'https://shielded-plains-85651.herokuapp.com/dashboard',false);

@@ -1,4 +1,4 @@
-window.joined=false; window.created=false
+window.joined=false; window.created=false; window.rnd1=false
 $(window).on('load', function () {
     window.token=Cookies.get('token')
     if(window.token) {
@@ -39,6 +39,12 @@ function btnreset(){
     $(".dashboard_td").css("background-color", "#FFFFFF");
     $(".dashboard_data").css("color","#0D47A1");
 
+    $(".ld_td").css("background-color", "#FFFFFF");
+    $(".ld_data").css("color","#0D47A1");
+
+    $(".rnd1_td").css("background-color", "#FFFFFF");
+    $(".rnd1_data").css("color","#0D47A1");
+
     $(".create_team_td").css("background-color", "#FFFFFF");
     $(".create_team_data").css("color",(created||joined)?"#bdbdbd":"#0D47A1");
 
@@ -47,8 +53,24 @@ function btnreset(){
     
     $('.create_team_td').css('cursor',(created||joined)?'not-allowed':'pointer')
     $('.invites_td').css('cursor',(joined)?'not-allowed':'pointer')
+
+    if(rnd1){
+        $(".create_team_td").hide();
+        $(".invites_td").hide();
+        $(".rnd1_td").show();
+        $(".ld_td").show();
+    }
+    else{
+        $(".create_team_td").show();
+        $(".invites_td").show();
+        $(".rnd1_td").hide();
+        $(".ld_td").hide();
+    }
+
     console.log(created||joined)
 }
+
+
 
 function fillavbl(a){
     $(".appendable1").html('')
@@ -104,4 +126,43 @@ function showSignin(){
         $('.raj_login').removeClass('zoomOut')
     })
     
+}
+
+function hideall(callback){
+    $(".main_s11").fadeOut('fast', function(){
+        $(".main_s2").fadeOut('fast', function(){
+            $(".invites1").fadeOut('fast', function(){
+                $(".main_s4").fadeOut('fast', function(){
+                    $(".ldboard").fadeOut('fast', function(){
+                        callback()
+                    });
+                });
+            });
+        });
+    });
+}
+
+function showrn1(){
+    if($('.main_s4').css('display')!=="none") return
+    hideall(function(){
+        $(".main_s4").fadeIn('slow');
+        btnreset()
+        $(".rnd1_td").css("background-color", "#0D47A1");
+        $(".rnd1_data").css("color","#FFFFFF");
+    })
+}
+
+function showld(){
+    if($('.ldboard').css('display')!=="none") return
+    hideall(function(){
+        $(".ldboard").fadeIn('slow');
+        btnreset()
+        $(".ld_td").css("background-color", "#0D47A1");
+        $(".ld_data").css("color","#FFFFFF");
+    })
+}
+
+function ld1run(){
+    rnd1=true;
+    showDashboard()
 }

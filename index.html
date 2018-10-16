@@ -280,13 +280,19 @@
                 <div class="invites_td" style="border: 0;padding: 15px 10px;cursor: pointer;">
                   <div class="invites "><div href="#" class="menu_font btn_focus"><span class="invites_data">INVITES</span></div></div>
                 </div>
+                <div class="rnd1_td" style="border: 0;padding: 15px 10px;cursor: pointer;" onclick="showrn1()">
+                  <div class="rnd1 "><div href="#" class="menu_font btn_focus"><span class="rnd1_data">Round 1</span></div></div>
+                </div>
+                <div class="ld_td" style="border: 0;padding: 15px 10px;cursor: pointer;" onclick="showld()">
+                  <div class="ld "><div href="#" class="menu_font btn_focus"><span class="ld_data">Leaderboard</span></div></div>
+                </div>
             </div>
           </div>
 
           <div class="col s12 m8 row l9 bck" style="height:200px;    padding: 0px 0px 0 40px;">
             <div class="col s12 autohight animated fadeInRight" style="position:relative; background: rgb(214,214,214,0.2);height: 75vh; overflow: auto; padding: 0px 30px;">
             
-              <div class="main_s11 hide" style="display:none">
+              <div class="main_s11" style="display:none">
                 <div class="container" style="width:90%;">
                   <p class="txt_in"><span class="bold_txt_in">TEAM NAME :</span> <span id="team_name_ajax" style="margin-left: 20px;"></span> </p>
                   <div class="txt_in numno" style="padding: 80px 10%; font-style: italic; text-align: center;">Send or Accept invitation to form a team.</div>
@@ -438,7 +444,7 @@
 
             </div>
 
-            <section class="main_s4" style=" display: none" >
+            <section class="main_s4" style="display:none"> 
               <ul class="collapsible">
                 <li>
                   <div class="collapsible-header">
@@ -465,9 +471,35 @@
                       </div>
                   </div>
                 </li>
+
+                <li>
+                  <div class="collapsible-header">
+                    <div class="col l11 s10 rnd1ques">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                    <div class="col l1 s2 rnd1quesno">Q2</div>
+                  </div>
+                  <div class="collapsible-body rnd1body">
+                    <div class="row" style="margin:0;">
+                      <div class="col s12 l4">
+                        <a class="col s8 l10 white z-depth-0 rndb btn-large offset-s2 waves-effect waves-light">
+                          <span class="col pd0 s8 l10">Download</span>
+                          <i class="material-icons pd0 col s3 l2">file_download</i>
+                        </a>
+                        <a class="col s4 l5 white z-depth-0 rndb offset-s2 waves-effect waves-light btn">EXE</a>
+                        <a class="col s4 l5 white z-depth-0 rndb waves-effect waves-light btn">JAR</a>
+                      </div>
+                      <div class="col s12 l4 offset-l4">
+                        <a class="col s8 l10 white offset-l2 z-depth-0 rndb btn-large offset-s2 waves-effect waves-light">
+                          <span class="col pd0 s8 l10">Submit</span>
+                          <i class="material-icons pd0 col s3 l2">file_upload</i>
+                        </a>
+                      </div>
+                      
+                      </div>
+                  </div>
+                </li>
               </ul>
           </section>
-          <section class="ldboard">
+          <section class="ldboard" style="display:none"> 
 
               <div class="row ld_hd">
                 <div class="col s2" style="text-align:left">Position</div>
