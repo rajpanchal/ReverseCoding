@@ -58,8 +58,9 @@ function showDashboard(){
     xhr2d.send();
 }
 
-function sendInvite(i){
-  var sendtoemail=avail[i].email;
+function sendInvite(email){
+  console.log(email)
+  var sendtoemail=email;
   var xhr2s=new XMLHttpRequest();
   xhr2s.open('POST','https://shielded-plains-85651.herokuapp.com/sendinvite',true);
   xhr2s.setRequestHeader('Content-type', 'application/json');
