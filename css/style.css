@@ -99,9 +99,9 @@ body{
 .not_good:hover{
   background-color: lightblue;
 }
-td:hover{
+/* td:hover{
   font-size: 16px;
-}
+} */
 
 @media only screen and (max-width: 600px) {
   body{

@@ -22,3 +22,19 @@
     color: #0D47A1!important;
     font-weight: 700;
 }
+.ld_tr{
+    background-color: white;
+}
+.ld_coll{
+    text-align:center;
+    color: #0D47A1!important;
+    font-weight: 700;
+    background-color: #D6D6D6;
+    height: 57vh;
+}
+.ld_hd{
+    padding-top: 7vh;
+    font-weight: 700;
+    font-size: 20px;
+    color: white;
+}
