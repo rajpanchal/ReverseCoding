@@ -176,8 +176,10 @@ function rejectInvite(i){
 //REGEX
 const regNoRegex=new RegExp('^1[0-9]{1}[A-Z]{3}[0-9]{4}$');
 const phoneNoRegex=new RegExp('^[1-9]{1}[0-9]{9}$');
-const regg = /$[a-zA-Z]+\.[a-zA-Z]*201[5678][a-zA-Z]?@vitstudent.ac.in$/;
-const regg2 = /$[a-zA-Z]+\.[a-zA-Z]*201[5678][a-zA-Z]?@vit.ac.in$/;
+const regg = /[a-zA-Z]+\.[a-zA-Z]+201[5678][a-zA-Z]?@vitstudent.ac.in$/;
+const regg2 = /[a-zA-Z]+\.+201[5678]@vit.ac.in$/;
+// const regg = /$[a-zA-Z]+\.[a-zA-Z]*201[5678][a-zA-Z]?@vitstudent.ac.in$/;
+// const regg2 = /$[a-zA-Z]+\.[a-zA-Z]*201[5678][a-zA-Z]?@vit.ac.in$/;
 // const regg = /[a-zA-Z]+\.+201[5678]@vitstudent.ac.in$/;
 
 $(document).ready(function(){
