@@ -156,8 +156,18 @@ function showrn1(){
         $(".rnd1_data").css("color","#FFFFFF");
     });
     //    FETCH
-    showQues([{quesname:'Ive become so numb'},{quesname:'I can feel you there',link:'/a.doc'},{quesname:'Ive become so tough'}]);
-    
+    var xhr=new XMLHttpRequest();
+        xhr.open("GET","http://localhost:3000/question/get",true);
+        xhr.onreadystatechange=function(){
+            if(xhr.status==200){
+                console.log(xhr.responseText.questions)
+                showQues(xhr.responseText.questions)
+            } else{
+                console.log(xhr.responseText);
+                swal("Error","Try again.","error");
+            }
+        }
+        xhr.send();
 }
 
 function showld(){
@@ -168,8 +178,38 @@ function showld(){
         $(".ld_td").css("background-color", "#0D47A1");
         $(".ld_data").css("color","#FFFFFF");
     });
-    showTeams(leaderBoard);
-    showTeams([{team:"Arsenal",score:4},{team:"Barcelona",score:5},{team:"Man U",score:6}]);
+    var num=1;
+    var xhr=new XMLHttpRequest();
+        xhr.open("GET","http://localhost:3000/team/leaderboard/page="+num.toString(),true);
+        xhr.onreadystatechange=function(){
+            if(xhr.status==200){
+                showTotalPages(xhr.responseText.totalPages)
+                showTeams(xhr.responseText.data)
+            } else{
+                swal("Error","Try again.","error");
+            }
+        }
+        xhr.send();
+    
+}
+
+//SHOW TOTAL PAGES
+function showTotalPages(num){
+
+}
+
+//CHANGE LD BASED ON PAGE NUM
+function changeld(num){
+    var xhr=new XMLHttpRequest();
+        xhr.open("GET","http://localhost:3000/team/leaderboard/page="+num.toString(),true);
+        xhr.onreadystatechange=function(){
+            if(xhr.status==200){
+                showTeams(xhr.responseText.data)
+            } else{
+                swal("Error","Try again.","error");
+            }
+        }
+        xhr.send();
 }
 
 function ld1run(){
