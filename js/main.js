@@ -35,7 +35,9 @@ function showTeams(result){
 }
 function showQues(result){
     $(".collapsible").html('');
+    console.log("QUESTIONS")
     console.log(result);
+                
     result.sort(compare2);
     for (var i = 0; i<result.length; i++) {
         $(".collapsible").append(
@@ -82,6 +84,8 @@ function submitQues(num){
         var xhr=new XMLHttpRequest();
         
         xhr.open("POST","http://localhost:3000/attempt/submit",true);
+        
+        xhr.setRequestHeader('Authorization',token);
         var formData = new FormData(uploadForm);
         xhr.onreadystatechange=function(){
             if(xhr.status==200){

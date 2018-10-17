@@ -166,12 +166,14 @@ function showrn1(){
     //    FETCH
     var xhr=new XMLHttpRequest();
         xhr.open("GET","http://localhost:3000/question/get",true);
+        
+        xhr.setRequestHeader('Authorization',token);
         xhr.onreadystatechange=function(){
-            if(xhr.status==200){
-                console.log(xhr.responseText.questions)
-                showQues(xhr.responseText.questions)
-            } else{
-                console.log(xhr.responseText);
+            console.log(this);
+            if(this.readyState==4 && this.status==200){
+                x=JSON.parse(xhr.responseText)
+                showQues(x.questions)
+            } else if(this.readyState==4 && (this.status==500 || this.status==406)){
                 swal("Error","Try again.","error");
             }
         }
@@ -189,13 +191,14 @@ function showld(){
     var num=1;
     var xhr=new XMLHttpRequest();
         xhr.open("GET","http://localhost:3000/team/leaderboard?page="+num.toString(),true);
+        
+        xhr.setRequestHeader('Authorization',token);
         xhr.onreadystatechange=function(){
-            if(xhr.status==200){
-                console.log(xhr.responseText)
+            if(this.readyState==4 && this.status==200){
                 x=JSON.parse(xhr.responseText)
                 showTotalPages(x.totalPages)
                 showTeams(x.data)
-            } else{
+            } else if(this.readyState==4 && this.status==500){
                 swal("Error","Try again.","error");
             }
         }
@@ -207,6 +210,7 @@ function showld(){
 function showTotalPages(num){
     console.log(num);
     var select=document.getElementById('ld').appendChild(document.createElement('select'));
+
     for (var i = 1; i <= num; i++) {
         var option = document.createElement("option");
         option.value = i;
@@ -219,14 +223,18 @@ function showTotalPages(num){
 function changeld(num){
     var xhr=new XMLHttpRequest();
         xhr.open("GET","http://localhost:3000/team/leaderboard?page="+num.toString(),true);
+        
+        xhr.setRequestHeader('Authorization',token);
         xhr.onreadystatechange=function(){
-            if(xhr.status==200){
-                x=JSON.parse(xhr.responseText);
-                showTeams(x.data)
-            } else{
-                swal("Error","Try again.","error");
-            }
-        }
+                    if(this.readyState==4 && this.status==200){
+                        x=JSON.parse(xhr.responseText)
+                        showTeams(x.data)
+                    } else if(this.readyState==4 && this.status==500){
+                        swal("Error","Try again.","error");
+                    }
+                }
+            
+        
         xhr.send();
 }
 
