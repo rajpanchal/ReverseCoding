@@ -5,6 +5,7 @@ $(window).on('load', function () {
     // socket.on('event',function(data){
     //     leaderBoard=data;
     // })
+    $('select').formSelect();
     window.token=Cookies.get('token')
     if(window.token) {
         $.ajax({
@@ -39,10 +40,12 @@ $(window).on('load', function () {
 
     
 
-    $('select').on('change', function (e) {
-        var optionSelected = $("option:selected", this);
-        var valueSelected = this.value;
-        changeld(value);
+    $('#ld_pgno').on('change', function (e) {
+        // console.log(e)
+        // var optionSelected = $("option:selected", this);
+        // var valueSelected = this.value;
+        // changeld(value);
+        changeld($('#ld_pgno').val());
     });
 
 
