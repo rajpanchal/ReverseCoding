@@ -38,6 +38,14 @@ $(window).on('load', function () {
     }
 
     
+
+    $('select').on('change', function (e) {
+        var optionSelected = $("option:selected", this);
+        var valueSelected = this.value;
+        changeld(value);
+    });
+
+
 }) 
 
 function btnreset(){
@@ -180,11 +188,13 @@ function showld(){
     });
     var num=1;
     var xhr=new XMLHttpRequest();
-        xhr.open("GET","http://localhost:3000/team/leaderboard/page="+num.toString(),true);
+        xhr.open("GET","http://localhost:3000/team/leaderboard?page="+num.toString(),true);
         xhr.onreadystatechange=function(){
             if(xhr.status==200){
-                showTotalPages(xhr.responseText.totalPages)
-                showTeams(xhr.responseText.data)
+                console.log(xhr.responseText)
+                x=JSON.parse(xhr.responseText)
+                showTotalPages(x.totalPages)
+                showTeams(x.data)
             } else{
                 swal("Error","Try again.","error");
             }
@@ -195,16 +205,24 @@ function showld(){
 
 //SHOW TOTAL PAGES
 function showTotalPages(num){
-
+    console.log(num);
+    var select=document.getElementById('ld').appendChild(document.createElement('select'));
+    for (var i = 1; i <= num; i++) {
+        var option = document.createElement("option");
+        option.value = i;
+        option.text = i;
+        select.appendChild(option);
+    }
 }
 
 //CHANGE LD BASED ON PAGE NUM
 function changeld(num){
     var xhr=new XMLHttpRequest();
-        xhr.open("GET","http://localhost:3000/team/leaderboard/page="+num.toString(),true);
+        xhr.open("GET","http://localhost:3000/team/leaderboard?page="+num.toString(),true);
         xhr.onreadystatechange=function(){
             if(xhr.status==200){
-                showTeams(xhr.responseText.data)
+                x=JSON.parse(xhr.responseText);
+                showTeams(x.data)
             } else{
                 swal("Error","Try again.","error");
             }
