@@ -168,7 +168,7 @@ function showrn1(){
     });
     //    FETCH
     var xhr=new XMLHttpRequest();
-        xhr.open("GET","http://localhost:3000/question/get",true);
+        xhr.open("GET","https://rcpcapi.acmvit.in/question/get",true);
         
         xhr.setRequestHeader('Authorization',token);
         xhr.onreadystatechange=function(){
@@ -193,7 +193,7 @@ function showld(){
     });
     var num=1;
     var xhr=new XMLHttpRequest();
-        xhr.open("GET","http://localhost:3000/team/leaderboard?page="+num.toString(),true);
+        xhr.open("GET","https://rcpcapi.acmvit.in/team/leaderboard?page="+num.toString(),true);
         
         xhr.setRequestHeader('Authorization',token);
         xhr.onreadystatechange=function(){
@@ -226,7 +226,7 @@ function showTotalPages(num){
 //CHANGE LD BASED ON PAGE NUM
 function changeld(num){
     var xhr=new XMLHttpRequest();
-        xhr.open("GET","http://localhost:3000/team/leaderboard?page="+num.toString(),true);
+        xhr.open("GET","https://rcpcapi.acmvit.in/team/leaderboard?page="+num.toString(),true);
         
         xhr.setRequestHeader('Authorization',token);
         xhr.onreadystatechange=function(){

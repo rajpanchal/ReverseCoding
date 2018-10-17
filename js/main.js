@@ -90,7 +90,7 @@ function submitQues(num){
         fileInput3.value=lang;
         var xhr=new XMLHttpRequest();
         
-        xhr.open("POST","http://localhost:3000/attempt/submit",true);
+        xhr.open("POST","https://rcpcapi.acmvit.in/attempt/submit",true);
         
         xhr.setRequestHeader('Authorization',token);
         var formData = new FormData(uploadForm);
