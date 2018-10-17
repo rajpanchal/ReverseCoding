@@ -33,7 +33,7 @@
     height: 50vh;
 }
 .ld_hd{
-    padding-top: 7vh;
+    padding-top: 6vh;
     font-weight: 700;
     font-size: 20px;
     color: white;
@@ -63,4 +63,7 @@
 }
 .pagination li a{
     color: #D6D6D6!important;
+}
+.modal.modal-fixed-footer{
+    height: 380px!important;
 }

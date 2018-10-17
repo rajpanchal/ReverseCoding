@@ -43,43 +43,80 @@ function showQues(result){
         $(".collapsible").append(
             `<li>
             <div class="collapsible-header">
-              <div class="col l11 s10 rnd1ques">${result[i].quesname}</div>
-              <div class="col l1 s2 rnd1quesno">Q${i+1}</div>link
+              <div class="col l12 s12 rnd1ques">Question: ${result[i].number}</div>
+            <!--  <div class="col l1 s2 rnd1quesno">Q${i+1}</div> -->
             </div>
             <div class="collapsible-body rnd1body">
               <div class="row" style="margin:0;">
                 <div class="col s12 l4">
-                  <a class="col s9 l12 white z-depth-0 rndb btn-large offset-s2 waves-effect waves-light">
-                    <span class="col pd0 s9 l12">Download</span>
+                  <a class="col s10 l12 white z-depth-0 rndb btn-large offset-s1 waves-effect waves-light">
+                    <span class="col pd0 s9 l10">Download</span>
                     <i class="material-icons pd0 col s3 l2">file_download</i>
                   </a>
-                  <a class="col s3 l4 white z-depth-0 rndb offset-s2 waves-effect waves-light btn" href="${result[i].executable.win}" download>EXE</a>
-                  <a class="col s3 l4 white z-depth-0 rndb waves-effect waves-light btn" href="${result[i].executable.lin}" download>LIN</a>
+                  <a class="col s3 l4 white z-depth-0 rndb offset-s1 waves-effect waves-light btn" href="${result[i].executable.win}" download>EXE</a>
+                  <a class="col s4 l4 white z-depth-0 rndb waves-effect waves-light btn" href="${result[i].executable.lin}" download>LINUX</a>
                   <a class="col s3 l4 white z-depth-0 rndb waves-effect waves-light btn" href="${result[i].executable.mac}" download>MAC</a>
                 </div>
                 <div class="col s12 l4 offset-l4">
                 
-                <a class="col s8 l10 white offset-l2 z-depth-0 rndb btn-large offset-s2 waves-effect waves-light tooltipped" data-tooltip="Upload answer"> 
-                    <div id="submitans" onclick="submitQues(${result[i].number})" class="col pd0 s8 l10">Submit</div>
+                <a class="col s10 l12 white offset-l0 z-depth-0 rndb btn-large offset-s1 waves-effect waves-light tooltipped" data-tooltip="Upload answer"> 
+                    <div id="submitans" onclick="viewModal(${result[i].number})" class="col pd0 s8 l10">Submit</div>
                     <i class="material-icons pd0 col s3 l2">file_upload</i>
                   </a>
+                  <div class="col s10 l12 offset-l0 offset-s1" style="text-align: center; color: white; font-size: 15px;">Attempts: ${result[i].attemptCount}</div>
                 </div>                
                 </div>
             </div>
           </li>`);
     };
 }
-function submitQues(num){
+
+function viewModal(num){
+    $('#quesno').html(num)
+    window.modInstance= M.Modal.init($('#modal1')[0]);
+    window.modInstance.open()
+}
+
+function submitQues(){
+    num=$('#quesno').html()
+    lang=$('#qtyp').val()
+    console.log(num,lang)
+    file=$('#qfile')[0].files[0]
+    var formData = new FormData();
+    if(!num || !lang || !file) return swal("Error","Fill all fields.","error");
+    formData.append('que', num);
+    formData.append('lang', lang);
+    formData.append('file', file);
+    $.ajax({
+        url:'https://rcpcapi.acmvit.in/attempt/submit',
+        type:'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        headers: {
+            "Authorization":'Bearer '+token
+        },
+        beforeSend:function(){
+            $('#loading').show()
+        }
+    }).done(function(data){
+
+    }).catch(function(e){
+        swal("Error","Try again.","error");
+    })
+}
+
+function submiQues(num){
     var uploadForm = document.createElement('form');
     uploadForm.enctype="multipart/form-data";
-    var fileInput = uploadForm.appendChild(document.createElement('input'));
-    var fileInput2 = uploadForm.appendChild(document.createElement('input'));
-    fileInput2.type="text";
-    fileInput2.name="que"
-    fileInput2.value=num;
-    fileInput.type = 'file';
-    fileInput.name = 'answer';
-    fileInput.click()
+    // var fileInput = uploadForm.appendChild(document.createElement('input'));
+    // var fileInput2 = uploadForm.appendChild(document.createElement('input'));
+    // fileInput2.type="text";
+    // fileInput2.name="que"
+    // fileInput2.value=num;
+    // fileInput.type = 'file';
+    // fileInput.name = 'answer';
+    // fileInput.click()
     $('.modal').modal();
     $('.modal').modal('open');
     $('.submit').click(function(){
@@ -92,7 +129,7 @@ function submitQues(num){
         
         xhr.open("POST","https://rcpcapi.acmvit.in/attempt/submit",true);
         
-        xhr.setRequestHeader('Authorization',token);
+        xhr.setRequestHeader('Authorization','Bearer '+token);
         var formData = new FormData(uploadForm);
         xhr.onreadystatechange=function(){
             if(this.readyState==4 && this.status==200){

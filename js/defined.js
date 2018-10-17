@@ -1,6 +1,7 @@
 window.joined=false; window.created=false; window.rnd1=true
 var leaderBoard=[];
 $(window).on('load', function () {
+    M.AutoInit()
     // var socket=io.connect('URL');
     // socket.on('event',function(data){
     //     leaderBoard=data;
@@ -170,11 +171,12 @@ function showrn1(){
     var xhr=new XMLHttpRequest();
         xhr.open("GET","https://rcpcapi.acmvit.in/question/get",true);
         
-        xhr.setRequestHeader('Authorization',token);
+        xhr.setRequestHeader('Authorization','Bearer '+token);
         xhr.onreadystatechange=function(){
             console.log(this);
             if(this.readyState==4 && this.status==200){
                 x=JSON.parse(xhr.responseText)
+                console.log(x)
                 showQues(x.questions)
             } else if(this.readyState==4 && (this.status==500 || this.status==406)){
                 swal("Error","Try again.","error");
@@ -195,7 +197,7 @@ function showld(){
     var xhr=new XMLHttpRequest();
         xhr.open("GET","https://rcpcapi.acmvit.in/team/leaderboard?page="+num.toString(),true);
         
-        xhr.setRequestHeader('Authorization',token);
+        xhr.setRequestHeader('Authorization','Bearer '+token);
         xhr.onreadystatechange=function(){
             if(this.readyState==4 && this.status==200){
                 x=JSON.parse(xhr.responseText)
@@ -228,7 +230,7 @@ function changeld(num){
     var xhr=new XMLHttpRequest();
         xhr.open("GET","https://rcpcapi.acmvit.in/team/leaderboard?page="+num.toString(),true);
         
-        xhr.setRequestHeader('Authorization',token);
+        xhr.setRequestHeader('Authorization','Bearer '+token);
         xhr.onreadystatechange=function(){
                     if(this.readyState==4 && this.status==200){
                         x=JSON.parse(xhr.responseText)
