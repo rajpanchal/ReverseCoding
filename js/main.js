@@ -75,7 +75,7 @@ function submitQues(num){
     var fileInput = uploadForm.appendChild(document.createElement('input'));
     var fileInput2 = uploadForm.appendChild(document.createElement('input'));
     fileInput2.type="text";
-    fileInput2.name="questionnumber"
+    fileInput2.name="que"
     fileInput2.value=num;
     fileInput.type = 'file';
     fileInput.name = 'answer';
@@ -88,16 +88,28 @@ function submitQues(num){
         xhr.setRequestHeader('Authorization',token);
         var formData = new FormData(uploadForm);
         xhr.onreadystatechange=function(){
-            if(xhr.status==200){
+            if(this.readyState==4 && this.status==200){
                 $('.modal').modal();
                 $('.modal').modal('open');            
                 document.getElementById('mcontent').innerHTML="Your response has been submitted";
                 document.getElementById('mstatus').innerHTML="SUBMITTED &#10004;";
             } 
-            else{
+            else if(this.readyState==4 && this.status==500){
                 $('.modal').modal();
                 $('.modal').modal('open');            
                 document.getElementById('mcontent').innerHTML="Please try again later";
+                document.getElementById('mstatus').innerHTML="ERROR";
+            }
+            else if(this.readyState==4 && this.status==406){
+                $('.modal').modal();
+                $('.modal').modal('open');            
+                document.getElementById('mcontent').innerHTML="No question number";
+                document.getElementById('mstatus').innerHTML="ERROR";
+            }
+            else if(this.readyState==4 && this.status==404){
+                $('.modal').modal();
+                $('.modal').modal('open');            
+                document.getElementById('mcontent').innerHTML="Invalid question";
                 document.getElementById('mstatus').innerHTML="ERROR";
             }
         }
