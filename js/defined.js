@@ -1,11 +1,11 @@
-window.joined=false; window.created=false; window.rnd1=false
+window.joined=false; window.created=false; window.rnd1=true
 var leaderBoard=[];
 $(window).on('load', function () {
     // var socket=io.connect('URL');
     // socket.on('event',function(data){
     //     leaderBoard=data;
     // })
-    $('select').formSelect();
+    // $('select').formSelect();
     window.token=Cookies.get('token')
     if(window.token) {
         $.ajax({
@@ -212,14 +212,15 @@ function showld(){
 //SHOW TOTAL PAGES
 function showTotalPages(num){
     console.log(num);
-    var select=document.getElementById('ld').appendChild(document.createElement('select'));
-
-    for (var i = 1; i <= num; i++) {
-        var option = document.createElement("option");
-        option.value = i;
-        option.text = i;
-        select.appendChild(option);
-    }
+    var i=1;
+    txt='<li class="waves-effect" id="ld_pgu" onclick="pageUp(false)"><a href="#!"><i class="material-icons">chevron_left</i></a></li>'
+    do{
+        txt+=`<li class="waves-effect ld_pg" id="ld_pg${i}" onclick="selectPage(${i})"><a href="#!">${i}</a></li>`
+        i++
+    }while(i<num)
+    txt+='<li class="waves-effect" id="ld_pgd" onclick="pageUp(true)"><a href="#!"><i class="material-icons">chevron_right</i></a></li>'
+    $('#ld_pg').html(txt)
+    selectPage(1)
 }
 
 //CHANGE LD BASED ON PAGE NUM
@@ -244,4 +245,18 @@ function changeld(num){
 function ld1run(){
     rnd1=true;
     showDashboard()
+}
+
+function selectPage(e){
+    if(!$('#ld_pg'+e)[0]) return
+    $('.ld_pg').removeClass('active');
+    $('#ld_pg'+e).addClass('active');
+    changeld(e);
+}
+function pageUp(up){
+    console.log(up)
+    id=$('.ld_pg.active').attr('id')
+    ide=Number(id[id.length-1])
+    if(ide)
+    up?selectPage(ide+1):selectPage(ide-1)
 }

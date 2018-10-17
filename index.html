@@ -464,7 +464,7 @@
               <ul class="collapsible">
               </ul>
           </section>
-          <section id="ld" class="ldboard" style="display:none"> 
+          <section id="ld" class="ldboard" style="display:none; text-align: center;"> 
 
               <div class="row ld_hd">
                 <div class="col s2" style="text-align:left">Position</div>
@@ -474,15 +474,19 @@
               <ul class="collection row ld_coll">
                   
               </ul>
-              <div class="input-field col s12 l4 offset-l4">
+              <div class="input-field col s12 l4 offset-l4 hide">
                 <select id="ld_pgno">
-                  <option value="" disabled selected>Choose a page number</option>
-                  <option value="1" >Page 1</option>
-                  <option value="2">Page 2</option>
-                  <option value="3">Page 3</option>
+                  <option value="" id="ld_p0" disabled selected>Choose a page number</option>
                 </select>
                 <label>Jump to a page</label>
               </div>
+              <ul class="pagination" id="ld_pg">
+                <li class="waves-effect ld_pg active" id="ld_pg1" onclick="selectPage(1)"><a href="#!">1</a></li>
+                <li class="waves-effect ld_pg" id="ld_pg2" onclick="selectPage(2)"><a href="#!">2</a></li>
+                <li class="waves-effect ld_pg" id="ld_pg3" onclick="selectPage(3)"><a href="#!">3</a></li>
+                <li class="waves-effect ld_pg" id="ld_pg4" onclick="selectPage(4)"><a href="#!">4</a></li>
+                <li class="waves-effect" id="ld_pgd" onclick="pageUp(true)"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+              </ul>
           </section>
 
           </div>

@@ -30,7 +30,7 @@
     color: #0D47A1!important;
     font-weight: 700;
     background-color: #D6D6D6;
-    height: 44vh;
+    height: 50vh;
 }
 .ld_hd{
     padding-top: 7vh;
@@ -52,4 +52,15 @@
     font-weight: 700 !important;
     color: white!important;
     padding-bottom: 7vh !important;
+}
+
+    /* .dropdown-content{
+        top: -250px!important;
+        height: 250px!important;
+    } */
+.pagination li.active{
+    background: #0D47A1!important;
+}
+.pagination li a{
+    color: #D6D6D6!important;
 }
