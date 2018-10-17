@@ -80,7 +80,14 @@ function submitQues(num){
     fileInput.type = 'file';
     fileInput.name = 'answer';
     fileInput.click()
-    
+    $('.modal').modal();
+    $('.modal').modal('open');
+    $('.submit').click(function(){
+        var lang=$('#sel').val();
+        var fileInput3 = uploadForm.appendChild(document.createElement('input'));
+        fileInput3.type="text";
+        fileInput3.name="lang";
+        fileInput3.value=lang;
         var xhr=new XMLHttpRequest();
         
         xhr.open("POST","http://localhost:3000/attempt/submit",true);
@@ -91,27 +98,30 @@ function submitQues(num){
             if(this.readyState==4 && this.status==200){
                 $('.modal').modal();
                 $('.modal').modal('open');            
-                document.getElementById('mcontent').innerHTML="Your response has been submitted";
-                document.getElementById('mstatus').innerHTML="SUBMITTED &#10004;";
+                $('.modal-content').html("Your response has been submitted");
+                $('.modal-footer').html("SUBMITTED &#10004;");
             } 
             else if(this.readyState==4 && this.status==500){
                 $('.modal').modal();
-                $('.modal').modal('open');            
-                document.getElementById('mcontent').innerHTML="Please try again later";
-                document.getElementById('mstatus').innerHTML="ERROR";
+                $('.modal').modal('open');          
+                $('.modal-content').html("Please try again later");
+                $('.modal-footer').html("ERROR");  
             }
             else if(this.readyState==4 && this.status==406){
                 $('.modal').modal();
                 $('.modal').modal('open');            
-                document.getElementById('mcontent').innerHTML="No question number";
-                document.getElementById('mstatus').innerHTML="ERROR";
+                $('.modal-content').html("No question number");
+                $('.modal-footer').html("ERROR");
             }
             else if(this.readyState==4 && this.status==404){
                 $('.modal').modal();
                 $('.modal').modal('open');            
-                document.getElementById('mcontent').innerHTML="Invalid question";
-                document.getElementById('mstatus').innerHTML="ERROR";
+                $('.modal-content').html("Invalid question");
+                $('.modal-footer').html("ERROR");
+                
             }
         }
         xhr.send(formData);
+    })
+        
     }

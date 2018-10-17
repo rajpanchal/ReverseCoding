@@ -26,8 +26,8 @@
       <link rel="stylesheet" href="css/style.css">
       <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
       <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
-      
+      <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>           
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css" />
       <script type="text/javascript">
         function ab(){
@@ -447,14 +447,20 @@
             </div>
 
             <section class="main_s4" style="display:none"> 
-              <div id="modal1" class="modal">
-                <div id="mcontent" class="mcontent modal-content">
-                  Your response has been successfuly submitted.
+              <div id="modal-custom" class="modal">
+                      <div class="modal-content">              
+                          <select id="sel" style="">
+                              <option value="python3">Python 3</option>
+                              <option value="python2">Python 2</option>
+                              <option value="c">C</option>
+                              <option value="cpp">C++</option>
+                            </select>
+                      </div>
+                      <div class="modal-footer">
+                        <button id="submit">OK</a>
+                      </div>                      
                 </div>
-                <div id="mstatus" class="mfooter modal-footer">
-                  Submitted
-                </div>
-                </div>
+                
               <ul class="collapsible">
               </ul>
           </section>
