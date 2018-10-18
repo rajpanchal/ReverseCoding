@@ -22,10 +22,12 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" href="css/file2.css">
+      <link rel="stylesheet" href="css/round1.css">
       <link rel="stylesheet" href="css/style.css">
       <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
       <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css" />
+      <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>           
+      <link rel="stylesheet" href="css/materialize.css" />
       <script type="text/javascript">
         function ab(){
           $('html, body').animate({
@@ -58,6 +60,19 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
     </head>
     <body>
+      <div id="loading" style="position: absolute;width: 100%;height: 100%;background: rgb(0,0,0,0.7);z-index: 1000;display: none">
+          <div class="preloader-wrapper big active" style="height: 200px; width: 200px;height: 200px; width: 200px; position: absolute; top: 50%; left: 50%; margin-top: -100px; margin-left: -100px;">
+              <div class="spinner-layer spinner-blue-only">
+                <div class="circle-clipper left">
+                  <div class="circle" style="border: 10px solid #0D47A1;"></div>
+                </div><div class="gap-patch">
+                  <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                  <div class="circle" style="border: 10px solid #0D47A1;"></div>
+                </div>
+              </div>
+            </div>
+      </div>
       <div id="loader">
         <div class="preloader-wrapper big active" style="height: 200px; width: 200px;height: 200px; width: 200px; position: absolute; top: 50%; left: 50%; margin-top: -100px; margin-left: -100px;">
             <div class="spinner-layer spinner-blue-only">
@@ -277,28 +292,34 @@
               <div class="dashboard_td" style="border-radius:0px;padding: 15px 10px;cursor: pointer;">
                 <div class="dashboard "><div href="#" class="menu_font btn_focus "><span class="dashboard_data">DASHBOARD</span></div></div>
               </div>
-                <div class="create_team_td" style="padding: 15px 10px;border-bottom: 1px solid rgba(214, 214, 214);border-top: 1px solid rgba(214, 214, 214);cursor: pointer;">
+                <div class="create_team_td" style="padding: 15px 10px;border-top: 1px solid rgba(214, 214, 214);cursor: pointer;">
                   <div  class="create_team "><div href="#" class="menu_font btn_focus" ><span class="create_team_data">CREATE TEAM</span></div></div>
                 </div>
-                <div class="invites_td" style="border: 0;padding: 15px 10px;cursor: pointer;">
+                <div class="invites_td" style="border: 0;border-top: 1px solid rgba(214, 214, 214);padding: 15px 10px;cursor: pointer;">
                   <div class="invites "><div href="#" class="menu_font btn_focus"><span class="invites_data">INVITES</span></div></div>
+                </div>
+                <div class="rnd1_td" style="border: 0;padding: 15px 10px;cursor: pointer;border-top: 1px solid rgba(214, 214, 214);border-bottom: 1px solid rgba(214, 214, 214)" onclick="showrn1()">
+                  <div class="rnd1 "><div href="#" class="menu_font btn_focus"><span class="rnd1_data">Round 1</span></div></div>
+                </div>
+                <div class="ld_td" style="border: 0;padding: 15px 10px;cursor: pointer;" onclick="showld()">
+                  <div class="ld "><div href="#" class="menu_font btn_focus"><span class="ld_data">Leaderboard</span></div></div>
                 </div>
             </div>
           </div>
 
           <div class="col s12 m8 row l9 bck" style="height:200px;    padding: 0px 0px 0 40px;">
             <div class="col s12 autohight animated fadeInRight" style="position:relative; background: rgb(214,214,214,0.2);height: 75vh; overflow: auto; padding: 0px 30px;">
-
-              <div class="main_s11">
+            
+              <div class="main_s11" style="display:none">
                 <div class="container" style="width:90%;">
                   <p class="txt_in"><span class="bold_txt_in">TEAM NAME :</span> <span id="team_name_ajax" style="margin-left: 20px;"></span> </p>
-                  <div class="txt_in numno" style="padding: 80px 10%; font-style: italic; text-align: center;">Send or Accept invitation to form a team.</div>
+                  <div class="txt_in numno" style="padding: 50px 10%; font-style: italic; text-align: center;">Send or Accept invitation to form a team.</div>
                   <div class="txt_in num" style="display:none"><span class="bold_txt_in">TEAM MEMBERS :</span>
-                    <div style="display:block; margin-top: 20px;" class="row">
+                    <div style="display:block; margin-top: 20px;" class="row" id="dashCrt">
                       <div class="s1 col">1)</div> <div class="col s11 l5" id="crtName"></div>
                       <div class="col s12 l6" id="crtEmail" style="text-align: right;font-style: italic;"></div>
                     </div>
-                    <div style="display:block; margin-top: 20px;" class="row">
+                    <div style="display:block; margin-top: 20px;" id="dashMem" class="row">
                       <div class="s1 col">2)</div> <div class="col s11 l5" id="memName"></div>
                       <div class="col s12 l6" id="memEmail" style="text-align: right;font-style: italic;"></div>
                     </div>
@@ -440,6 +461,100 @@
             </div>
 
             </div>
+
+            <section class="main_s4" style="display:none"> 
+              <div id="modal-custom" class="modal">
+                      
+                      <div class="modal-content">              
+                          <select id="sel" style="">
+                              <option value="python3">Python 3</option>
+                              <option value="python2">Python 2</option>
+                              <option value="c">C</option>
+                              <option value="cpp">C++</option>
+                            </select>
+                      </div>
+                      <div class="modal-footer">
+                        <button id="submit">OK</a>
+                      </div>                      
+                </div>
+
+                <div id="modal1" class="modal-fixed-footer modal " style="height: 380px;">
+                    <div class="modal-content">
+                      <div id="sendRes">
+                        <h4 style="text-align: center"><b>Submit Response</b></h4>
+                        <div style="font-size: 22px;text-align: center;margin-top: 40px;">Question: <span id="quesno">1</span></div>
+                        <div class="file-field input-field">
+                            <div class="btn">
+                              <span>Code file</span>
+                              <input type="file" id="qfile">
+                            </div>
+                            <div class="file-path-wrapper">
+                              <input class="file-path validate" type="text">
+                            </div>
+                          </div>
+                          <div class="input-field col s12">
+                              <select id="qtyp" style="display:none">
+                                <option value="" disabled selected>Choose your language</option>
+                                <option value="python3">Python 3</option>
+                                <option value="python2">Python 2</option>
+                                <option value="cpp">C++</option>
+                                <option value="c">C</option>
+                              </select>
+                              <label>Language</label>
+                            </div>
+                          </div>
+                          <div id="recRes" style="display:none">
+                            <h4 style="text-align: center"><b>Response Submitted</b></h4>
+                            <div style="padding: 20px;
+                            text-align: center;
+                            font-size: 20px;" id="rectest">
+                            </div>
+                            <div style="text-align:center;font-size: 20px;">
+                                Points: <span id="recPoints">3</span>
+                            </div>
+                          </div>
+                    </div>
+                    <div class="modal-footer">
+                      <a href="#!" id="resSub" onclick="submitQues()" class="waves-effect waves-green btn">Submit</a>
+                      <a href="#!" class="modal-close waves-effect waves-green btn">Close</a>
+                    </div>
+                  </div>
+                
+              <ul class="collapsible quesRn" style="    margin: 40px 0;">
+                  <li class="active">
+                      <div class="collapsible-header">
+                        <div class="col l12 s12 rnd1ques">Loading...</div>
+                      <!--  <div class="col l1 s2 rnd1quesno">Q1</div> -->
+                      </div>
+                      
+                    </li>
+              </ul>
+          </section>
+          <section id="ld" class="ldboard" style="display:none; text-align: center;"> 
+
+              <div class="row ld_hd">
+                <div class="col s2" style="text-align:center">Position</div>
+                <div class="col s7" style="text-align:center">Team Name</div>
+                <div class="col s3" style="text-align:center">Points</div>
+              </div>
+              <ul class="collection row ld_coll" style="overflow: auto;">
+                  
+              </ul>
+              <div class="input-field col s12 l4 offset-l4 hide">
+                <select id="ld_pgno">
+                  <option value="" id="ld_p0" disabled selected>Choose a page number</option>
+                </select>
+                <label>Jump to a page</label>
+              </div>
+              <ul class="pagination" id="ld_pg">
+                <li class="waves-effect ld_pg active" id="ld_pg1" onclick="selectPage(1)"><a href="#!">1</a></li>
+                <li class="waves-effect ld_pg" id="ld_pg2" onclick="selectPage(2)"><a href="#!">2</a></li>
+                <li class="waves-effect ld_pg" id="ld_pg3" onclick="selectPage(3)"><a href="#!">3</a></li>
+                <li class="waves-effect ld_pg" id="ld_pg4" onclick="selectPage(4)"><a href="#!">4</a></li>
+                <li class="waves-effect" id="ld_pgd" onclick="pageUp(true)"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+              </ul>
+          </section>
+
           </div>
         </div>
 
@@ -451,6 +566,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.0/js.cookie.js"></script>
     <script src="js/main111.js"></script>
     <script src="js/defined.js"></script>
+    <script src="js/main.js"></script>
     <script>
     $(document).ready(function(){
       $('.collapsible').collapsible();

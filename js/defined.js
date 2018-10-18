@@ -1,5 +1,12 @@
-window.joined=false; window.created=false
+window.joined=false; window.created=false; window.rnd1=false
+var leaderBoard=[];
 $(window).on('load', function () {
+    M.AutoInit()
+    // var socket=io.connect('URL');
+    // socket.on('event',function(data){
+    //     leaderBoard=data;
+    // })
+    // $('select').formSelect();
     window.token=Cookies.get('token')
     if(window.token) {
         $.ajax({
@@ -19,6 +26,7 @@ $(window).on('load', function () {
             $(".raj_login").fadeOut('fast');
             $(".3_sections_raj_satyam").fadeIn(1000);
             showDashboard();
+            
         })
     }
     else{
@@ -33,11 +41,27 @@ $(window).on('load', function () {
     }
 
     
-}) 
+
+    $('#ld_pgno').on('change', function (e) {
+        // console.log(e)
+        // var optionSelected = $("option:selected", this);
+        // var valueSelected = this.value;
+        // changeld(value);
+        changeld($('#ld_pgno').val());
+    });
+
+
+})
 
 function btnreset(){
     $(".dashboard_td").css("background-color", "#FFFFFF");
     $(".dashboard_data").css("color","#0D47A1");
+
+    $(".ld_td").css("background-color", "#FFFFFF");
+    $(".ld_data").css("color","#0D47A1");
+
+    $(".rnd1_td").css("background-color", "#FFFFFF");
+    $(".rnd1_data").css("color","#0D47A1");
 
     $(".create_team_td").css("background-color", "#FFFFFF");
     $(".create_team_data").css("color",(created||joined)?"#bdbdbd":"#0D47A1");
@@ -47,8 +71,36 @@ function btnreset(){
     
     $('.create_team_td').css('cursor',(created||joined)?'not-allowed':'pointer')
     $('.invites_td').css('cursor',(joined)?'not-allowed':'pointer')
+
+    // if(rnd1){
+    //     $(".create_team_td").hide();
+    //     $(".invites_td").hide();
+    //     $(".rnd1_td").show();
+    //     $(".ld_td").show();
+    // }
+    if(joined){
+        $(".create_team_td").hide();
+        $(".invites_td").hide();
+        $(".rnd1_td").show();
+        $(".ld_td").show();
+    }
+    else if(created) {
+        $(".create_team_td").hide();
+        $(".invites_td").show();
+        $(".rnd1_td").show();
+        $(".ld_td").show();
+    }
+    else{
+        $(".create_team_td").show();
+        $(".invites_td").show();
+        $(".rnd1_td").hide();
+        $(".ld_td").hide();
+    }
+
     console.log(created||joined)
 }
+
+
 
 function fillavbl(a){
     $(".appendable1").html('')
@@ -104,4 +156,124 @@ function showSignin(){
         $('.raj_login').removeClass('zoomOut')
     })
     
+}
+
+function hideall(callback){
+    $(".main_s11").fadeOut('fast', function(){
+        $(".main_s2").fadeOut('fast', function(){
+            $(".invites1").fadeOut('fast', function(){
+                $(".main_s4").fadeOut('fast', function(){
+                    $(".ldboard").fadeOut('fast', function(){
+                        if(callback) callback()
+                    });
+                });
+            });
+        });
+    });
+}
+
+function showrn1(){
+    if($('.main_s4').css('display')!=="none") return
+    hideall(function(){
+        $(".main_s4").fadeIn('slow');
+        btnreset()
+        $(".rnd1_td").css("background-color", "#0D47A1");
+        $(".rnd1_data").css("color","#FFFFFF");
+    });
+    //    FETCH
+    var xhr=new XMLHttpRequest();
+        xhr.open("GET","https://rcpcapi.acmvit.in/question/get",true);
+        
+        xhr.setRequestHeader('Authorization','Bearer '+token);
+        xhr.onreadystatechange=function(){
+            console.log(this);
+            if(this.readyState==4 && this.status==200){
+                x=JSON.parse(xhr.responseText)
+                console.log(x)
+                showQues(x.questions)
+            } else if(this.readyState==4 && (this.status==500 || this.status==406)){
+                swal("Error","Try again.","error");
+            }
+        }
+        xhr.send();
+}
+
+function showld(){
+    if($('.ldboard').css('display')!=="none") return
+    hideall(function(){
+        $(".ldboard").fadeIn('slow');
+        btnreset()
+        $(".ld_td").css("background-color", "#0D47A1");
+        $(".ld_data").css("color","#FFFFFF");
+    });
+    var num=1;
+    var xhr=new XMLHttpRequest();
+        xhr.open("GET","https://rcpcapi.acmvit.in/team/leaderboard?page="+num.toString(),true);
+        
+        xhr.setRequestHeader('Authorization','Bearer '+token);
+        xhr.onreadystatechange=function(){
+            if(this.readyState==4 && this.status==200){
+                x=JSON.parse(xhr.responseText)
+                showTotalPages(x.totalPages)
+                showTeams(x.data)
+            } else if(this.readyState==4 && this.status==500){
+                swal("Error","Try again.","error");
+            }
+        }
+        xhr.send();
+    
+}
+
+//SHOW TOTAL PAGES
+function showTotalPages(num){
+    console.log(num);
+    var i=1;
+    txt='<li class="waves-effect" id="ld_pgu" onclick="pageUp(false)"><a href="#!"><i class="material-icons">chevron_left</i></a></li>'
+    do{
+        txt+=`<li class="waves-effect ld_pg" id="ld_pg${i}" onclick="selectPage(${i})"><a href="#!">${i}</a></li>`
+        i++
+    }while(i<num)
+    txt+='<li class="waves-effect" id="ld_pgd" onclick="pageUp(true)"><a href="#!"><i class="material-icons">chevron_right</i></a></li>'
+    $('#ld_pg').html(txt)
+    selectPage(1)
+}
+
+//CHANGE LD BASED ON PAGE NUM
+function changeld(num){
+    var xhr=new XMLHttpRequest();
+        xhr.open("GET","https://rcpcapi.acmvit.in/team/leaderboard?page="+num.toString(),true);
+        
+        xhr.setRequestHeader('Authorization','Bearer '+token);
+        xhr.onreadystatechange=function(){
+                    if(this.readyState==4 && this.status==200){
+                        x=JSON.parse(xhr.responseText)
+                        showTeams(x.data)
+                    } else if(this.readyState==4 && this.status==500){
+                        swal("Error","Try again.","error");
+                    }
+                }
+            
+        
+        xhr.send();
+}
+
+function start(){
+    swal('Note', 'Do not add any helper text or extra spaces to your output.', 'warning').then(function(){
+        rnd1=true;
+        showDashboard()
+      });
+}
+
+function selectPage(e){
+    if(!$('#ld_pg'+e)[0]) return
+    $('.ld_pg').removeClass('active');
+    $('#ld_pg'+e).addClass('active');
+    changeld(e);
+}
+function pageUp(up){
+    console.log(up)
+    id=$('.ld_pg.active').attr('id')
+    ide=Number(id[id.length-1])
+    if(ide)
+    up?selectPage(ide+1):selectPage(ide-1)
 }

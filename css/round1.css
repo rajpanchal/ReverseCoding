@@ -1,0 +1,74 @@
+.rnd1body{
+    margin: 0;
+    background-color: #0D47A1;
+}
+.rndb{
+    border: 3px solid #0D47A1!important;
+    border-radius: 0px!important;
+    color: #0D47A1!important;
+    font-weight: 700;
+}
+.rndb:not(.btn){
+    line-height: 50px!important;
+}
+.rndb:not(.btn-large){
+    line-height: 30px!important;
+}
+.pd0{
+    padding: 0!important;
+    margin: 0;
+}
+.rnd1quesno, .rnd1ques{
+    color: #0D47A1!important;
+    font-weight: 700;
+}
+.ld_tr{
+    background-color: white;
+}
+.ld_coll{
+    text-align:center;
+    color: #0D47A1!important;
+    font-weight: 700;
+    background-color: #D6D6D6;
+    height: 50vh;
+}
+.ld_hd{
+    padding-top: 6vh;
+    font-weight: 700;
+    font-size: 20px;
+    color: white;
+}
+.mcontent{
+    padding-top: 7vh !important;
+    background-color: white !important;
+    text-align:center !important;
+    color: #0D47A1!important;
+    padding-bottom: 7vh !important;
+}
+.mstatus{
+    padding-top: 7vh !important;
+    background-color: #0D47A1!important;
+    text-align:center !important;
+    font-weight: 700 !important;
+    color: white!important;
+    padding-bottom: 7vh !important;
+}
+
+    /* .dropdown-content{
+        top: -250px!important;
+        height: 250px!important;
+    } */
+.pagination li.active{
+    background: #0D47A1!important;
+}
+.pagination li a{
+    color: #D6D6D6!important;
+}
+.modal.modal-fixed-footer{
+    height: 100%!important;
+}
+@media only screen and (max-width: 500px){
+    .ld_hd{
+        font-size: 4vw!important;
+    }
+}	
