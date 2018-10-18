@@ -28,7 +28,7 @@ $(window).on('load', function () {
             $(".3_sections_raj_satyam").fadeIn(1000);
             // swal('Note', 'For windows users, if you are facing any .ddl missing error, install this software \n https://www.dll-files.com/libgcc_s_dw2-1.dll.html ', 'warning')
             // swal('Binary files have been updated.','Download and try again if you were unable to run exe files','info')
-            swal('Bonus question has been added!','','info')
+            swal('Event will end at 12:00:00 AM!','','info')
             showDashboard();
         })
     }
