@@ -131,6 +131,7 @@ function submitQues(){
             swal('Something is wrong with your code.', data.error||'Please verify your language and code', 'error')
         }
     }).catch(function(e){
+        console.log(e)
         $('#loading').hide()
         swal("Error","Try again.","error");
     })
