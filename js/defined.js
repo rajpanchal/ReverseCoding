@@ -1,5 +1,6 @@
 window.joined=false; window.created=false; window.rnd1=false
 var leaderBoard=[];
+// swal('We are stopping server for just 5 mins.','','info')
 $(window).on('load', function () {
     M.AutoInit()
     // var socket=io.connect('URL');
@@ -26,7 +27,8 @@ $(window).on('load', function () {
             $(".raj_login").fadeOut('fast');
             $(".3_sections_raj_satyam").fadeIn(1000);
             // swal('Note', 'For windows users, if you are facing any .ddl missing error, install this software \n https://www.dll-files.com/libgcc_s_dw2-1.dll.html ', 'warning')
-            swal('Binary files have been updated.','Download and try again if you were unable to run exe files','info')
+            // swal('Binary files have been updated.','Download and try again if you were unable to run exe files','info')
+            swal('Bonus question has been added!','','info')
             showDashboard();
         })
     }
