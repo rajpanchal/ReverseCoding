@@ -213,8 +213,8 @@ function showld(){
         xhr.onreadystatechange=function(){
             if(this.readyState==4 && this.status==200){
                 x=JSON.parse(xhr.responseText)
-                showTotalPages(x.totalPages)
-                showTeams(x.data)
+                showTotalPages(x.totalPages+1)
+                showTeams(x.data,0)
             } else if(this.readyState==4 && this.status==500){
                 swal("Error","Try again.","error");
             }
@@ -246,7 +246,7 @@ function changeld(num){
         xhr.onreadystatechange=function(){
                     if(this.readyState==4 && this.status==200){
                         x=JSON.parse(xhr.responseText)
-                        showTeams(x.data)
+                        showTeams(x.data,num-1)
                     } else if(this.readyState==4 && this.status==500){
                         swal("Error","Try again.","error");
                     }

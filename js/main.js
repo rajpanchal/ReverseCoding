@@ -20,13 +20,13 @@ function compare2(a,b){
     }
     return comp;
 }
-function showTeams(result){
+function showTeams(result,pg){
     $(".ld_coll").html('');
     console.log(result);
     for (var i = 0; i<result.length; i++) {
         $(".ld_coll").append(
             `<li class="collection-item row" style="margin:0">
-            <div class="col s2">${i+1}</div>
+            <div class="col s2">${i+1 +pg*25}</div>
             <div class="col s7">${result[i].name}</div>
             <div class="col s3">${result[i].score}</div>
           </li>`);
