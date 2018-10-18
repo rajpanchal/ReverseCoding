@@ -25,7 +25,8 @@ $(window).on('load', function () {
             $(".sam_signup").fadeOut('fast');
             $(".raj_login").fadeOut('fast');
             $(".3_sections_raj_satyam").fadeIn(1000);
-            swal('Come back in 5 minutes','We will be starting soon.','info')
+            swal('Note', 'Do not add any helper text or extra spaces to your output.', 'warning')
+            // swal('Come back in 5 minutes','We will be starting soon.','info')
             showDashboard();
             
         })
