@@ -51,7 +51,7 @@ $(window).on('load', function () {
     });
 
 
-}) 
+})
 
 function btnreset(){
     $(".dashboard_td").css("background-color", "#FFFFFF");

@@ -25,7 +25,7 @@ function showTeams(result){
     console.log(result);
     for (var i = 0; i<result.length; i++) {
         $(".ld_coll").append(
-            `<li class="collection-item row">
+            `<li class="collection-item row" style="margin:0">
             <div class="col s2">${i+1}</div>
             <div class="col s7">${result[i].name}</div>
             <div class="col s3">${result[i].score}</div>
@@ -84,6 +84,10 @@ function submitQues(){
     lang=$('#qtyp').val()
     console.log(num,lang)
     file=$('#qfile')[0].files[0]
+    fls=$('#qfile')[0].files[0].name.split('.')
+    fls=fls[fls.length-1]
+    if((lang=='cpp' || lang=='c') && !(fls=='cpp' || fls=='c')) return swal("Error","Invalid extention.","error");
+    if((lang=='python2' || lang=='python3') && !(fls=='py')) return swal("Error","Invalid extention.","error");
     var formData = new FormData();
     if(!num || !lang || !file) return swal("Error","Fill all fields.","error");
     formData.append('que', num);
