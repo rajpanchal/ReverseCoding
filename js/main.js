@@ -48,7 +48,7 @@ function showQues(result){
             <div class="collapsible-body rnd1body">
               <div class="row" style="margin:0;">
                 <div class="col s12 l4">
-                  <a class="col s10 l12 white z-depth-0 rndb btn-large offset-s1 waves-effect waves-light">
+                  <a class="col s10 l12 white z-depth-0 rndb btn-large offset-s1 waves-effect waves-light" style="cursor:s-resize;">
                     <span class="col pd0 s9 l10">Download</span>
                     <i class="material-icons pd0 col s3 l2">file_download</i>
                   </a>
@@ -62,7 +62,7 @@ function showQues(result){
                     <div id="submitans" onclick="viewModal(${result[i].number})" class="col pd0 s9 l10">Submit</div>
                     <i class="material-icons pd0 col s3 l2">file_upload</i>
                   </a>
-                  <div class="col s10 l12 offset-l0 offset-s1" style="text-align: center; color: white; font-size: 15px;">Attempts: ${result[i].attemptCount}</div>
+                  <div class="col s10 l12 offset-l0 offset-s1" style="text-align: center; color: white; font-size: 15px;">Submission: ${result[i].attemptCount}</div>
                 </div>                
                 </div>
             </div>
