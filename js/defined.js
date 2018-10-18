@@ -155,7 +155,6 @@ function showSignin(){
         $('.sam_signup').show()
         $('.raj_login').removeClass('zoomOut')
     })
-    
 }
 
 function hideall(callback){
