@@ -292,10 +292,10 @@
               <div class="dashboard_td" style="border-radius:0px;padding: 15px 10px;cursor: pointer;">
                 <div class="dashboard "><div href="#" class="menu_font btn_focus "><span class="dashboard_data">DASHBOARD</span></div></div>
               </div>
-                <div class="create_team_td" style="padding: 15px 10px;border-bottom: 1px solid rgba(214, 214, 214);border-top: 1px solid rgba(214, 214, 214);cursor: pointer;">
+                <div class="create_team_td" style="padding: 15px 10px;border-top: 1px solid rgba(214, 214, 214);cursor: pointer;">
                   <div  class="create_team "><div href="#" class="menu_font btn_focus" ><span class="create_team_data">CREATE TEAM</span></div></div>
                 </div>
-                <div class="invites_td" style="border: 0;padding: 15px 10px;cursor: pointer;">
+                <div class="invites_td" style="border: 0;border-top: 1px solid rgba(214, 214, 214);padding: 15px 10px;cursor: pointer;">
                   <div class="invites "><div href="#" class="menu_font btn_focus"><span class="invites_data">INVITES</span></div></div>
                 </div>
                 <div class="rnd1_td" style="border: 0;padding: 15px 10px;cursor: pointer;border-top: 1px solid rgba(214, 214, 214);border-bottom: 1px solid rgba(214, 214, 214)" onclick="showrn1()">
@@ -313,13 +313,13 @@
               <div class="main_s11" style="display:none">
                 <div class="container" style="width:90%;">
                   <p class="txt_in"><span class="bold_txt_in">TEAM NAME :</span> <span id="team_name_ajax" style="margin-left: 20px;"></span> </p>
-                  <div class="txt_in numno" style="padding: 80px 10%; font-style: italic; text-align: center;">Send or Accept invitation to form a team.</div>
+                  <div class="txt_in numno" style="padding: 50px 10%; font-style: italic; text-align: center;">Send or Accept invitation to form a team.</div>
                   <div class="txt_in num" style="display:none"><span class="bold_txt_in">TEAM MEMBERS :</span>
-                    <div style="display:block; margin-top: 20px;" class="row">
+                    <div style="display:block; margin-top: 20px;" class="row" id="dashCrt">
                       <div class="s1 col">1)</div> <div class="col s11 l5" id="crtName"></div>
                       <div class="col s12 l6" id="crtEmail" style="text-align: right;font-style: italic;"></div>
                     </div>
-                    <div style="display:block; margin-top: 20px;" class="row">
+                    <div style="display:block; margin-top: 20px;" id="dashMem" class="row">
                       <div class="s1 col">2)</div> <div class="col s11 l5" id="memName"></div>
                       <div class="col s12 l6" id="memEmail" style="text-align: right;font-style: italic;"></div>
                     </div>
@@ -520,7 +520,7 @@
                     </div>
                   </div>
                 
-              <ul class="collapsible">
+              <ul class="collapsible quesRn" style="    margin: 40px 0;">
                   <li class="active">
                       <div class="collapsible-header">
                         <div class="col l12 s12 rnd1ques">Loading...</div>
@@ -533,9 +533,9 @@
           <section id="ld" class="ldboard" style="display:none; text-align: center;"> 
 
               <div class="row ld_hd">
-                <div class="col s2" style="text-align:left">Position</div>
+                <div class="col s2" style="text-align:center">Position</div>
                 <div class="col s7" style="text-align:center">Team Name</div>
-                <div class="col s3" style="text-align:right">Points</div>
+                <div class="col s3" style="text-align:center">Points</div>
               </div>
               <ul class="collection row ld_coll">
                   

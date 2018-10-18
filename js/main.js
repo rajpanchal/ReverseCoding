@@ -21,26 +21,25 @@ function compare2(a,b){
     return comp;
 }
 function showTeams(result){
-    $(".collection").html('');
+    $(".ld_coll").html('');
     console.log(result);
-    result.sort(compare);
     for (var i = 0; i<result.length; i++) {
-        $(".collection").append(
+        $(".ld_coll").append(
             `<li class="collection-item row">
-            <div class="col s2">${i}</div>
-            <div class="col s8">${result[i].team}</div>
-            <div class="col s2">${result[i].score}</div>
+            <div class="col s2">${i+1}</div>
+            <div class="col s7">${result[i].name}</div>
+            <div class="col s3">${result[i].score}</div>
           </li>`);
     };
 }
 function showQues(result){
-    $(".collapsible").html('');
+    $(".quesRn").html('');
     console.log("QUESTIONS")
     console.log(result);
                 
-    result.sort(compare2);
+    // result.sort(compare2);
     for (var i = 0; i<result.length; i++) {
-        $(".collapsible").append(
+        $(".quesRn").append(
             `<li>
             <div class="collapsible-header">
               <div class="col l12 s12 rnd1ques">Question: ${result[i].number}</div>
@@ -53,9 +52,9 @@ function showQues(result){
                     <span class="col pd0 s9 l10">Download</span>
                     <i class="material-icons pd0 col s3 l2">file_download</i>
                   </a>
-                  <a class="col s3 l4 white z-depth-0 rndb offset-s1 waves-effect waves-light btn" href="${result[i].executable.win}" download>EXE</a>
-                  <a class="col s4 l4 white z-depth-0 rndb waves-effect waves-light btn" href="${result[i].executable.lin}" download>LINUX</a>
-                  <a class="col s3 l4 white z-depth-0 rndb waves-effect waves-light btn" href="${result[i].executable.mac}" download>MAC</a>
+                  <a class="col s3 l4 white z-depth-0 rndb offset-s1 waves-effect waves-light btn" href="https://rcpcapi.acmvit.in${result[i].executable.win}" download>EXE</a>
+                  <a class="col s4 l4 white z-depth-0 rndb waves-effect waves-light btn" href="https://rcpcapi.acmvit.in${result[i].executable.linux}" download>LINUX</a>
+                  <a class="col s3 l4 white z-depth-0 rndb waves-effect waves-light btn" href="https://rcpcapi.acmvit.in${result[i].executable.mac}" download>MAC</a>
                 </div>
                 <div class="col s12 l4 offset-l4">
                 
@@ -125,7 +124,7 @@ function submitQues(){
         }
         else{
             $('#loading').hide()
-            swal('Error', 'Something is wrong with your code. Please verify your language and code'||data.error||'', 'error')
+            swal('Something is wrong with your code.', data.error||'Please verify your language and code', 'error')
         }
     }).catch(function(e){
         $('#loading').hide()

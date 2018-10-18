@@ -32,20 +32,20 @@ function showDashboard(){
     } else if(xhr2d.status==200){
           var x=JSON.parse(xhr2d.responseText)
           if(x.code=="TEAMCREATED"){
-            // console.log(x)
             document.getElementById("team_name_ajax").innerHTML = x.teamname;
             $('#crtName').html('You are the only member')
-            // document.getElementById("team_members_ajax").innerHTML = x.name;
-            // $(".team_name_ajax").val(x.teamname);
-            // $(".team_members_ajax").val(x.name);
-            // console.log(x.teamname);
-            // console.log(x.name);
-            // console.log("TEAM CREATED ONLY YOU ARE MMBER");
-          } else if(x.code=="NOTEAMS"){
+            $('.num').show()
+            $('.numno').hide()
+            $('#dashMem').hide()
+            $('#crtEmail').html(x.email)
+            $('#crtName').html(x.name)
+          }
+          else if(x.code=="NOTEAMS"){
             document.getElementById("team_name_ajax").innerHTML = "NOT IN ANY TEAM";
-            // console.log("NO TEAM PRESENT");
-          } else if(x.code=="TEAMJOINED"){
-            // console.log(x)
+            $('.num').hide()
+            $('.numno').show()
+          } 
+          else if(x.code=="TEAMJOINED"){
             document.getElementById("team_name_ajax").innerHTML = x.team;
             $('.num').show()
             $('.numno').hide()
@@ -128,13 +128,15 @@ function acceptInvite(i){
     // // console.log(x.code=="OK")
     if(x.code=="TEAMJOINED"){
       window.joined=true
+      $(".logout_btn").trigger('click')
       swal("Error","You have already joined a team.","error");
     } else if(x.code=="TEAMFILLEDORDELETED"){
       swal("Error","Team filled or deleted.","error");
     } else if(x.code=="OK"){
       swal("Success","Invite accepted.","success");
       window.joined=true
-      $(".dashboard_td").trigger('click')
+      $(".logout_btn").trigger('click')
+      // $(".dashboard_td").trigger('click')
       //REDIRECT TO DASHBOARD AND CALL FOR TEAM AGAIN
     }
   }
@@ -394,7 +396,7 @@ $(document).ready(function(){
               document.getElementById("append_create_team_ajax").innerHTML = "In a team or team created.";
               // console.log("IN A TEAM OR TEAM CREATED")
               window.created=true
-              showDashboard()
+              $(".logout_btn").trigger('click')
             } else if(x.code=="TEAMNAMEEXIST"){
               // console.log("TEAM NAME EXISTS");
               // document.getElementById("append_create_team_ajax2").innerHTML = "Team Name already exists.";
@@ -432,15 +434,11 @@ $(document).ready(function(){
   $('.invites_td').click(function(){
     if(joined==true) return
     btnreset()
-
-    //ADDING
-    $(".invites_td").css("background-color", "#0D47A1");
-    $(".invites_data").css("color","#FFFFFF");
-
-    $(".main_s11").fadeOut('fast', function(){
-      $(".main_s2").fadeOut('fast', function(){
-        $(".invites1").fadeIn('slow');
-      });
+    hideall(function(){
+      $(".invites1").fadeIn('slow');
+      btnreset()
+      $(".invites_td").css("background-color", "#0D47A1");
+      $(".invites_data").css("color","#FFFFFF");
     });
     
     
@@ -487,7 +485,7 @@ $(document).ready(function(){
             text:"Team joined. Cannot change now.",
             type:"error"}).then(function(){
               window.joined=true
-              showDashboard()
+              $(".logout_btn").trigger('click')
             });
 
       }

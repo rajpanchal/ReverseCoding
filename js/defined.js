@@ -72,9 +72,21 @@ function btnreset(){
     $('.create_team_td').css('cursor',(created||joined)?'not-allowed':'pointer')
     $('.invites_td').css('cursor',(joined)?'not-allowed':'pointer')
 
-    if(rnd1){
+    // if(rnd1){
+    //     $(".create_team_td").hide();
+    //     $(".invites_td").hide();
+    //     $(".rnd1_td").show();
+    //     $(".ld_td").show();
+    // }
+    if(joined){
         $(".create_team_td").hide();
         $(".invites_td").hide();
+        $(".rnd1_td").show();
+        $(".ld_td").show();
+    }
+    else if(created) {
+        $(".create_team_td").hide();
+        $(".invites_td").show();
         $(".rnd1_td").show();
         $(".ld_td").show();
     }
@@ -152,7 +164,7 @@ function hideall(callback){
             $(".invites1").fadeOut('fast', function(){
                 $(".main_s4").fadeOut('fast', function(){
                     $(".ldboard").fadeOut('fast', function(){
-                        callback()
+                        if(callback) callback()
                     });
                 });
             });
