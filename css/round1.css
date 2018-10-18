@@ -67,3 +67,8 @@
 .modal.modal-fixed-footer{
     height: 380px!important;
 }
+@media only screen and (max-width: 500px){
+    .ld_hd{
+        font-size: 4vw!important;
+    }
+}	

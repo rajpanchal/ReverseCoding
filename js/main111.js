@@ -4,6 +4,11 @@ var pending=null;
 var teamCreated = null;
 
 function showDashboard(){
+  if((created||joined)==false){
+    swal('Team not yet created', "You need to have a team name first", "error").then(function(){
+        $(".create_team_td").trigger('click')
+      });
+}
   btnreset()
   //ADDING
     $(".dashboard_td").css("background-color", "#0D47A1");
@@ -379,8 +384,10 @@ $(document).ready(function(){
               $(".team_name_new").val('');
               // console.log("TEAM CREATED");
               // showDashboard();
+              swal('Success','Team Created! Please logout n login again', 'success')
               window.created=true
-              $(".dashboard_td").trigger('click')
+              $(".logout_btn").trigger('click')
+              // $(".dashboard_td").trigger('click')
             } else if(x.code=="INATEAMORTEAMCREATED"){
               $(".exception1").fadeIn('slow');
               $(".exception2").css("margin-bottom", "0");

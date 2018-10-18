@@ -1,4 +1,4 @@
-window.joined=false; window.created=false; window.rnd1=true
+window.joined=false; window.created=false; window.rnd1=false
 var leaderBoard=[];
 $(window).on('load', function () {
     M.AutoInit()
@@ -26,6 +26,7 @@ $(window).on('load', function () {
             $(".raj_login").fadeOut('fast');
             $(".3_sections_raj_satyam").fadeIn(1000);
             showDashboard();
+            
         })
     }
     else{
