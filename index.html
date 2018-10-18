@@ -480,30 +480,43 @@
 
                 <div id="modal1" class="modal-fixed-footer modal " style="height: 380px;">
                     <div class="modal-content">
-                      <h4 style="text-align: center">Submit Response</h4>
-                      <div style="font-size: 22px;text-align: center;">Question: <span id="quesno">1</span></div>
-                      <div class="file-field input-field">
-                          <div class="btn">
-                            <span>Code file</span>
-                            <input type="file" id="qfile">
+                      <div id="sendRes">
+                        <h4 style="text-align: center"><b>Submit Response</b></h4>
+                        <div style="font-size: 22px;text-align: center;margin-top: 40px;">Question: <span id="quesno">1</span></div>
+                        <div class="file-field input-field">
+                            <div class="btn">
+                              <span>Code file</span>
+                              <input type="file" id="qfile">
+                            </div>
+                            <div class="file-path-wrapper">
+                              <input class="file-path validate" type="text">
+                            </div>
                           </div>
-                          <div class="file-path-wrapper">
-                            <input class="file-path validate" type="text">
+                          <div class="input-field col s12">
+                              <select id="qtyp" style="display:none">
+                                <option value="" disabled selected>Choose your language</option>
+                                <option value="pytohn3">Python 3</option>
+                                <option value="python2">Python 2</option>
+                                <option value="cpp">C++</option>
+                                <option value="c">C</option>
+                              </select>
+                              <label>Language</label>
+                            </div>
                           </div>
-                        </div>
-                        <div class="input-field col s12">
-                            <select id="qtyp">
-                              <option value="" disabled selected>Choose your language</option>
-                              <option value="pytohn3">Python 3</option>
-                              <option value="python2">Python 2</option>
-                              <option value="cpp">C++</option>
-                              <option value="c">C</option>
-                            </select>
-                            <label>Language</label>
+                          <div id="recRes" style="display:none">
+                            <h4 style="text-align: center"><b>Response Submitted</b></h4>
+                            <div style="padding: 20px;
+                            text-align: center;
+                            font-size: 20px;" id="rectest">
+                            </div>
+                            <div style="text-align:center;font-size: 20px;">
+                                Points: <span id="recPoints">3</span>
+                            </div>
                           </div>
                     </div>
                     <div class="modal-footer">
-                      <a href="#!"onclick="submitQues()" class="waves-effect waves-green btn-flat">Submit</a>
+                      <a href="#!" id="resSub" onclick="submitQues()" class="waves-effect waves-green btn">Submit</a>
+                      <a href="#!" class="modal-close waves-effect waves-green btn">Close</a>
                     </div>
                   </div>
                 

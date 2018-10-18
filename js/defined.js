@@ -245,9 +245,11 @@ function changeld(num){
         xhr.send();
 }
 
-function ld1run(){
-    rnd1=true;
-    showDashboard()
+function start(){
+    swal('Note', 'Do not add any helper text or extra spaces to your output.', 'warning').then(function(){
+        rnd1=true;
+        showDashboard()
+      });
 }
 
 function selectPage(e){

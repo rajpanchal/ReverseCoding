@@ -75,6 +75,9 @@ function viewModal(num){
     $('#quesno').html(num)
     window.modInstance= M.Modal.init($('#modal1')[0]);
     window.modInstance.open()
+    $('#sendRes').show()
+    $('#recRes').hide()
+    $('#resSub').show()
 }
 
 function submitQues(){
@@ -100,8 +103,32 @@ function submitQues(){
             $('#loading').show()
         }
     }).done(function(data){
+        console.log(data)
+        console.log(data.error)
+        a=''
+        if(data.testCases){
+            data.testCases.forEach((elem,i) => {
+                a+=`<div>Test Case ${i+1}: `
+                if(elem){
+                    a+=`<span style="color:green">Passed</span></div>`
+                }
+                else a+=`<span style="color:red">Failed</span></div>`
+            });
 
+            $('#rectest').html(a);
+            $('#recPoints').html(data.score)
+
+            $('#loading').hide()
+            $('#sendRes').hide()
+            $('#recRes').show()
+            $('#resSub').hide()
+        }
+        else{
+            $('#loading').hide()
+            swal('Error', 'Something is wrong with your code. Please verify your language and code'||data.error||'', 'error')
+        }
     }).catch(function(e){
+        $('#loading').hide()
         swal("Error","Try again.","error");
     })
 }
