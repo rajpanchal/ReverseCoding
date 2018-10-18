@@ -14,7 +14,7 @@ $(window).on('load', function () {
             type:'post', 
             headers:{'Authorization':token}
         }).done(function(e){
-            console.log(e)
+            // console.log(e)
             $('.signup_').hide()
             $('.login_sam_btn').hide()
             $('.logout_btn').show()
@@ -44,7 +44,7 @@ $(window).on('load', function () {
     
 
     $('#ld_pgno').on('change', function (e) {
-        // console.log(e)
+        // // console.log(e)
         // var optionSelected = $("option:selected", this);
         // var valueSelected = this.value;
         // changeld(value);
@@ -98,7 +98,7 @@ function btnreset(){
         $(".ld_td").hide();
     }
 
-    console.log(created||joined)
+    // console.log(created||joined)
 }
 
 
@@ -131,8 +131,8 @@ function search(e){
     data=[];
     i=0;
     avail.forEach(function(elem){
-        console.log(++i)
-        console.log(elem.email,reg.test(elem.email))
+        // console.log(++i)
+        // console.log(elem.email,reg.test(elem.email))
         if(reg.test(elem.name) || reg.test(elem.email)) data.push(elem)
     });
     fillavbl(data)
@@ -186,10 +186,10 @@ function showrn1(){
         
         xhr.setRequestHeader('Authorization','Bearer '+token);
         xhr.onreadystatechange=function(){
-            console.log(this);
+            // console.log(this);
             if(this.readyState==4 && this.status==200){
                 x=JSON.parse(xhr.responseText)
-                console.log(x)
+                // console.log(x)
                 showQues(x.questions)
             } else if(this.readyState==4 && (this.status==500 || this.status==406)){
                 swal("Error","Try again.","error");
@@ -226,7 +226,7 @@ function showld(){
 
 //SHOW TOTAL PAGES
 function showTotalPages(num){
-    console.log(num);
+    // console.log(num);
     var i=1;
     txt='<li class="waves-effect" id="ld_pgu" onclick="pageUp(false)"><a href="#!"><i class="material-icons">chevron_left</i></a></li>'
     do{
@@ -271,7 +271,7 @@ function selectPage(e){
     changeld(e);
 }
 function pageUp(up){
-    console.log(up)
+    // console.log(up)
     id=$('.ld_pg.active').attr('id')
     ide=Number(id[id.length-1])
     if(ide)

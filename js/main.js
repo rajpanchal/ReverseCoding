@@ -22,7 +22,7 @@ function compare2(a,b){
 }
 function showTeams(result,pg){
     $(".ld_coll").html('');
-    console.log(result);
+    // console.log(result);
     for (var i = 0; i<result.length; i++) {
         $(".ld_coll").append(
             `<li class="collection-item row" style="margin:0">
@@ -34,8 +34,8 @@ function showTeams(result,pg){
 }
 function showQues(result){
     $(".quesRn").html('');
-    console.log("QUESTIONS")
-    console.log(result);
+    // console.log("QUESTIONS")
+    // console.log(result);
                 
     // result.sort(compare2);
     for (var i = 0; i<result.length; i++) {
@@ -82,7 +82,7 @@ function viewModal(num){
 function submitQues(){
     num=$('#quesno').html()
     lang=$('#qtyp').val()
-    console.log(num,lang)
+    // console.log(num,lang)
     file=$('#qfile')[0].files[0]
     fls=$('#qfile')[0].files[0].name.split('.')
     fls=fls[fls.length-1]
@@ -106,8 +106,8 @@ function submitQues(){
             $('#loading').show()
         }
     }).done(function(data){
-        console.log(data)
-        console.log(data.error)
+        // console.log(data)
+        // console.log(data.error)
         a=''
         if(data.testCases){
             data.testCases.forEach((elem,i) => {

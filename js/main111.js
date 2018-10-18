@@ -17,7 +17,7 @@ function showDashboard(){
     hideall(function(){
       $(".main_s11").fadeIn('slow');
     })
-    console.log(token)
+    // console.log(token)
     xhr2d=new XMLHttpRequest();
     xhr2d.open("POST",'https://shielded-plains-85651.herokuapp.com/dashboard',false);
     xhr2d.setRequestHeader('Content-type', 'application/json');
