@@ -25,7 +25,7 @@ $(window).on('load', function () {
             $(".sam_signup").fadeOut('fast');
             $(".raj_login").fadeOut('fast');
             $(".3_sections_raj_satyam").fadeIn(1000);
-            swal('Note', 'Do not add any helper text or extra spaces to your output.', 'warning')
+            swal('Note', 'For windows users, if you are facing any .ddl missing error, install this software \n https://www.dll-files.com/libgcc_s_dw2-1.dll.html ', 'warning')
             // swal('Come back in 5 minutes','We will be starting soon.','info')
             showDashboard();
             
