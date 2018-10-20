@@ -60,7 +60,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
     </head>
     <body>
-      <div id="loading" style="position: absolute;width: 100%;height: 100%;background: rgb(0,0,0,0.7);z-index: 1000;display: none">
+      <div id="loading" style="position: absolute;width: 100%;height: 100%;background: rgb(0,0,0,0.7);z-index: 4000;display: none">
           <div class="preloader-wrapper big active" style="height: 200px; width: 200px;height: 200px; width: 200px; position: absolute; top: 50%; left: 50%; margin-top: -100px; margin-left: -100px;">
               <div class="spinner-layer spinner-blue-only">
                 <div class="circle-clipper left">
@@ -299,7 +299,7 @@
                   <div class="invites "><div href="#" class="menu_font btn_focus"><span class="invites_data">INVITES</span></div></div>
                 </div>
                 <div class="rnd1_td" style="border: 0;padding: 15px 10px;cursor: pointer;border-top: 1px solid rgba(214, 214, 214);border-bottom: 1px solid rgba(214, 214, 214)" onclick="showrn1()">
-                  <div class="rnd1 "><div href="#" class="menu_font btn_focus"><span class="rnd1_data">Round 1</span></div></div>
+                  <div class="rnd1 "><div href="#" class="menu_font btn_focus"><span class="rnd1_data">Questions</span></div></div>
                 </div>
                 <div class="ld_td" style="border: 0;padding: 15px 10px;cursor: pointer;" onclick="showld()">
                   <div class="ld "><div href="#" class="menu_font btn_focus"><span class="ld_data">Leaderboard</span></div></div>
@@ -546,7 +546,7 @@
                 </select>
                 <label>Jump to a page</label>
               </div>
-              <ul class="pagination" id="ld_pg">
+              <ul class="pagination hide" id="ld_pg">
                 <li class="waves-effect ld_pg active" id="ld_pg1" onclick="selectPage(1)"><a href="#!">1</a></li>
                 <li class="waves-effect ld_pg" id="ld_pg2" onclick="selectPage(2)"><a href="#!">2</a></li>
                 <li class="waves-effect ld_pg" id="ld_pg3" onclick="selectPage(3)"><a href="#!">3</a></li>

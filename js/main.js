@@ -20,15 +20,15 @@ function compare2(a,b){
     }
     return comp;
 }
-function showTeams(result,pg){
+function showTeams(result){
     $(".ld_coll").html('');
     // console.log(result);
     for (var i = 0; i<result.length; i++) {
         $(".ld_coll").append(
             `<li class="collection-item row" style="margin:0">
-            <div class="col s2">${i+1 +pg*25}</div>
+            <div class="col s2">${i+1}</div>
             <div class="col s7">${result[i].name}</div>
-            <div class="col s3">${result[i].score}</div>
+            <div class="col s3">${result[i].points}</div>
           </li>`);
     };
 }
@@ -39,6 +39,7 @@ function showQues(result){
                 
     // result.sort(compare2);
     for (var i = 0; i<result.length; i++) {
+        console.log(result[i])
         $(".quesRn").append(
             `<li>
             <div class="collapsible-header">
@@ -52,9 +53,9 @@ function showQues(result){
                     <span class="col pd0 s9 l10">Download</span>
                     <i class="material-icons pd0 col s3 l2">file_download</i>
                   </a>
-                  <a class="col s3 l4 white z-depth-0 rndb offset-s1 waves-effect waves-light btn" href="https://rcpcapi.acmvit.in${result[i].executable.win}" download>EXE</a>
-                  <a class="col s4 l4 white z-depth-0 rndb waves-effect waves-light btn" href="https://rcpcapi.acmvit.in${result[i].executable.linux}" download>LINUX</a>
-                  <a class="col s3 l4 white z-depth-0 rndb waves-effect waves-light btn" href="https://rcpcapi.acmvit.in${result[i].executable.mac}" download>MAC</a>
+                  <a class="col s3 l4 white z-depth-0 rndb offset-s1 waves-effect waves-light btn" href="https://rcpcapi.acmvit.in${result[i].bin.win}" download>EXE</a>
+                  <a class="col s4 l4 white z-depth-0 rndb waves-effect waves-light btn" href="https://rcpcapi.acmvit.in${result[i].bin.linux}" download>LINUX</a>
+                  <a class="col s3 l4 white z-depth-0 rndb waves-effect waves-light btn" href="https://rcpcapi.acmvit.in${result[i].bin.mac}" download>MAC</a>
                 </div>
                 <div class="col s12 l4 offset-l4">
                 
@@ -62,7 +63,7 @@ function showQues(result){
                     <div id="submitans" onclick="viewModal(${result[i].number})" class="col pd0 s9 l10">Submit</div>
                     <i class="material-icons pd0 col s3 l2">file_upload</i>
                   </a>
-                  <div class="col s10 l12 offset-l0 offset-s1" style="text-align: center; color: white; font-size: 15px;">Submission: ${result[i].attemptCount}</div>
+                  <div class="col s10 l12 offset-l0 offset-s1" style="text-align: center; color: white; font-size: 15px;">Points scored: ${result[i].points}</div>
                 </div>                
                 </div>
             </div>
@@ -90,11 +91,11 @@ function submitQues(){
     if((lang=='python2' || lang=='python3') && !(fls=='py')) return swal("Error","Invalid extention.","error");
     var formData = new FormData();
     if(!num || !lang || !file) return swal("Error","Fill all fields.","error");
-    formData.append('que', num);
+    formData.append('number', num);
     formData.append('lang', lang);
     formData.append('file', file);
     $.ajax({
-        url:'https://rcpcapi.acmvit.in/attempt/submit',
+        url:'https://rcpcapi.acmvit.in/question/',
         type:'POST',
         data: formData,
         processData: false,
@@ -109,8 +110,7 @@ function submitQues(){
         // console.log(data)
         // console.log(data.error)
         a=''
-        if(data.testCases){
-            data.testCases.forEach((elem,i) => {
+            data.result.forEach((elem,i) => {
                 a+=`<div>Test Case ${i+1}: `
                 if(elem){
                     a+=`<span style="color:green">Passed</span></div>`
@@ -119,21 +119,18 @@ function submitQues(){
             });
 
             $('#rectest').html(a);
-            $('#recPoints').html(data.score)
+            $('#recPoints').html(data.points)
 
             $('#loading').hide()
             $('#sendRes').hide()
             $('#recRes').show()
             $('#resSub').hide()
-        }
-        else{
-            $('#loading').hide()
-            swal('Something is wrong with your code.', data.error||'Please verify your language and code', 'error')
-        }
+            
     }).catch(function(e){
-        console.log(e)
+        console.log(e.responseJSON)
         $('#loading').hide()
-        swal("Error","Try again.","error");
+        modInstance.close()
+        swal('Something is wrong with your code.', 'Please verify your language and code', 'error')
     })
 }
 

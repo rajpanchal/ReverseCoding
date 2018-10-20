@@ -28,7 +28,7 @@ $(window).on('load', function () {
             $(".3_sections_raj_satyam").fadeIn(1000);
             // swal('Note', 'For windows users, if you are facing any .ddl missing error, install this software \n https://www.dll-files.com/libgcc_s_dw2-1.dll.html ', 'warning')
             // swal('Binary files have been updated.','Download and try again if you were unable to run exe files','info')
-            swal('Event will end at 12:00:00 AM!','','info')
+            // swal('Event will end at 12:00:00 AM!','','info')
             showDashboard();
         })
     }
@@ -87,7 +87,7 @@ function btnreset(){
         $(".rnd1_td").show();
         $(".ld_td").show();
     }
-    else if(created) {
+    else if(created) { 
         $(".create_team_td").hide();
         $(".invites_td").show();
         $(".rnd1_td").show();
@@ -184,15 +184,15 @@ function showrn1(){
     });
     //    FETCH
     var xhr=new XMLHttpRequest();
-        xhr.open("GET","https://rcpcapi.acmvit.in/question/get",true);
+        xhr.open("GET","https://rcpcapi.acmvit.in/question/",true);
         
         xhr.setRequestHeader('Authorization','Bearer '+token);
         xhr.onreadystatechange=function(){
             // console.log(this);
             if(this.readyState==4 && this.status==200){
                 x=JSON.parse(xhr.responseText)
-                // console.log(x)
-                showQues(x.questions)
+                console.log(x)
+                showQues(x)
             } else if(this.readyState==4 && (this.status==500 || this.status==406)){
                 swal("Error","Try again.","error");
             }
@@ -216,8 +216,8 @@ function showld(){
         xhr.onreadystatechange=function(){
             if(this.readyState==4 && this.status==200){
                 x=JSON.parse(xhr.responseText)
-                showTotalPages(x.totalPages+1)
-                showTeams(x.data,0)
+                // showTotalPages(x.totalPages+1)
+                showTeams(x)
             } else if(this.readyState==4 && this.status==500){
                 swal("Error","Try again.","error");
             }
